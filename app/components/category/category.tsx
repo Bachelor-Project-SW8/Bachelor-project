@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import styles from './category.module.scss';
 
 interface Item {
@@ -40,24 +41,35 @@ export const CategoryBar = () => {
         fetchCategoryItems();
     }, [hoveredCategory]);
 
+    const handleMouseEnter = (category: string) => {
+        setHoveredCategory(category);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredCategory(null);
+    };
+
     return (
         <div className={styles.categoryBar}>
             <div className={styles.submenu}>
                 {categories.map(category => (
-                    <span
+                    <Link
                         key={category}
+                        href={`/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`}
                         className={styles.submenuItem}
-                        onMouseEnter={() => setHoveredCategory(category)}
+                        onMouseEnter={() => handleMouseEnter(category)}
+                        onMouseLeave={handleMouseLeave}
                     >
                         {category}
-                    </span>
+
+                    </Link>
                 ))}
             </div>
             {hoveredCategory && (
                 <div
                     className={styles.categoryItems}
-                    onMouseEnter={() => setHoveredCategory(hoveredCategory)}
-                    onMouseLeave={() => setHoveredCategory(null)}
+                    onMouseEnter={() => handleMouseEnter(hoveredCategory)}
+                    onMouseLeave={handleMouseLeave}
                 >
                     <ul className={styles.catItems}>
                         {categoryItems.map(item => (

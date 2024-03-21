@@ -6,10 +6,12 @@ import { CategoryBar } from '../category/category'
 export const Header = () => (
     <header>
         <div className={styles.header}>
-            <Link className={styles.title} href="/">
-                <h1>Webshop</h1>
-            </Link>
-            <p>Clothes and shit</p>
+            <div className={styles.titlebox}>
+                <Link className={styles.title} href="/">
+                    <h1>Webshop</h1>
+                </Link>
+                <p>Clothes and Shit</p>
+            </div>
         </div>
         <CategoryBar />
     </header>

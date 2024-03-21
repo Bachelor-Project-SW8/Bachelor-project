@@ -1,16 +1,27 @@
 .header {
     text-align: center;
-    background-color: #2E5266FF;
+    background-color: #f3831a;
     color: white;
     padding: 8px;
-}
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 
-.title {
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
+    .titlebox {
+        background-color: black;
+        width: fit-content;
+        padding: 1px 50px;
+    }
 
-    &:hover {
-        text-decoration: underline;
+    .title {
+        width: fit-content;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
+
