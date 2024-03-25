@@ -1,0 +1,80 @@
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.carousel {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.indicators {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #333;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.slide {
+  display: flex;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 230px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 0px 10px 20px 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.controlPrev,
+.controlNext {
+  position: absolute;
+  top: 50%;
+  transition: all 0.3s ease;
+  transform: transition translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.controlPrev {
+  left: 0;
+}
+
+.controlNext {
+  right: 0;
+}
