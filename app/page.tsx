@@ -7,7 +7,14 @@ import pic2 from "../images/pic2.jpg"
 import pic3 from "../images/pic3.jpg"
 import pic4 from "../images/pic4.jpg"
 import pic5 from "../images/pic5.jpg"
+
+import steelBracelet from "./components/widget/widgetPictures/steelbracelet.png"
+
+import { Carousel } from "./components/carousel/carousel"
+import { Widget } from "./components/widget/widget"
+
 import styles from './page.module.scss'
+import { ProductTile } from "./components/productTile/productTile"
 
 interface Product {
   ProductID: number
