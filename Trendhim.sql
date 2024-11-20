@@ -9,10 +9,10 @@
 -- DROP TABLE Category;
 -- DROP TABLE Color;
 
--- INSERT INTO Product (ProductName,Price,Description,ProductPicture)
--- VALUES ("stainless steel brecelet",399.00, "Smuk armbåndskæde i rustfrit, sølvtonet stål. Designet er simpelt og frækt, og armbåndet vil med garanti befinde sig godt rundt om dit håndled.
+INSERT INTO Product (ProductName,Price,Description,ProductPicture)
+VALUES ("Lolle",299.00, "Smuk armbåndskæde i rustfrit, sølvtonet stål. Designet er simpelt og frækt, og armbåndet vil med garanti befinde sig godt rundt om dit håndled.
 
--- Låsen der holder kædeleddene sammen er nem at åbn og lukke.","https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt850b15718be6eb13/60dbcb7793730d0ef6fc0cc3/s-br-8mm_1_3.jpg?format=pjpg&auto=webp&quality=75%2C90&width=384");
+Låsen der holder kædeleddene sammen er nem at åbn og lukke.","https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt850b15718be6eb13/60dbcb7793730d0ef6fc0cc3/s-br-8mm_1_3.jpg?format=pjpg&auto=webp&quality=75%2C90&width=384");
 
 -- CREATE TABLE Product (
 --     ProductID INTEGER  PRIMARY KEY AUTOINCREMENT,

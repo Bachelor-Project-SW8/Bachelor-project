@@ -9,8 +9,6 @@ import pic4 from "../images/pic4.jpg"
 import pic5 from "../images/pic5.jpg"
 
 import steelBracelet from "./components/widget/widgetPictures/steelbracelet.png"
-
-import { Carousel } from "./components/carousel/carousel"
 import { Widget } from "./components/widget/widget"
 
 import styles from './page.module.scss'
@@ -62,19 +60,16 @@ export default function Home() {
       </div>
 
       {/* Produkter */}
-      <div className={styles.products}>
-        <h2>Vores Produkter</h2>
-        <div className={styles.productList}>
-          {products.map((product) => (
-            <div key={product.ProductID} className={styles.product}>
-              <img src={product.ProductPicture} alt={product.ProductName} />
-              <h3>{product.ProductName}</h3>
-              <p>{product.Description}</p>
-              <p>{product.Price} DKK</p>
-            </div>
-          ))}
+      {products.map((product) => (
+        <div key={product.ProductID}>
+          <ProductTile
+            productName={product.ProductName}
+            price={product.Price}
+            picture={product.ProductPicture}
+            brand='Lucleon'
+          />
         </div>
-      </div>
+      ))}
     </div>
   )
 }
