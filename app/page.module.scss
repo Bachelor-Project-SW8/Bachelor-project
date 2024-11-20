@@ -1,5 +1,6 @@
 .container {
   margin: auto;
+  background-color: var(--white);
 }
 
 .carousel {
@@ -7,4 +8,16 @@
   width: 100%;
   height: 500px;
   margin: 10px auto;
+}
+
+.widgetPicture > img {
+  width: 185px;
+  height: 325px;
+  object-fit: cover;
+}
+
+.productTile > img {
+  width: 185px;
+  height: 325px;
+  object-fit: contain;
 }

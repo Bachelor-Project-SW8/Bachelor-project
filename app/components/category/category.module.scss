@@ -1,11 +1,10 @@
 .categoryBar {
-  background-color: white;
+  background-color: var(--white);
   position: relative;
   border-bottom: 1px solid var(--darkGray);
 
   .submenu {
     display: flex;
-    background-color: white;
     justify-content: center;
   }
 
@@ -47,7 +46,7 @@
 
       .itemTitle {
         &:hover {
-            text-decoration: underline;
+          text-decoration: underline;
         }
       }
     }

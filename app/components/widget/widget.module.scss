@@ -1,0 +1,50 @@
+.widgetContainer {
+  margin-top: 20px;
+  width: 185px;
+  height: 325px;
+  position: relative;
+
+  .productText {
+    all: unset;
+    color: var(--black);
+    width: 70%;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 40px;
+    overflow-wrap: break-word;
+    white-space: normal;
+    padding: 7px;
+    border-radius: 10px;
+    border: 1px solid var(--black);
+    background-color: var(--transparentGray);
+    font-weight: bold;
+  }
+
+  .widgetPicture {
+    width: 100%;
+    height: 100%;
+  }
+
+  .seeAll {
+    all: unset;
+    color: var(--black);
+    width: 40%;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow-wrap: break-word;
+    white-space: normal;
+    padding: 7px;
+    border-radius: 10px;
+    border: 1px solid var(--black);
+    background-color: var(--transparentGray);
+    font-weight: bold;
+    bottom: 0;
+    margin-bottom: 40px;
+  }
+}

@@ -5,4 +5,5 @@
   --black: #000000;
   --orange: #ffa500;
   --darkGray: #444444;
+  --transparentGray: rgba(210, 208, 208, 0.85);
 }
