@@ -10,13 +10,34 @@
     border: 1px solid black;
     padding: 10px;
 
+    .heartIconContainer {
+      display: flex;
+
+      .heartIcon {
+        position: absolute;
+        right: 0;
+        margin: 0px 10px;
+      }
+    }
+
     .productTilePicture {
       width: 100%;
       height: 80%;
     }
 
     .productTileName {
-      box-sizing: border-box;
+      font-weight: bold;
+    }
+
+    .brandContainer {
+      width: 100%;
+      border-top: 1px solid black;
+      margin-top: 5px;
+      padding-bottom: 5px;
+      .brandTag {
+        text-align: center;
+        color: #72716f;
+      }
     }
   }
 }
