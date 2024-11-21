@@ -3,17 +3,27 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import styles from './category.module.scss';
+import { ChevronRight, Menu, X } from 'lucide-react';
+import clsx from 'clsx';
 
-interface Item {
-    id: number;
-    title: string;
-    price: string;
+interface CategoryBarProps {
+    id?: number;
+    title?: string;
+    price?: string;
+    mobile?: boolean;
+    desktop?: boolean;
+    className?: string;
 }
 
-export const CategoryBar = () => {
+export const CategoryBar = ({ id, title, price, mobile, desktop, className }: CategoryBarProps) => {
     const [categories, setCategories] = useState<string[]>([]);
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-    const [categoryItems, setCategoryItems] = useState<Item[]>([]);
+    const [categoryItems, setCategoryItems] = useState<CategoryBarProps[]>([]);
+    const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+
+    const toggleSidePanel = () => {
+        setIsSidePanelOpen((prev) => !prev);
+    };
 
     useEffect(() => {
         async function fetchCategories() {
@@ -31,7 +41,7 @@ export const CategoryBar = () => {
         async function fetchCategoryItems() {
             if (hoveredCategory) {
                 try {
-                    const response = await axios.get<Item[]>(`https://fakestoreapi.com/products/category/${hoveredCategory}`);
+                    const response = await axios.get<CategoryBarProps[]>(`https://fakestoreapi.com/products/category/${hoveredCategory}`);
                     setCategoryItems(response.data);
                 } catch (error) {
                     console.error(`Error fetching items for category ${hoveredCategory}:`, error);
@@ -51,19 +61,52 @@ export const CategoryBar = () => {
 
     return (
         <div className={styles.categoryBar}>
-            <div className={styles.submenu}>
-                {categories.map(category => (
-                    <Link
-                        key={category}
-                        href={`/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`}
-                        className={styles.submenuItem}
-                        onMouseEnter={() => handleMouseEnter(category)}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {category}
-
-                    </Link>
-                ))}
+            <div className={styles.menu}>
+                {mobile && (
+                    <div className={styles.mobileMenu}>
+                        <Menu onClick={toggleSidePanel} />
+                        {isSidePanelOpen && (
+                            <div className={styles.sidePanelContainer}>
+                                <div onClick={toggleSidePanel} className={styles.backdrop}></div>
+                                <div className={clsx(styles.sidePanel, isSidePanelOpen && styles.open)}>
+                                    <div className={styles.closeButtonContainer}>
+                                        <button onClick={toggleSidePanel} className={styles.closeButton}>
+                                            <X />
+                                        </button>
+                                    </div>
+                                    <ul className={styles.sidePanelLinks}>
+                                        {categories.map((category) => (
+                                            <li key={category}>
+                                                <Link
+                                                    href={`/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`}
+                                                    onClick={toggleSidePanel}
+                                                >
+                                                    {category}
+                                                </Link>
+                                                <ChevronRight />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+                {desktop && (
+                    <div className={styles.desktopMenu}>
+                        {categories.map(category => (
+                            <Link
+                                key={category}
+                                href={`/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`}
+                                className={styles.submenuItem}
+                                onMouseEnter={() => handleMouseEnter(category)}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                {category}
+                            </Link>
+                        ))}
+                    </div>
+                )}
             </div>
             {hoveredCategory && (
                 <div

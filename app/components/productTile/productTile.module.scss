@@ -1,10 +1,10 @@
 .productTile {
+  width: 100%;
+  height: 100%;
   display: flex;
-  width: fit-content;
+  cursor: pointer;
 
   .productTileContainer {
-    width: 185px;
-    height: 325px;
     position: relative;
     background-color: white;
     border: 1px solid black;
@@ -17,6 +17,16 @@
         position: absolute;
         right: 0;
         margin: 0px 10px;
+        cursor: pointer;
+
+        &.likedProduct {
+          fill: var(--darkGray);
+          animation: squish 200ms ease-in-out;
+        }
+
+        &:hover {
+          fill: var(--darkGray);
+        }
       }
     }
 
@@ -38,6 +48,12 @@
         text-align: center;
         color: #72716f;
       }
+    }
+  }
+
+  @keyframes squish {
+    50% {
+      scale: 1.2;
     }
   }
 }

@@ -3,34 +3,120 @@
   position: relative;
   border-bottom: 1px solid var(--darkGray);
 
-  .submenu {
+  .desktopMenu {
     display: flex;
     justify-content: center;
+
+    .submenuItem {
+      text-decoration: none;
+      color: black;
+      font-size: large;
+      cursor: pointer;
+      padding: 10px 15px;
+      border-bottom: 2px solid transparent;
+      width: fit-content;
+      text-transform: capitalize;
+
+      &:hover {
+        border-bottom: 2px solid var(--black);
+        width: fit-content;
+      }
+    }
   }
 
-  .submenuItem {
-    text-decoration: none;
-    color: black;
-    font-size: large;
+  .mobileMenu {
+    margin-left: 5px;
     cursor: pointer;
-    padding: 10px 15px;
-    border-bottom: 2px solid transparent;
-    width: fit-content;
-    margin-right: 10px;
-    text-transform: capitalize;
 
-    &:hover {
-      border-bottom: 2px solid var(--black);
+    .sidePanelContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      z-index: 10;
+
+      .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+      }
+
+      .sidePanel {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 65%;
+        height: 100%;
+        background-color: var(--white);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        z-index: 10;
+
+        transform: translateX(-100%);
+        transition: slide-in 0.2s ease-in-out;
+
+        &.sidePanel.open {
+          animation: slide-in 0.2s ease-out forwards;
+        }
+
+        .closeButtonContainer {
+          border-bottom: 1px solid black;
+          padding: 12px;
+
+          .closeButton {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+          }
+        }
+
+        .sidePanelLinks {
+          list-style: none;
+          padding: 0;
+          margin: 10px 0;
+
+          li {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a {
+              text-decoration: none;
+              color: black;
+              font-size: 18px;
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
     }
   }
 
   .categoryItems {
+    box-sizing: border-box;
     background-color: white;
-    margin: auto;
-    width: 60%;
+    width: 100%;
     border: 1px solid var(--darkGray);
     position: absolute;
-    left: 20%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+
+    @media (min-width: 430px) {
+      width: 80%;
+      margin: 0 auto;
+    }
   }
 
   .catItems {
@@ -49,6 +135,27 @@
           text-decoration: underline;
         }
       }
+    }
+  }
+
+  @media (max-width: 530px) {
+    .menu > .desktopMenu {
+      display: none;
+    }
+  }
+
+  @media (min-width: 531px) {
+    .menu > .mobileMenu {
+      display: none;
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
     }
   }
 }
