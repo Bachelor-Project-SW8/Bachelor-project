@@ -60,16 +60,19 @@ export default function Home() {
       </div>
 
       {/* Produkter */}
-      {products.map((product) => (
-        <div key={product.ProductID}>
-          <ProductTile
-            productName={product.ProductName}
-            price={product.Price}
-            picture={product.ProductPicture}
-            brand='Lucleon'
-          />
-        </div>
-      ))}
+      <div className={styles.productTileGrid}>
+        {products.map((product) => (
+          <div key={product.ProductID}>
+            <ProductTile
+              className={styles.productTile}
+              productName={product.ProductName}
+              price={product.Price}
+              picture={product.ProductPicture}
+              brand='Lucleon'
+            />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

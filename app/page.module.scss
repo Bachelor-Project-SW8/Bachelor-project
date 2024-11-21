@@ -16,8 +16,18 @@
   object-fit: cover;
 }
 
-.productTile > img {
-  width: 185px;
+.productTileGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  place-items: center;
+
+  @media (max-width: 429px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.productTile {
+  width: 180px;
   height: 325px;
-  object-fit: contain;
 }
