@@ -57,9 +57,10 @@ export default function Home() {
       <div className={styles.carousel}>
         <Carousel imageUrls={carouselImages.map((image) => image.src)} />
       </div>
-      <div><Filter></Filter></div>
       
-      <div>{/* Produkter */}
+      
+      <div className={styles.screen}>{/* Produkter */}
+        <div className={styles.Filter}><Filter></Filter> </div>
       <div className={styles.productTileGrid}>
         {products.map((product) => (
           <div key={product.ProductID}>
