@@ -1,8 +1,12 @@
+/* page.module.scss */
+
+/* Wrapper for hele layoutet */
 .container {
   margin: auto;
   background-color: var(--white);
 }
 
+/* Carousel styling */
 .carousel {
   max-width: 1200px;
   width: 100%;
@@ -10,24 +14,49 @@
   margin: 10px auto;
 }
 
+/* Styling for widget picture */
 .widgetPicture > img {
   width: 185px;
   height: 325px;
   object-fit: cover;
 }
 
-.productTileGrid {
+/* Main content layout for filter and products */
+.mainContentWrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  place-items: center;
-
-  @media (max-width: 429px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  grid-template-columns: 1fr 5fr; /* Venstre kolonne til filter, højre til produkter */
+  gap: 5px;
+  padding: 5px;
 }
 
+
+
+/* Grid for products */
+
+
+/* Product tile styling */
 .productTile {
   width: 180px;
   height: 325px;
+}
+
+.screen {
+  width: 100%;
+  display: flex;
+
+  .Filter{
+    width: 20%;
+  }
+  .productTileGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* To kolonner */
+    gap: 10px;
+    place-items: center;
+    width: 63%;
+  
+    @media (max-width: 429px) {
+      grid-template-columns: repeat(1, 1fr); /* En kolonne ved små skærme */
+    }
+  }
+
 }
