@@ -1,0 +1,11 @@
+.page {
+    position: sticky;
+    top: 80px; /* Justér afhængig af højden af headeren */
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: calc(100vh - 80px); /* Fylder resten af skærmen minus headerens højde */
+    overflow-y: auto; /* Tillader scrolling, hvis der er meget indhold */
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  

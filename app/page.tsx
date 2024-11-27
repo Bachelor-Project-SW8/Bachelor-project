@@ -13,53 +13,53 @@ import { Widget } from "./components/widget/widget"
 
 import styles from './page.module.scss'
 import { ProductTile } from "./components/productTile/productTile"
+import { Filter } from "./components/Filter/Filter"
 
-interface Product {
-  ProductID: number
-  ProductName: string
-  Price: number
-  Description: string
-  ProductPicture: string
-}
+
+import { Product, Category, Color } from './types/types' // Importer typerne
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [colors, setColors] = useState<Color[]>([])
 
   useEffect(() => {
-    // Definer fetchProducts inden i useEffect
-    const fetchProducts = async () => {
-      const response = await fetch('/api/products')
+    const fetchData = async () => {
+      // Justeret API-kald til den nye sti
+      const response = await fetch('/api/Data') // Brug den nye sti til API'en
 
       if (!response.ok) {
-        console.error('Fejl ved at hente produkter:', response.status)
+        console.error('Fejl ved at hente data:', response.status)
         return
       }
 
       try {
         const data = await response.json()
-        console.log('Produkdata:', data)
-        setProducts(data)
+        console.log('Data:', data)
+        setProducts(data.products)
+        setCategories(data.categories)
+        setColors(data.colors)
       } catch (error) {
         console.error('Fejl ved parsing af JSON:', error)
       }
     }
 
-    // Kald funktionen
-    fetchProducts()
+    fetchData()
+  }, [])
 
-  }, []) // Empty dependency array to run once when the component mounts
 
   // Oprindelige billeder til carousellen
   const carouselImages = [pic1, pic2, pic3, pic4, pic5]
 
   return (
-    <div>
+    <div className={styles.screengrid}>
       {/* Carousel */}
       <div className={styles.carousel}>
         <Carousel imageUrls={carouselImages.map((image) => image.src)} />
       </div>
-
-      {/* Produkter */}
+      <div><Filter></Filter></div>
+      
+      <div>{/* Produkter */}
       <div className={styles.productTileGrid}>
         {products.map((product) => (
           <div key={product.ProductID}>
@@ -72,7 +72,8 @@ export default function Home() {
             />
           </div>
         ))}
-      </div>
+      </div></div>
+      
     </div>
   )
 }
