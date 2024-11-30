@@ -17,6 +17,7 @@ import { Filter } from "./components/Filter/Filter"
 
 
 import { Product, Category, Color } from './types/types' // Importer typerne
+import { ProductCarousel } from './components/productCarousel/productCarousel'
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([])
@@ -57,6 +58,14 @@ export default function Home() {
       <div className={styles.carousel}>
         <Carousel imageUrls={carouselImages.map((image) => image.src)} />
       </div>
+
+      <div className={styles.productContainer}>
+      <div className={styles.filterContainer}>
+        <Filter 
+          mobile
+          desktop
+        />
+      </div>
       
       
       <div className={styles.screen}>{/* Produkter */}
@@ -73,8 +82,22 @@ export default function Home() {
             />
           </div>
         ))}
-      </div></div>
-      
+      </div>
+      </div>
     </div>
+    <div className={styles.productCarouselContainer}>
+        <h2 className={styles.productCarouselHeader}>Looking for something specific?</h2>
+      <ProductCarousel>
+        {products.map((product) => (
+          <Widget
+            key={product.ProductID}
+            picture={product.ProductPicture}
+            text={product.ProductName}
+          />
+        ))}
+      </ProductCarousel>
+      </div>
+      
+  </div>
   )
 }

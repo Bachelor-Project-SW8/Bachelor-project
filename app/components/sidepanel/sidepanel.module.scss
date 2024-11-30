@@ -1,0 +1,82 @@
+.sidepanelWrapper {
+    margin: auto;
+    width: 100%;
+    position: relative;
+
+    .checkbox:checked~.backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      transition: 0.2s ease;
+    }
+  
+    .checkbox {
+      display: none;
+  
+      &~.content {
+        max-height: 0;
+        overflow: hidden;
+        right: -100%;
+      }
+  
+      &:checked~.content {
+        max-height: 1250px;
+        border-bottom: 1px solid #ccc;
+        padding: 10px 10px 20px 10px;
+        background-color: var(--white);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 20;
+        box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;
+        transition: right 0.2s ease;
+  
+        .borderBottom {
+          border-bottom: 1px solid var(--black);
+        }
+  
+        @media (min-width: 1024px) {
+          transition: all 0.2s ease;
+          width: 600px;
+        }
+  
+        @media (max-width: 1023px) {
+          transition: all 0.2s ease;
+          width: 75%;
+        }
+        
+  
+        .closeButtonContainer {
+            border-bottom: 1px solid black;
+            padding: 15px;
+  
+            .close {
+              cursor: pointer;
+              position: absolute;
+              top: 10px;
+              right: 10px;
+            }
+          }
+  
+      }
+  
+    }
+  
+    .trigger {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background-color: var(--white);
+      cursor: pointer;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }

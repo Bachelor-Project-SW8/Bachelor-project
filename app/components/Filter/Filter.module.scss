@@ -1,11 +1,47 @@
-.page {
-    position: sticky;
-    top: 80px; /* Justér afhængig af højden af headeren */
-    width: 250px;
-    background-color: #f4f4f4;
-    padding: 20px;
-    height: calc(100vh - 80px); /* Fylder resten af skærmen minus headerens højde */
-    overflow-y: auto; /* Tillader scrolling, hvis der er meget indhold */
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+.filterContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure that parent container is tall enough for sticky behavior */
+
+    .desktopFilter {
+      position: sticky;
+      top: 0;
+      width: 250px;
+      background-color: white;
+      padding: 20px;
+      margin: 0 10px 10px 10px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+      box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+
+      @media (max-width: 1024px )  {
+        display: none;
+      }
+    }
+
+    .mobileFilter {
+
+        .filterTrigger {
+          background-color: rgb(77, 77, 77);
+          display: flex;
+          align-items: center;
+          padding: 8px;
+          border-radius: 6px;
+          border: 1px solid black;
+          color: white;
+
+          .mobileFilterText {
+            margin-right: 10px;
+          }
+        }
+      
+      
+      @media (min-width: 1025px) {
+        display: none;
+      }
+      
+        
+    }
+    
   }
   
