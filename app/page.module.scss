@@ -17,10 +17,10 @@
 }
 
 .productTileGrid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  place-items: center;
 
   @media (max-width: 429px) {
     grid-template-columns: repeat(1, 1fr);
@@ -30,4 +30,30 @@
 .productTile {
   width: 180px;
   height: 325px;
+}
+
+.productCarouselContainer {
+  padding: 10px;
+  max-width: 430px;
+  background-color: lightgray;
+
+  @media (min-width: 1024px) {
+    max-width: 645px;
+  }
+
+  .productCarouselHeader {
+    text-align: center;
+  }
+}
+
+.productContainer {
+  display: flex;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+
+    .filterContainer {
+      padding: 10px 10px 20px 10px;
+    }
+  }
 }
