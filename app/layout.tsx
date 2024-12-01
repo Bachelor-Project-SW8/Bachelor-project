@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import styles from './page.module.scss'
 import './globalThemes.css'
 import { Header } from './components/header/header'
+import { Footer } from "./components/footer/footer";
 
 export const metadata: Metadata = {
   title: "Webshop",
@@ -17,8 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className={styles.container}>
-        <Header />
+          <Header />
           {children}
+          <Footer />
         </div>
       </body>
     </html>
