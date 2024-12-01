@@ -10,7 +10,7 @@ export const Header = () => (
                 <Link className={styles.title} href="/">
                     <h1>Webshop</h1>
                 </Link>
-                <p>Clothes and Shit</p>
+                <p>SW8</p>
             </div>
         </div>
         <CategoryBar
