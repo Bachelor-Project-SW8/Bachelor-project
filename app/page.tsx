@@ -60,44 +60,44 @@ export default function Home() {
       </div>
 
       <div className={styles.productContainer}>
-      <div className={styles.filterContainer}>
-        <Filter 
-          mobile
-          desktop
-        />
-      </div>
-      
-      
-      <div className={styles.screen}>{/* Produkter */}
-        <div className={styles.Filter}><Filter></Filter> </div>
-      <div className={styles.productTileGrid}>
-        {products.map((product) => (
-          <div key={product.ProductID}>
-            <ProductTile
-              className={styles.productTile}
-              productName={product.ProductName}
-              price={product.Price}
-              picture={product.ProductPicture}
-              brand='Lucleon'
-            />
-          </div>
-        ))}
-      </div>
-      </div>
-    </div>
-    <div className={styles.productCarouselContainer}>
-        <h2 className={styles.productCarouselHeader}>Looking for something specific?</h2>
-      <ProductCarousel>
-        {products.map((product) => (
-          <Widget
-            key={product.ProductID}
-            picture={product.ProductPicture}
-            text={product.ProductName}
+        <div className={styles.filterContainer}>
+          <Filter
+            className={styles.filterTrigger}
+            mobile
+            desktop
           />
-        ))}
-      </ProductCarousel>
+        </div>
+
+
+        <div className={styles.screen}>{/* Produkter */}
+          <div className={styles.productTileGrid}>
+            {products.map((product) => (
+              <div key={product.ProductID}>
+                <ProductTile
+                  className={styles.productTile}
+                  productName={product.ProductName}
+                  price={product.Price}
+                  picture={product.ProductPicture}
+                  brand='Lucleon'
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      
-  </div>
+      <div className={styles.productCarouselContainer}>
+        <h2 className={styles.productCarouselHeader}>Looking for something specific?</h2>
+        <ProductCarousel>
+          {products.map((product) => (
+            <Widget
+              key={product.ProductID}
+              picture={product.ProductPicture}
+              text={product.ProductName}
+            />
+          ))}
+        </ProductCarousel>
+      </div>
+
+    </div>
   )
 }

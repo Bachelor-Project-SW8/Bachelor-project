@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './category.module.scss';
 import { ChevronRight, Menu, X } from 'lucide-react';
 import clsx from 'clsx';
+import { Sidepanel } from '../sidepanel/sidepanel';
 
 interface CategoryBarProps {
     id?: number;
@@ -63,33 +64,31 @@ export const CategoryBar = ({ id, title, price, mobile, desktop, className }: Ca
         <div className={styles.categoryBar}>
             <div className={styles.menu}>
                 {mobile && (
-                    <div className={styles.mobileMenu}>
-                        <Menu onClick={toggleSidePanel} />
-                        {isSidePanelOpen && (
-                            <div className={styles.sidePanelContainer}>
-                                <div onClick={toggleSidePanel} className={styles.backdrop}></div>
-                                <div className={clsx(styles.sidePanel, isSidePanelOpen && styles.open)}>
-                                    <div className={styles.closeButtonContainer}>
-                                        <button onClick={toggleSidePanel} className={styles.closeButton}>
-                                            <X />
-                                        </button>
-                                    </div>
-                                    <ul className={styles.sidePanelLinks}>
-                                        {categories.map((category) => (
-                                            <li key={category}>
-                                                <Link
-                                                    href={`/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`}
-                                                    onClick={toggleSidePanel}
-                                                >
-                                                    {category}
-                                                </Link>
-                                                <ChevronRight />
-                                            </li>
-                                        ))}
-                                    </ul>
+                    <div className={styles.mobileSidepanelContainer}>
+                        <Sidepanel
+                            className={styles.mobileSidepanel}
+                            id="menu-sidepanel"
+                            trigger={
+                                <div className={styles.mobileSidepanelTrigger}>
+                                    <Menu />
                                 </div>
-                            </div>
-                        )}
+                            }
+                            SVG={<X />}
+                        >
+                            <ul className={styles.sidePanelLinks}>
+                                {categories.map((category) => (
+                                    <li key={category}>
+                                        <Link
+                                            href={`/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`}
+                                            onClick={toggleSidePanel}
+                                        >
+                                            {category}
+                                        </Link>
+                                        <ChevronRight />
+                                    </li>
+                                ))}
+                            </ul>
+                        </Sidepanel>
                     </div>
                 )}
                 {desktop && (
