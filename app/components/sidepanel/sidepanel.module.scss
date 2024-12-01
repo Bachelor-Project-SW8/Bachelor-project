@@ -16,7 +16,7 @@
     & ~ .content {
       max-height: 0;
       overflow: hidden;
-      right: -100%;
+      left: -100%;
     }
 
     &:checked ~ .content {
@@ -31,7 +31,7 @@
       overflow-y: auto;
       z-index: 20;
       box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;
-      transition: right 0.2s ease;
+      transition: left 0.2s ease;
 
       .borderBottom {
         border-bottom: 1px solid var(--black);
