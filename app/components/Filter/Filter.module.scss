@@ -22,6 +22,7 @@
       display: grid;
       justify-content: end;
       justify-items: end;
+      
       .filterTrigger {
         background-color: rgb(77, 77, 77);
         display: flex;
@@ -42,4 +43,31 @@
       }
     }
   }
+}
+
+.SidepanelFilterContainer {
+  display: flex; /* Use flexbox for the layout */
+  flex-direction: column; /* Stack elements vertically */
+  height: 90%;
+}
+
+.generalFilterStyling {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.applyButton {
+  background-color: #333; /* Dark grey background */
+  color: white; /* White text color */
+  width: 100%; /* Full width */
+  padding: 1rem; /* Add padding for better spacing */
+  text-align: center; /* Center the text */
+  cursor: pointer; /* Pointer on hover */
+  box-sizing: border-box;
+  margin-top: auto;
+}
+
+.applyButton:hover {
+  background-color: #444; /* Slightly lighter grey on hover */
 }
