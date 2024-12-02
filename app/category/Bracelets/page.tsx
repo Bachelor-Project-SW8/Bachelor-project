@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Carousel } from "../../components/carousel/carousel";
 import { Widget } from "../../components/widget/widget";
 
 import styles from "../../page.module.scss";
@@ -15,6 +14,7 @@ import {
   ProductColor,
 } from "../../types/types"; // Importer typerne
 import { ProductCarousel } from "../../components/productCarousel/productCarousel";
+import Link from "next/link";
 
 const Bracelets = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -107,15 +107,28 @@ const Bracelets = () => {
                       categories[index % categories.length].CategoryPicture
                     } // Increment index for widget
                     text={categories[index % categories.length].CategoryName}
+                    onClick={() => {
+                      // Find the category by name and filter products
+                      const selectedCategory = categories[index % categories.length];
+                      if (selectedCategory) {
+                        filterProducts([selectedCategory.CategoryID], []); // Pass only the clicked category's ID
+                      }
+                    }}
                   />
                 </div>
               ) : (
                 <div key={product.ProductID}>
-                  <ProductTile
-                    className={styles.productTile}
-                    product={product}
-                  />
+                  <Link
+                    className={styles.productTileLink}
+                    href={`/category/Bracelets/products/${product.ProductID}`}
+                  >
+                    <ProductTile
+                      className={styles.productTile}
+                      product={product}
+                    />
+                  </Link>
                 </div>
+
               )
           )}
         </div>
@@ -134,7 +147,7 @@ const Bracelets = () => {
           ))}
         </ProductCarousel>
       </div>
-    </div>
+    </div >
   );
 };
 export default Bracelets;

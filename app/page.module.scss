@@ -34,6 +34,7 @@
 
   .widgetContainer {
     display: flex;
+    cursor: pointer;
   }
 
   @media (min-width: 650px) {
@@ -95,4 +96,9 @@
       }
     }
   }
+}
+
+.productTileLink {
+  text-decoration: none;
+  color: black;
 }

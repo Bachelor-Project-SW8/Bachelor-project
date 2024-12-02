@@ -37,11 +37,11 @@
 
     .productTileName {
       font-weight: bold;
-      white-space: nowrap;       /* Prevent text from wrapping to the next line */
-      overflow: hidden;          /* Hide any overflowing text */
-      text-overflow: ellipsis;   /* Display '...' for truncated text */
-      width: 100%;               /* Ensure it respects the parent's width */
-      display: block; 
+      white-space: nowrap; /* Prevent text from wrapping to the next line */
+      overflow: hidden; /* Hide any overflowing text */
+      text-overflow: ellipsis; /* Display '...' for truncated text */
+      width: 100%; /* Ensure it respects the parent's width */
+      display: block;
     }
 
     .brandContainer {

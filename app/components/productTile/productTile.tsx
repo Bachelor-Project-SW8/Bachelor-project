@@ -12,12 +12,13 @@ type ProductTileProps = {
 export function ProductTile({ className, product }: ProductTileProps) {
     const [likedProduct, setLikedProduct] = useState(false);
 
-    const toggleLikeProduct = () => {
+    const toggleLikeProduct = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent the link from being followed
         setLikedProduct((prev) => !prev);
     };
 
     return (
-        <a className={styles.productTile}>
+        <div className={styles.productTile}>
             <div key={product.ProductID} className={clsx(styles.productTileContainer, className)}>
                 <div className={styles.heartIconContainer}>
                     <HeartIcon onClick={toggleLikeProduct} className={clsx(styles.heartIcon, likedProduct && styles.likedProduct)} />
@@ -29,6 +30,6 @@ export function ProductTile({ className, product }: ProductTileProps) {
                     <div className={styles.brandTag}>{product.Brand}</div>
                 </div>
             </div>
-        </a>
+        </div>
     )
 }

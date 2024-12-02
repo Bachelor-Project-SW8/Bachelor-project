@@ -13,10 +13,10 @@ interface CategoryBarProps {
 
 export const CategoryBar = ({ mobile, desktop, className }: CategoryBarProps) => {
     const categories = [
-        { name: 'Bracelets', path: '../../category/Bracelets' },
-        { name: 'Necklaces', path: '../../category/Bracelets' },
-        { name: 'Rings', path: '../../category/Bracelets' },
-        { name: 'Earrings', path: '../../category/Bracelets' },
+        { name: 'Bracelets', path: '/category/Bracelets' },  // Changed to absolute path
+        { name: 'Necklaces', path: '/category/Necklaces' },
+        { name: 'Rings', path: '/category/Rings' },
+        { name: 'Earrings', path: '/category/Earrings' },
     ];
 
     return (
