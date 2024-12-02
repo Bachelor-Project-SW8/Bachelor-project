@@ -20,11 +20,7 @@ export const CategoryBar = ({ id, title, price, mobile, desktop, className }: Ca
     const [categories, setCategories] = useState<string[]>([]);
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [categoryItems, setCategoryItems] = useState<CategoryBarProps[]>([]);
-    const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
-    const toggleSidePanel = () => {
-        setIsSidePanelOpen((prev) => !prev);
-    };
 
     useEffect(() => {
         async function fetchCategories() {
@@ -69,7 +65,7 @@ export const CategoryBar = ({ id, title, price, mobile, desktop, className }: Ca
                             className={styles.mobileSidepanel}
                             id="menu-sidepanel"
                             trigger={
-                                <div className={styles.mobileSidepanelTrigger}>
+                                <div id='menu-sidepanel-trigger' className={styles.mobileSidepanelTrigger}>
                                     <Menu />
                                 </div>
                             }
@@ -80,7 +76,19 @@ export const CategoryBar = ({ id, title, price, mobile, desktop, className }: Ca
                                     <li key={category}>
                                         <Link
                                             href={`/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`}
-                                            onClick={toggleSidePanel}
+                                            onClick={(e) => {
+                                                // Prevent default link navigation behavior
+                                                e.preventDefault();
+                                    
+                                                // Trigger the click on the sidepanel trigger to close the panel
+                                                const sidepanelTrigger = document.getElementById("menu-sidepanel-trigger");
+                                                if (sidepanelTrigger) {
+                                                  sidepanelTrigger.click(); // This will toggle the sidepanel state
+                                                }
+                                    
+                                                // Navigate to the category page after closing the sidepanel
+                                                window.location.href = `/category/${category.toLowerCase().replace(/ /g, '').replace(/'/g, '')}`;
+                                              }}
                                         >
                                             {category}
                                         </Link>
