@@ -31,6 +31,7 @@ export const Filter = ({
 
   useEffect(() => {
     onApplyFilters(selectedCategories, selectedColors);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategories, selectedColors]);
 
   // Handle category checkbox change
