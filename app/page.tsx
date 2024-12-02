@@ -52,6 +52,8 @@ export default function Home() {
   // Oprindelige billeder til carousellen
   const carouselImages = [pic1, pic2, pic3, pic4, pic5]
 
+  console.log(categories)
+
   return (
     <div className={styles.screengrid}>
       {/* Carousel */}
@@ -61,29 +63,25 @@ export default function Home() {
 
       <div className={styles.productContainer}>
         <div className={styles.filterContainer}>
-          <Filter
+            <Filter
             className={styles.filterTrigger}
             mobile
             desktop
+            categories={categories}
+            colors={colors}
           />
         </div>
 
-
-        <div className={styles.screen}>{/* Produkter */}
           <div className={styles.productTileGrid}>
             {products.map((product) => (
               <div key={product.ProductID}>
                 <ProductTile
                   className={styles.productTile}
-                  productName={product.ProductName}
-                  price={product.Price}
-                  picture={product.ProductPicture}
-                  brand='Lucleon'
+                  product={product}
                 />
               </div>
             ))}
           </div>
-        </div>
       </div>
       <div className={styles.productCarouselContainer}>
         <h2 className={styles.productCarouselHeader}>Looking for something specific?</h2>
