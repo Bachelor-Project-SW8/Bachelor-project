@@ -95,47 +95,11 @@ export default function Home() {
 
   return (
     <div className={styles.screengrid}>
-      {/* Carousel */}
+
       <div className={styles.carousel}>
         <Carousel imageUrls={carouselImages.map((image) => image.src)} />
       </div>
 
-      <div className={styles.productContainer}>
-        <div className={styles.filterContainer}>
-          <Filter
-            className={styles.filterTrigger}
-            mobile
-            desktop
-            categories={categories}
-            colors={colors}
-            onApplyFilters={filterProducts}
-          />
-        </div>
-
-        <div className={styles.productTileGrid}>
-          {(filteredProducts.length > 0 ? filteredProducts : products).map(
-            (product) => (
-              <div key={product.ProductID}>
-                <ProductTile className={styles.productTile} product={product} />
-              </div>
-            )
-          )}
-        </div>
-      </div>
-      <div className={styles.productCarouselContainer}>
-        <h2 className={styles.productCarouselHeader}>
-          Looking for something specific?
-        </h2>
-        <ProductCarousel>
-          {products.map((product) => (
-            <Widget
-              key={product.ProductID}
-              picture={product.ProductPicture}
-              text={product.ProductName}
-            />
-          ))}
-        </ProductCarousel>
-      </div>
     </div>
   );
 }
