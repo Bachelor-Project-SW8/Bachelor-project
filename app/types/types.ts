@@ -5,7 +5,7 @@ export interface Product {
     ProductID: number
     ProductName: string
     Price: number
-    Description: string
+    Brand: string
     ProductPicture: string
   }
   

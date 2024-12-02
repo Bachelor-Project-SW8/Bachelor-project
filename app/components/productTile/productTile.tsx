@@ -18,7 +18,7 @@ export function ProductTile({ className, product }: ProductTileProps) {
 
     return (
         <a className={styles.productTile}>
-                <div key={product.ProductID} className={clsx(styles.productTileContainer, className)}>
+            <div key={product.ProductID} className={clsx(styles.productTileContainer, className)}>
                 <div className={styles.heartIconContainer}>
                     <HeartIcon onClick={toggleLikeProduct} className={clsx(styles.heartIcon, likedProduct && styles.likedProduct)} />
                 </div>
@@ -26,7 +26,7 @@ export function ProductTile({ className, product }: ProductTileProps) {
                 <div className={styles.productTileName}>{product.ProductName}</div>
                 <div>{`$${product.Price}`}</div>
                 <div className={styles.brandContainer}>
-                    <div className={styles.brandTag}>{'product.brand'}</div>
+                    <div className={styles.brandTag}>{product.Brand}</div>
                 </div>
             </div>
         </a>
