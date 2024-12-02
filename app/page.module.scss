@@ -24,12 +24,18 @@
 .productTileGrid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 
   .productTile {
     width: 180px;
     height: 325px;
+  }
+
+  .widgetContainer {
+    display: flex;
+    justify-content: center; // Centrerer widgetten i gitteret
+    align-items: center;
   }
 
   @media (max-width: 429px) {

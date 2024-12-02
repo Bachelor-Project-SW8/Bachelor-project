@@ -23,7 +23,7 @@ export interface Product {
   export interface Category {
     CategoryID: number
     CategoryName: string
-    CategoryPicture?: string
+    CategoryPicture: string
   }
   
   // Farve relaterede typer
