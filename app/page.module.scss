@@ -27,14 +27,14 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 
+  .productTile {
+    width: 180px;
+    height: 325px;
+  }
+
   @media (max-width: 429px) {
     grid-template-columns: repeat(1, 1fr);
   }
-}
-
-.productTile {
-  width: 180px;
-  height: 325px;
 }
 
 .productCarouselContainer {
