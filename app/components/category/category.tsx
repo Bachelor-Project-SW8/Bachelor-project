@@ -42,12 +42,15 @@ export const CategoryBar = ({
               }
               SVG={<X />}
             >
+              <h3>Categories</h3>
               <ul className={styles.sidePanelLinks}>
                 {categories.map((category) => (
-                  <li key={category.name}>
-                    <Link href={category.path}>{category.name}</Link>
-                    <ChevronRight />
-                  </li>
+                  <Link key={category.name} href={category.path}>
+                    <li className={styles.categoryLink}>
+                      {category.name}
+                      <ChevronRight />
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </Sidepanel>

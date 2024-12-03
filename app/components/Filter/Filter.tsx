@@ -46,6 +46,22 @@ export const Filter = ({
     onApplyFilters(selectedCategories, newSelectedColors);
   };
 
+  const colorHexMap: { [key: string]: string } = {
+    Black: "#333333",
+    "Silver-Tone": "#B0B0B0",
+    Brown: "#6F4F1F",
+    Blue: "#4682B4",
+    Red: "#B22222",
+    "Gold-Tone": "#D4AF37",
+    Grey: "#A9A9A9",
+    Multicolour: "#008080",
+    Yellow: "#FFF200",
+    White: "#FFFFFF",
+    Green: "#228B22",
+    "Purple/Violet": "#8A2BE2",
+    "Natural/Wooden": "#A0522D",
+  };
+
   return (
     <div className={clsx(styles.filterContent, className)}>
       {desktop && (
@@ -57,14 +73,20 @@ export const Filter = ({
           <ul className={styles.generalFilterStyling}>
             {categories.map((category) => (
               <li key={category.CategoryID}>
-                <div>
+                <label
+                  htmlFor={`desktop-category-${category.CategoryID}`}
+                  className={styles.filterLabel}
+                >
                   <input
+                    id={`desktop-category-${category.CategoryID}`}
                     onChange={() => handleCategoryChange(category.CategoryID)}
                     checked={selectedCategories.includes(category.CategoryID)}
                     type="checkbox"
                   />
-                  {category.CategoryName}
-                </div>
+                  <div className={styles.filterText}>
+                    {category.CategoryName}
+                  </div>
+                </label>
               </li>
             ))}
           </ul>
@@ -74,14 +96,25 @@ export const Filter = ({
           <ul className={styles.generalFilterStyling}>
             {colors.map((color) => (
               <li key={color.ColorID}>
-                <div>
+                <label
+                  htmlFor={`desktop-color-${color.ColorID}`}
+                  className={clsx(styles.filterLabel, styles.checkboxColor)}
+                >
                   <input
+                    id={`desktop-color-${color.ColorID}`}
                     onChange={() => handleColorChange(color.ColorID)}
                     checked={selectedColors.includes(color.ColorID)}
                     type="checkbox"
+                    style={{
+                      backgroundColor: colorHexMap[color.ColorName], // Use the color from colorHexMap
+                      ...(color.ColorName === "White" && { border: "1px solid black" }), // Apply border if White
+                    }}
+
                   />
-                  {color.ColorName}
-                </div>
+                  <div className={styles.filterText}>
+                    {color.ColorName}
+                  </div>
+                </label>
               </li>
             ))}
           </ul>
@@ -94,10 +127,7 @@ export const Filter = ({
             id="filterSidepanel"
             className={styles.filterSidepanel}
             trigger={
-              <div
-                id="mobile-filter-sidepanel"
-                className={styles.filterTrigger}
-              >
+              <div id="mobile-filter-sidepanel" className={styles.filterTrigger}>
                 <div className={styles.mobileFilterText}>Filters</div>
                 <FilterIcon />
               </div>
@@ -112,18 +142,20 @@ export const Filter = ({
               <ul className={styles.generalFilterStyling}>
                 {categories.map((category) => (
                   <li key={category.CategoryID}>
-                    <div>
+                    <label
+                      htmlFor={`mobile-category-${category.CategoryID}`}
+                      className={styles.filterLabel}
+                    >
                       <input
-                        onChange={() =>
-                          handleCategoryChange(category.CategoryID)
-                        }
-                        checked={selectedCategories.includes(
-                          category.CategoryID
-                        )}
+                        id={`mobile-category-${category.CategoryID}`}
+                        onChange={() => handleCategoryChange(category.CategoryID)}
+                        checked={selectedCategories.includes(category.CategoryID)}
                         type="checkbox"
                       />
-                      {category.CategoryName}
-                    </div>
+                      <div className={styles.filterText}>
+                        {category.CategoryName}
+                      </div>
+                    </label>
                   </li>
                 ))}
               </ul>
@@ -133,17 +165,40 @@ export const Filter = ({
               <ul className={styles.generalFilterStyling}>
                 {colors.map((color) => (
                   <li key={color.ColorID}>
-                    <div>
+                    <label
+                      htmlFor={`mobile-color-${color.ColorID}`}
+                      className={clsx(styles.filterLabel, styles.checkboxColor)}
+                    >
                       <input
+                        id={`mobile-color-${color.ColorID}`}
                         onChange={() => handleColorChange(color.ColorID)}
                         checked={selectedColors.includes(color.ColorID)}
                         type="checkbox"
+                        style={{
+                          backgroundColor: colorHexMap[color.ColorName], // Use the color from colorHexMap
+                          ...(color.ColorName === "White" && { border: "1px solid black" }), // Apply border if White
+                        }}
                       />
-                      {color.ColorName}
-                    </div>
+                      <div className={styles.filterText}>
+                        {color.ColorName}
+                      </div>
+                    </label>
                   </li>
                 ))}
               </ul>
+              <div
+                onClick={() => {
+                  const trigger = document.getElementById(
+                    "mobile-filter-sidepanel"
+                  );
+                  if (trigger) {
+                    trigger.click();
+                  }
+                }}
+                className={styles.showResultsButton}
+              >
+                Show results
+              </div>
             </div>
           </Sidepanel>
         </div>

@@ -1,6 +1,16 @@
 .filterContent {
   height: 100%;
   width: 100%;
+
+  h3 {
+    margin: 10px 0;
+    font-size: 25px;
+  }
+
+  h4 {
+    margin: 10px 0;
+    font-size: 22px;
+  }
   .desktopFilter {
     position: sticky;
     top: 0;
@@ -22,7 +32,7 @@
       display: grid;
       justify-content: end;
       justify-items: end;
-      
+
       .filterTrigger {
         background-color: rgb(77, 77, 77);
         display: flex;
@@ -48,16 +58,55 @@
 .SidepanelFilterContainer {
   display: flex; /* Use flexbox for the layout */
   flex-direction: column; /* Stack elements vertically */
-  height: 90%;
+  height: 94%;
 }
 
 .generalFilterStyling {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  border-bottom: 1px solid lightgray;
+
+  .filterLabel {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 0 0 5px;
+    cursor: pointer;
+
+    &.checkboxColor {
+      input {
+        appearance: none;
+      }
+    }
+
+    &:hover {
+      font-weight: bold;
+    }
+
+    input {
+      width: 18px;
+      height: 18px;
+
+      &:checked {
+        border: 2px solid black;
+
+        + .filterText {
+          font-weight: bold;
+        }
+      }
+
+      &:hover {
+        border: 1px solid black;
+      }
+    }
+    .filterText {
+      padding: 4px 0px 3px 10px;
+    }
+  }
 }
 
-.applyButton {
+.showResultsButton {
   background-color: #333; /* Dark grey background */
   color: white; /* White text color */
   width: 100%; /* Full width */
@@ -68,6 +117,6 @@
   margin-top: auto;
 }
 
-.applyButton:hover {
+.showResultsButton:hover {
   background-color: #444; /* Slightly lighter grey on hover */
 }
