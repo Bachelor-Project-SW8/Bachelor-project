@@ -723,7 +723,7 @@
 -- INSERT INTO Product (ProductName, Price, ProductPicture, Brand) VALUES ("Collins |  (3 mm) Navy Blue Woven Leather Wrap Bracelet", 30.80, "https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt9d8503d70f22b40e/63624b23444899577ea2b415/10-zeismont-ll-collins-leather-bracelets8031_copy-kolind_1_2.jpg?format=pjpg&auto=webp&quality=75%2C90&width=180", "Lucleon");
 
 
--- -- Delete existing entries for ProductID 1 to 196
+-- Delete existing entries for ProductID 1 to 196
 -- DELETE FROM ProductCategory WHERE ProductID BETWEEN 1 AND 196;
 
 -- --- Insert new entries
@@ -1136,457 +1136,455 @@
 
 
 
--- -- Drop the existing ProductColor table
--- DROP TABLE IF EXISTS ProductColor;
+-- Drop the existing ProductColor table
+DROP TABLE IF EXISTS ProductColor;
 
--- -- Drop the existing Color table
--- DROP TABLE IF EXISTS Color;
+-- Drop the existing Color table
+DROP TABLE IF EXISTS Color;
 
--- -- Recreate the Color table
--- CREATE TABLE Color (
---     ColorID INT PRIMARY KEY,
---     ColorName VARCHAR(50) NOT NULL
--- );
+-- Recreate the Color table
+CREATE TABLE Color (
+    ColorID INT PRIMARY KEY,
+    ColorName VARCHAR(50) NOT NULL
+);
 
--- -- Insert colors into the Color table
--- INSERT INTO Color (ColorID, ColorName) VALUES (1, 'Black');
--- INSERT INTO Color (ColorID, ColorName) VALUES (2, 'Silver-Tone');
--- INSERT INTO Color (ColorID, ColorName) VALUES (3, 'Brown');
--- INSERT INTO Color (ColorID, ColorName) VALUES (4, 'Blue');
--- INSERT INTO Color (ColorID, ColorName) VALUES (5, 'Red');
--- INSERT INTO Color (ColorID, ColorName) VALUES (6, 'Gold-Tone');
--- INSERT INTO Color (ColorID, ColorName) VALUES (7, 'Grey');
--- INSERT INTO Color (ColorID, ColorName) VALUES (8, 'Multicolour');
--- INSERT INTO Color (ColorID, ColorName) VALUES (9, 'Yellow');
--- INSERT INTO Color (ColorID, ColorName) VALUES (10, 'White');
--- INSERT INTO Color (ColorID, ColorName) VALUES (11, 'Green');
--- INSERT INTO Color (ColorID, ColorName) VALUES (12, 'Purple/Violet');
--- INSERT INTO Color (ColorID, ColorName) VALUES (13, 'Natural/Wooden');
+-- Insert colors into the Color table
+INSERT INTO Color (ColorID, ColorName) VALUES (1, 'Black');
+INSERT INTO Color (ColorID, ColorName) VALUES (2, 'Silver-Tone');
+INSERT INTO Color (ColorID, ColorName) VALUES (3, 'Brown');
+INSERT INTO Color (ColorID, ColorName) VALUES (4, 'Blue');
+INSERT INTO Color (ColorID, ColorName) VALUES (5, 'Red');
+INSERT INTO Color (ColorID, ColorName) VALUES (6, 'Gold-Tone');
+INSERT INTO Color (ColorID, ColorName) VALUES (7, 'Grey');
+INSERT INTO Color (ColorID, ColorName) VALUES (8, 'Multicolour');
+INSERT INTO Color (ColorID, ColorName) VALUES (9, 'Yellow');
+INSERT INTO Color (ColorID, ColorName) VALUES (10, 'White');
+INSERT INTO Color (ColorID, ColorName) VALUES (11, 'Green');
+INSERT INTO Color (ColorID, ColorName) VALUES (12, 'Purple/Violet');
+INSERT INTO Color (ColorID, ColorName) VALUES (13, 'Natural/Wooden');
 
--- -- Recreate the ProductColor table
--- CREATE TABLE ProductColor (
---     ProductID INT NOT NULL,
---     ColorID INT NOT NULL,
---     PRIMARY KEY (ProductID, ColorID),
---     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)ON DELETE CASCADE,
---     FOREIGN KEY (ColorID) REFERENCES Color(ColorID) ON DELETE CASCADE
--- );
+-- Recreate the ProductColor table
+CREATE TABLE ProductColor (
+    ProductID INT NOT NULL,
+    ColorID INT NOT NULL,
+    PRIMARY KEY (ProductID, ColorID),
+    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)ON DELETE CASCADE,
+    FOREIGN KEY (ColorID) REFERENCES Color(ColorID) ON DELETE CASCADE
+);
 
--- -- Insert data into ProductColor
--- -- Include all the INSERT statements for ProductColor here
+-- Insert data into ProductColor
+-- Include all the INSERT statements for ProductColor here
 
--- -- Clear existing data (if necessary)
--- DELETE FROM ProductColor WHERE ProductID BETWEEN 1 AND 196;
--- -- ProductID 1: "Black Lava Rock | Onyx & Coconut Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (1, 1);   -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (1, 13);  -- Natural/Wooden
--- -- ProductID 2: "Icon | Black Leather Onyx & Tiger's Eye Double Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (2, 1);   -- Black (Black Leather, Onyx)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (2, 3);   -- Brown (Tiger's Eye)
--- -- ProductID 3: "Icon | Black Leather & Silver-Tone Stainless Steel Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (3, 1);   -- Black (Black Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (3, 2);   -- Silver-Tone (Stainless Steel)
--- -- ProductID 4: "Miro | Wooden Bead & Black Onyx Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (4, 1);   -- Black (Black Onyx)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (4, 13);  -- Natural/Wooden (Wooden Bead)
--- -- ProductID 5: "Silver-Tone Stainless Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (5, 2);   -- Silver-Tone
--- -- ProductID 6: "Black Lava Rock & Natural Stone Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (6, 1);   -- Black (Black Lava Rock)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (6, 13);  -- Natural/Wooden (Natural Stone)
--- -- ProductID 7: "Black Stainless Steel Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (7, 1);   -- Black
--- -- ProductID 8: "Brown Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (8, 3);   -- Brown
--- -- ProductID 9: "Black Braided Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (9, 1);   -- Black
--- -- ProductID 10: "Black & Blue Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (10, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (10, 4);  -- Blue
--- -- ProductID 11: "Red Bead Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (11, 5);  -- Red
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (11, 13); -- Natural/Wooden (if applicable)
--- -- ProductID 12: "Black Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (12, 1);  -- Black
--- -- ProductID 13: "Black Leather & Silver-Tone Steel Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (13, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (13, 2);  -- Silver-Tone
--- -- ProductID 14: "Black Leather Bracelet with Silver-Tone Clasp"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (14, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (14, 2);  -- Silver-Tone
--- -- ProductID 15: "Black Leather & Steel Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (15, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (15, 2);  -- Silver-Tone
--- -- ProductID 16: "Black Lava Rock & Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (16, 1);  -- Black (Lava Rock)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (16, 3);  -- Brown (Tiger's Eye)
--- -- ProductID 17: "Black Stainless Steel Curb Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (17, 1);  -- Black
--- -- ProductID 18: "Silver-Tone Stainless Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (18, 2);  -- Silver-Tone
--- -- ProductID 19: "Matte Black Onyx Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (19, 1);  -- Black
--- -- ProductID 20: "Gold-Tone Stainless Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (20, 6);  -- Gold-Tone
--- -- ProductID 21: "Black Lava Rock Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (21, 1);  -- Black
--- -- ProductID 22: "Silver-Tone Steel ID Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (22, 2);  -- Silver-Tone
--- -- ProductID 23: "Brown Leather Braided Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (23, 3);  -- Brown
--- -- ProductID 24: "Tiger's Eye & Black Onyx Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (24, 3);  -- Brown (Tiger's Eye)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (24, 1);  -- Black (Onyx)
--- -- ProductID 25: "Black Lava Rock & Hematite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (25, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (25, 7);  -- Grey (Hematite)
--- -- ProductID 26: "Blue Lapis Lazuli Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (26, 4);  -- Blue
--- -- ProductID 27: "Black Onyx & Blue Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (27, 1);  -- Black (Onyx)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (27, 4);  -- Blue (Blue Tiger's Eye)
--- -- ProductID 28: "Green Malachite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (28, 11); -- Green
--- -- ProductID 29: "Stainless Steel Skull Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (29, 2);  -- Silver-Tone
--- -- ProductID 30: "Black Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (30, 1);  -- Black
--- -- ProductID 31: "Silver-Tone Steel Cuff Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (31, 2);  -- Silver-Tone
--- -- ProductID 32: "Black Lava Rock & White Howlite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (32, 1);  -- Black (Lava Rock)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (32, 10); -- White (Howlite)
--- -- ProductID 33: "Brown Leather Braided Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (33, 3);  -- Brown
--- -- ProductID 34: "Red Agate Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (34, 5);  -- Red
--- -- ProductID 35: "Gold-Tone Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (35, 6);  -- Gold-Tone
--- -- ProductID 36: "Black Stainless Steel ID Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (36, 1);  -- Black
--- -- ProductID 37: "Black Leather Bracelet with Silver Clasp"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (37, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (37, 2);  -- Silver-Tone
--- -- ProductID 38: "Silver-Tone Steel Link Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (38, 2);  -- Silver-Tone
--- -- ProductID 39: "Black Onyx & Hematite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (39, 1);  -- Black (Onyx)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (39, 7);  -- Grey (Hematite)
--- -- ProductID 40: "Silver-Tone Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (40, 2);  -- Silver-Tone
--- -- ProductID 41: "Brown Leather Braided Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (41, 3);  -- Brown
--- -- ProductID 42: "Black Lava Rock Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (42, 1);  -- Black
--- -- ProductID 43: "Silver-Tone Steel Curb Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (43, 2);  -- Silver-Tone
--- -- ProductID 44: "Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (44, 3);  -- Brown
--- -- ProductID 45: "Black Onyx Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (45, 1);  -- Black
--- -- ProductID 46: "Blue Agate Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (46, 4);  -- Blue
--- -- ProductID 47: "Green Jasper Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (47, 11); -- Green
--- -- ProductID 48: "Red Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (48, 5);  -- Red (Red Tiger's Eye)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (48, 3);  -- Brown
--- -- ProductID 49: "Silver-Tone Steel Skull Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (49, 2);  -- Silver-Tone
--- -- ProductID 50: "Black Stainless Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (50, 1);  -- Black
--- -- ProductID 51: "Black Onyx & Lava Rock Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (51, 1);  -- Black
--- -- ProductID 52: "Silver-Tone Steel ID Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (52, 2);  -- Silver-Tone
--- -- ProductID 53: "Brown Wood Bead Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (53, 3);   -- Brown
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (53, 13);  -- Natural/Wooden
--- -- ProductID 54: "Black Lava Rock & Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (54, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (54, 3);  -- Brown
--- -- ProductID 55: "Black Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (55, 1);  -- Black
--- -- ProductID 56: "Multicolour Stone Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (56, 8);  -- Multicolour
--- -- ProductID 57: "Brown Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (57, 3);  -- Brown
--- -- ProductID 58: "Black Stainless Steel Cuff Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (58, 1);  -- Black
--- -- ProductID 59: "Black Leather Braided Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (59, 1);  -- Black
--- -- ProductID 60: "Black Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (60, 1);  -- Black
--- -- ProductID 61: "Brown Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (61, 3);  -- Brown
--- -- ProductID 62: "Black Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (62, 1);  -- Black
--- -- ProductID 63: "Black Onyx & Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (63, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (63, 3);  -- Brown
--- -- ProductID 64: "Black Lava Rock & Hematite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (64, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (64, 7);  -- Grey
--- -- ProductID 65: "Brown Leather Braided Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (65, 3);  -- Brown
--- -- ProductID 66: "Black Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (66, 1);  -- Black
--- -- ProductID 67: "Black Leather Bracelet with Silver Clasp"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (67, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (67, 2);  -- Silver-Tone
--- -- ProductID 68: "Brown Leather Bracelet with Gold-Tone Clasp"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (68, 3);  -- Brown
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (68, 6);  -- Gold-Tone
--- -- ProductID 69: "Black Lava Rock & Lapis Lazuli Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (69, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (69, 4);  -- Blue
--- -- ProductID 70: "Silver-Tone Stainless Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (70, 2);  -- Silver-Tone
--- -- ProductID 71: "Multicolour Jasper Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (71, 8);  -- Multicolour
--- -- ProductID 72: "Black Stainless Steel ID Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (72, 1);  -- Black
--- -- ProductID 73: "Red Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (73, 5);  -- Red
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (73, 3);  -- Brown
--- -- ProductID 74: "Green Malachite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (74, 11); -- Green
--- -- ProductID 75: "Purple Amethyst Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (75, 12); -- Purple/Violet
--- -- ProductID 76: "Black Lava Rock & Turquoise Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (76, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (76, 4);  -- Blue (Turquoise)
--- -- ProductID 77: "Brown Wood Bead Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (77, 3);   -- Brown
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (77, 13);  -- Natural/Wooden
--- -- ProductID 78: "Black Onyx & Red Agate Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (78, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (78, 5);  -- Red
--- -- ProductID 79: "Blue Lapis Lazuli Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (79, 4);  -- Blue
--- -- ProductID 80: "Silver-Tone Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (80, 2);  -- Silver-Tone
--- -- ProductID 81: "Black Lava Rock Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (81, 1);  -- Black
--- -- ProductID 82: "Brown Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (82, 3);  -- Brown
--- -- ProductID 83: "Green Jade Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (83, 11); -- Green
--- -- ProductID 84: "Black Onyx & Hematite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (84, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (84, 7);  -- Grey
--- -- ProductID 85: "Red Garnet Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (85, 5);  -- Red
--- -- ProductID 86: "Blue Agate Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (86, 4);  -- Blue
--- -- ProductID 87: "Black Lava Rock & Tiger's Eye Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (87, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (87, 3);  -- Brown
--- -- ProductID 88: "Multicolour Stone Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (88, 8);  -- Multicolour
--- -- ProductID 89: "Black Onyx Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (89, 1);  -- Black
--- -- ProductID 90: "Black Stainless Steel Cuff Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (90, 1);  -- Black
--- -- ProductID 91: "Brown Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (91, 3);  -- Brown
--- -- ProductID 92: "Black Leather Bracelet with Silver Clasp"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (92, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (92, 2);  -- Silver-Tone
--- -- ProductID 93: "Tiger's Eye & Black Onyx Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (93, 3);  -- Brown (Tiger's Eye)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (93, 1);  -- Black (Onyx)
--- -- ProductID 94: "Black Lava Rock & Hematite Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (94, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (94, 7);  -- Grey
--- -- ProductID 95: "Green Aventurine Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (95, 11); -- Green
--- -- ProductID 96: "Blue Lapis Lazuli Beaded Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (96, 4);  -- Blue
--- -- ProductID 97: "Black Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (97, 1);  -- Black
--- -- ProductID 98: "Silver-Tone Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (98, 2);  -- Silver-Tone
--- -- ProductID 99: "Brown Leather Braided Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (99, 3);  -- Brown
--- -- ProductID 100: "Black Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (100, 1); -- Black
--- -- ProductID 101: "Black Stainless Steel Cuff Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (101, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (101, 2);  -- Silver-Tone (Stainless Steel)
--- -- ProductID 102: "Roy Bracelet Extenders in Silver-Tone Stainless Steel"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (102, 2);  -- Silver-Tone
--- -- ProductID 103: "12mm Silver-Tone Stainless Steel Curb Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (103, 2);  -- Silver-Tone
--- -- ProductID 104: "Icon | Wooden Bead & Black Leather Cord Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (104, 1);   -- Black (Black Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (104, 13);  -- Natural/Wooden (Wooden Bead)
--- -- ProductID 105: "(6 mm) Gold-Tone Stainless Steel Curb Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (105, 6);  -- Gold-Tone
--- -- ProductID 106: "6mm Black Stainless Steel Curb Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (106, 1);  -- Black
--- -- ProductID 107: "Brown Braided Leather & Stainless Steel Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (107, 3);  -- Brown (Brown Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (107, 2);  -- Silver-Tone (Stainless Steel)
--- -- ProductID 108: "Matte Black Stone & Braided Leather Band Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (108, 1);  -- Black (Matte Black Stone)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (108, 1);  -- Black (Braided Leather)
--- ProductID 109: "Black & White Agate & Leather Cord Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (109, 1);   -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (109, 10);  -- White
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (109, 13);  -- Natural/Wooden (Agate is a natural stone)
--- -- ProductID 110: "Brown Leather & Stainless Steel Braided Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (110, 3);  -- Brown (Brown Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (110, 2);  -- Silver-Tone (Stainless Steel)
--- -- ProductID 111: "Brown Wood Bead Bracelet Sets"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (111, 3);   -- Brown
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (111, 13);  -- Natural/Wooden
--- -- ProductID 112: "Red Tiger's Eye & Black Lava Rock & Leather Cord Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 5);   -- Red (Red Tiger's Eye)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 1);   -- Black (Black Lava Rock)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 3);   -- Brown (Tiger's Eye)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 13);  -- Natural/Wooden (Tiger's Eye, Lava Rock)
--- -- ProductID 113: "Bolo | Double Black Leather Cord Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (113, 1);  -- Black
--- -- ProductID 114: "Gladius | Brown Full Grain Buffalo Leather Wrap-around Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (114, 3);  -- Brown
--- -- ProductID 115: "Gladius | Black Full Grain Buffalo Leather Wrap-around Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (115, 1);  -- Black
--- -- ProductID 116: "Brown Braided Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (116, 3);  -- Brown
--- -- ProductID 117: "Black Braided Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (117, 1);  -- Black
--- -- ProductID 118: "Braided Black Stainless Steel Cross Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (118, 1);  -- Black
--- -- ProductID 119: "Black Braided Silver-Tone Stainless Steel Cross Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (119, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (119, 2);  -- Silver-Tone
--- -- ProductID 120: "Collins | (3 mm) Red Woven Leather Wrap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (120, 5);  -- Red
--- -- ProductID 121: "Collins | (3 mm) Navy Blue Woven Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (121, 4);  -- Blue
--- -- ProductID 122: "Collins | (6 mm) Red Leather Wrap Around Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (122, 5);  -- Red
--- -- ProductID 123: "Nomen | Triple Gold-tone and Brown Leather Bolo Weave ID Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (123, 6);  -- Gold-Tone
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (123, 3);  -- Brown
--- -- ProductID 124: "Black Pure Magnetic Titanium Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (124, 1);  -- Black
--- -- ProductID 125: "(3 mm) Silver-Tone Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (125, 2);  -- Silver-Tone
--- -- ProductID 126: "Atlas | Silver-tone Stainless Steel North Star Charm Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (126, 2);  -- Silver-Tone
--- -- ProductID 127: "Atlas | Silver-tone Stainless Steel North Star Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (127, 2);  -- Silver-Tone
--- -- ProductID 128: "Collins | Simple Brown Leather Wrap Around Cord Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (128, 3);  -- Brown
--- -- ProductID 129: "Brown &  Beige & Black Wood Bead Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (129, 3);   -- Brown
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (129, 1);   -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (129, 13);  -- Natural/Wooden
--- -- ProductID 130: "Arie | Silver-Tone Stainless Steel Rope Texture Bangle Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (130, 2);  -- Silver-Tone
--- -- ProductID 131: "Vasilios | Dark Grey & Black Hematite Stone Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (131, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (131, 7);  -- Grey
--- -- ProductID 132: "Ankh | Brown Leather & Wooden Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (132, 3);   -- Brown
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (132, 13);  -- Natural/Wooden
--- -- ProductID 133: "Sanatio | Black Lava Rock & Tiger's Eye Double Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (133, 1);   -- Black (Lava Rock)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (133, 3);   -- Brown (Tiger's Eye)
--- -- ProductID 134: "Naxos | Black Braided Leather & Unakite Bead Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (134, 1);   -- Black (Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (134, 11);  -- Green (Unakite)
--- -- ProductID 135: "Amager | Gunmetal Stainless Steel Cable Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (135, 1);  -- Black (Gunmetal)
--- -- ProductID 136: "Red & Grey Braided Nylon Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (136, 5);  -- Red
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (136, 7);  -- Grey
--- -- ProductID 137: "Matte Black Onyx & Stainless Steel ID Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (137, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (137, 2);  -- Silver-Tone
--- -- ProductID 138: "Black Onyx &  Lapis Lazuli & Tiger's Eye Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (138, 1);  -- Black (Onyx)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (138, 4);  -- Blue (Lapis Lazuli)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (138, 3);  -- Brown (Tiger's Eye)
--- -- ProductID 139: "Roas | Grey Jasper & Rose Gold-Tone Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (139, 7);  -- Grey
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (139, 6);  -- Gold-Tone
--- -- ProductID 140: "Icon | Black Leather & Green Stone Double Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (140, 1);   -- Black (Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (140, 11);  -- Green (Stone)
--- -- ProductID 141: "Miro | Black Lava Rock & Multicolour Natural Stone Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (141, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (141, 8);  -- Multicolour
--- -- ProductID 142: "Miro | Natural-Tone Bamboo & Coconut Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (142, 13); -- Natural/Wooden
--- -- ProductID 143: "Roy | Black & Dark Leather & Steel Single Strap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (143, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (143, 2);  -- Silver-Tone (Steel)
--- -- ProductID 144: "Roy | Black & Dark Leather & Stainless Steel Double Strap Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (144, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (144, 2);  -- Silver-Tone
--- -- ProductID 145: "Rustic Stainless Steel Double Curb Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (145, 2);  -- Silver-Tone
--- -- ProductID 146: "Black Waxed Cotton & Silver Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (146, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (146, 2);  -- Silver-Tone
--- -- ProductID 147: "Grey Waxed Cotton & Silver Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (147, 7);  -- Grey
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (147, 2);  -- Silver-Tone
--- -- ProductID 148: "Navy Blue & Silver-Tone Anchor Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (148, 4);  -- Blue
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (148, 2);  -- Silver-Tone
--- -- ProductID 149: "White Turquoise &  Blue Lapis Lazuli & Black Zirconia Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (149, 10); -- White (White Turquoise)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (149, 4);  -- Blue (Lapis Lazuli)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (149, 1);  -- Black (Zirconia)
--- -- ProductID 150: "Black Lava Rock & Alabaster Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (150, 1);  -- Black (Lava Rock)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (150, 10); -- White (Alabaster)
--- -- ProductID 151: "Tan & Black Braided Leather Cord Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (151, 3);  -- Brown (Tan)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (151, 1);  -- Black
--- -- ProductID 152: "Stainless Steel Band Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (152, 2);  -- Silver-Tone
--- -- ProductID 153: "Naxos | Black Braided Leather & Turquoise Imperial Jasper Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (153, 1);  -- Black (Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (153, 4);  -- Blue (Turquoise)
--- -- ProductID 154: "Black Leather Adjustable Wide Wrap Cuff Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (154, 1);  -- Black
--- -- ProductID 155: "Collins | (8 mm) Black Woven Leather Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (155, 1);  -- Black
--- -- ProductID 156: "Collins | (6 mm) Navy Blue Leather Wrap Around Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (156, 4);  -- Blue
--- -- ProductID 157: "Amager | Silver-Tone Zirconia Stainless Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (157, 2);  -- Silver-Tone
--- -- ProductID 158: "Grey & Black Braided Leather Cord Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (158, 7);  -- Grey
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (158, 1);  -- Black
--- -- ProductID 159: "Collins | Simple Black Leather Wrap Around Cord Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (159, 1);  -- Black
--- -- ProductID 160: "Naxos | Black Braided Leather & Green Tiger's Eye Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (160, 1);   -- Black (Leather)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (160, 11);  -- Green (Tiger's Eye)
--- -- ProductID 161: "Rico | Silver-Tone Stainless Steel Skull Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (161, 2);  -- Silver-Tone
--- -- ProductID 162: "Black Lava Rock & Multicolour Natural Stone Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (162, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (162, 8);  -- Multicolour
--- -- ProductID 163: "8mm Gold-Tone Stainless Steel Curb Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (163, 6);  -- Gold-Tone
--- -- ProductID 164: "Miro | Black Lava Rock & Red Tiger's Eye Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (164, 1);  -- Black
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (164, 5);  -- Red (Red Tiger's Eye)
--- -- ProductID 165: "Slim Black Titanium Link Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (165, 1);  -- Black
--- -- ProductID 166: "Basic 5mm Stainless Steel Chain Bracelet"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (166, 2);  -- Silver-Tone
--- -- ProductID 167: "Black Lava Rock & Natural Stone & Leather Bracelet Set"
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (167, 1);   -- Black (Lava Rock)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (167, 13);  -- Natural/Wooden (Natural Stone)
--- INSERT INTO ProductColor (ProductID, ColorID) VALUES (167, 1);   -- Black (Leather)
+-- Clear existing data (if necessary)
+DELETE FROM ProductColor WHERE ProductID BETWEEN 1 AND 196;
+-- ProductID 1: "Black Lava Rock | Onyx & Coconut Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (1, 1);   -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (1, 13);  -- Natural/Wooden
+-- ProductID 2: "Icon | Black Leather Onyx & Tiger's Eye Double Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (2, 1);   -- Black (Black Leather, Onyx)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (2, 3);   -- Brown (Tiger's Eye)
+-- ProductID 3: "Icon | Black Leather & Silver-Tone Stainless Steel Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (3, 1);   -- Black (Black Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (3, 2);   -- Silver-Tone (Stainless Steel)
+-- ProductID 4: "Miro | Wooden Bead & Black Onyx Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (4, 1);   -- Black (Black Onyx)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (4, 13);  -- Natural/Wooden (Wooden Bead)
+-- ProductID 5: "Silver-Tone Stainless Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (5, 2);   -- Silver-Tone
+-- ProductID 6: "Black Lava Rock & Natural Stone Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (6, 1);   -- Black (Black Lava Rock)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (6, 13);  -- Natural/Wooden (Natural Stone)
+-- ProductID 7: "Black Stainless Steel Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (7, 1);   -- Black
+-- ProductID 8: "Brown Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (8, 3);   -- Brown
+-- ProductID 9: "Black Braided Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (9, 1);   -- Black
+-- ProductID 10: "Black & Blue Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (10, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (10, 4);  -- Blue
+-- ProductID 11: "Red Bead Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (11, 5);  -- Red
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (11, 13); -- Natural/Wooden (if applicable)
+-- ProductID 12: "Black Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (12, 1);  -- Black
+-- ProductID 13: "Black Leather & Silver-Tone Steel Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (13, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (13, 2);  -- Silver-Tone
+-- ProductID 14: "Black Leather Bracelet with Silver-Tone Clasp"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (14, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (14, 2);  -- Silver-Tone
+-- ProductID 15: "Black Leather & Steel Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (15, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (15, 2);  -- Silver-Tone
+-- ProductID 16: "Black Lava Rock & Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (16, 1);  -- Black (Lava Rock)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (16, 3);  -- Brown (Tiger's Eye)
+-- ProductID 17: "Black Stainless Steel Curb Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (17, 1);  -- Black
+-- ProductID 18: "Silver-Tone Stainless Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (18, 2);  -- Silver-Tone
+-- ProductID 19: "Matte Black Onyx Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (19, 1);  -- Black
+-- ProductID 20: "Gold-Tone Stainless Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (20, 6);  -- Gold-Tone
+-- ProductID 21: "Black Lava Rock Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (21, 1);  -- Black
+-- ProductID 22: "Silver-Tone Steel ID Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (22, 2);  -- Silver-Tone
+-- ProductID 23: "Brown Leather Braided Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (23, 3);  -- Brown
+-- ProductID 24: "Tiger's Eye & Black Onyx Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (24, 3);  -- Brown (Tiger's Eye)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (24, 1);  -- Black (Onyx)
+-- ProductID 25: "Black Lava Rock & Hematite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (25, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (25, 7);  -- Grey (Hematite)
+-- ProductID 26: "Blue Lapis Lazuli Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (26, 4);  -- Blue
+-- ProductID 27: "Black Onyx & Blue Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (27, 1);  -- Black (Onyx)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (27, 4);  -- Blue (Blue Tiger's Eye)
+-- ProductID 28: "Green Malachite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (28, 11); -- Green
+-- ProductID 29: "Stainless Steel Skull Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (29, 2);  -- Silver-Tone
+-- ProductID 30: "Black Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (30, 1);  -- Black
+-- ProductID 31: "Silver-Tone Steel Cuff Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (31, 2);  -- Silver-Tone
+-- ProductID 32: "Black Lava Rock & White Howlite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (32, 1);  -- Black (Lava Rock)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (32, 10); -- White (Howlite)
+-- ProductID 33: "Brown Leather Braided Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (33, 3);  -- Brown
+-- ProductID 34: "Red Agate Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (34, 5);  -- Red
+-- ProductID 35: "Gold-Tone Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (35, 6);  -- Gold-Tone
+-- ProductID 36: "Black Stainless Steel ID Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (36, 1);  -- Black
+-- ProductID 37: "Black Leather Bracelet with Silver Clasp"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (37, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (37, 2);  -- Silver-Tone
+-- ProductID 38: "Silver-Tone Steel Link Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (38, 2);  -- Silver-Tone
+-- ProductID 39: "Black Onyx & Hematite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (39, 1);  -- Black (Onyx)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (39, 7);  -- Grey (Hematite)
+-- ProductID 40: "Silver-Tone Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (40, 2);  -- Silver-Tone
+-- ProductID 41: "Brown Leather Braided Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (41, 3);  -- Brown
+-- ProductID 42: "Black Lava Rock Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (42, 1);  -- Black
+-- ProductID 43: "Silver-Tone Steel Curb Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (43, 2);  -- Silver-Tone
+-- ProductID 44: "Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (44, 3);  -- Brown
+-- ProductID 45: "Black Onyx Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (45, 1);  -- Black
+-- ProductID 46: "Blue Agate Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (46, 4);  -- Blue
+-- ProductID 47: "Green Jasper Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (47, 11); -- Green
+-- ProductID 48: "Red Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (48, 5);  -- Red (Red Tiger's Eye)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (48, 3);  -- Brown
+-- ProductID 49: "Silver-Tone Steel Skull Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (49, 2);  -- Silver-Tone
+-- ProductID 50: "Black Stainless Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (50, 1);  -- Black
+-- ProductID 51: "Black Onyx & Lava Rock Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (51, 1);  -- Black
+-- ProductID 52: "Silver-Tone Steel ID Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (52, 2);  -- Silver-Tone
+-- ProductID 53: "Brown Wood Bead Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (53, 3);   -- Brown
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (53, 13);  -- Natural/Wooden
+-- ProductID 54: "Black Lava Rock & Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (54, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (54, 3);  -- Brown
+-- ProductID 55: "Black Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (55, 1);  -- Black
+-- ProductID 56: "Multicolour Stone Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (56, 8);  -- Multicolour
+-- ProductID 57: "Brown Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (57, 3);  -- Brown
+-- ProductID 58: "Black Stainless Steel Cuff Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (58, 1);  -- Black
+-- ProductID 59: "Black Leather Braided Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (59, 1);  -- Black
+-- ProductID 60: "Black Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (60, 1);  -- Black
+-- ProductID 61: "Brown Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (61, 3);  -- Brown
+-- ProductID 62: "Black Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (62, 1);  -- Black
+-- ProductID 63: "Black Onyx & Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (63, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (63, 3);  -- Brown
+-- ProductID 64: "Black Lava Rock & Hematite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (64, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (64, 7);  -- Grey
+-- ProductID 65: "Brown Leather Braided Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (65, 3);  -- Brown
+-- ProductID 66: "Black Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (66, 1);  -- Black
+-- ProductID 67: "Black Leather Bracelet with Silver Clasp"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (67, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (67, 2);  -- Silver-Tone
+-- ProductID 68: "Brown Leather Bracelet with Gold-Tone Clasp"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (68, 3);  -- Brown
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (68, 6);  -- Gold-Tone
+-- ProductID 69: "Black Lava Rock & Lapis Lazuli Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (69, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (69, 4);  -- Blue
+-- ProductID 70: "Silver-Tone Stainless Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (70, 2);  -- Silver-Tone
+-- ProductID 71: "Multicolour Jasper Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (71, 8);  -- Multicolour
+-- ProductID 72: "Black Stainless Steel ID Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (72, 1);  -- Black
+-- ProductID 73: "Red Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (73, 5);  -- Red
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (73, 3);  -- Brown
+-- ProductID 74: "Green Malachite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (74, 11); -- Green
+-- ProductID 75: "Purple Amethyst Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (75, 12); -- Purple/Violet
+-- ProductID 76: "Black Lava Rock & Turquoise Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (76, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (76, 4);  -- Blue (Turquoise)
+-- ProductID 77: "Brown Wood Bead Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (77, 3);   -- Brown
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (77, 13);  -- Natural/Wooden
+-- ProductID 78: "Black Onyx & Red Agate Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (78, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (78, 5);  -- Red
+-- ProductID 79: "Blue Lapis Lazuli Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (79, 4);  -- Blue
+-- ProductID 80: "Silver-Tone Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (80, 2);  -- Silver-Tone
+-- ProductID 81: "Black Lava Rock Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (81, 1);  -- Black
+-- ProductID 82: "Brown Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (82, 3);  -- Brown
+-- ProductID 83: "Green Jade Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (83, 11); -- Green
+-- ProductID 84: "Black Onyx & Hematite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (84, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (84, 7);  -- Grey
+-- ProductID 85: "Red Garnet Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (85, 5);  -- Red
+-- ProductID 86: "Blue Agate Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (86, 4);  -- Blue
+-- ProductID 87: "Black Lava Rock & Tiger's Eye Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (87, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (87, 3);  -- Brown
+-- ProductID 88: "Multicolour Stone Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (88, 8);  -- Multicolour
+-- ProductID 89: "Black Onyx Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (89, 1);  -- Black
+-- ProductID 90: "Black Stainless Steel Cuff Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (90, 1);  -- Black
+-- ProductID 91: "Brown Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (91, 3);  -- Brown
+-- ProductID 92: "Black Leather Bracelet with Silver Clasp"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (92, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (92, 2);  -- Silver-Tone
+-- ProductID 93: "Tiger's Eye & Black Onyx Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (93, 3);  -- Brown (Tiger's Eye)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (93, 1);  -- Black (Onyx)
+-- ProductID 94: "Black Lava Rock & Hematite Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (94, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (94, 7);  -- Grey
+-- ProductID 95: "Green Aventurine Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (95, 11); -- Green
+-- ProductID 96: "Blue Lapis Lazuli Beaded Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (96, 4);  -- Blue
+-- ProductID 97: "Black Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (97, 1);  -- Black
+-- ProductID 98: "Silver-Tone Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (98, 2);  -- Silver-Tone
+-- ProductID 99: "Brown Leather Braided Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (99, 3);  -- Brown
+-- ProductID 100: "Black Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (100, 1); -- Black
+-- ProductID 101: "Black Stainless Steel Cuff Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (101, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (101, 2);  -- Silver-Tone (Stainless Steel)
+-- ProductID 102: "Roy Bracelet Extenders in Silver-Tone Stainless Steel"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (102, 2);  -- Silver-Tone
+-- ProductID 103: "12mm Silver-Tone Stainless Steel Curb Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (103, 2);  -- Silver-Tone
+-- ProductID 104: "Icon | Wooden Bead & Black Leather Cord Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (104, 1);   -- Black (Black Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (104, 13);  -- Natural/Wooden (Wooden Bead)
+-- ProductID 105: "(6 mm) Gold-Tone Stainless Steel Curb Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (105, 6);  -- Gold-Tone
+-- ProductID 106: "6mm Black Stainless Steel Curb Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (106, 1);  -- Black
+-- ProductID 107: "Brown Braided Leather & Stainless Steel Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (107, 3);  -- Brown (Brown Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (107, 2);  -- Silver-Tone (Stainless Steel)
+-- ProductID 108: "Matte Black Stone & Braided Leather Band Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (108, 1);  -- Black (Matte Black Stone)
+--ProductID 109: "Black & White Agate & Leather Cord Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (109, 1);   -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (109, 10);  -- White
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (109, 13);  -- Natural/Wooden (Agate is a natural stone)
+-- ProductID 110: "Brown Leather & Stainless Steel Braided Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (110, 3);  -- Brown (Brown Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (110, 2);  -- Silver-Tone (Stainless Steel)
+-- ProductID 111: "Brown Wood Bead Bracelet Sets"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (111, 3);   -- Brown
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (111, 13);  -- Natural/Wooden
+-- ProductID 112: "Red Tiger's Eye & Black Lava Rock & Leather Cord Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 5);   -- Red (Red Tiger's Eye)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 1);   -- Black (Black Lava Rock)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 3);   -- Brown (Tiger's Eye)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (112, 13);  -- Natural/Wooden (Tiger's Eye, Lava Rock)
+-- ProductID 113: "Bolo | Double Black Leather Cord Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (113, 1);  -- Black
+-- ProductID 114: "Gladius | Brown Full Grain Buffalo Leather Wrap-around Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (114, 3);  -- Brown
+-- ProductID 115: "Gladius | Black Full Grain Buffalo Leather Wrap-around Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (115, 1);  -- Black
+-- ProductID 116: "Brown Braided Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (116, 3);  -- Brown
+-- ProductID 117: "Black Braided Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (117, 1);  -- Black
+-- ProductID 118: "Braided Black Stainless Steel Cross Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (118, 1);  -- Black
+-- ProductID 119: "Black Braided Silver-Tone Stainless Steel Cross Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (119, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (119, 2);  -- Silver-Tone
+-- ProductID 120: "Collins | (3 mm) Red Woven Leather Wrap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (120, 5);  -- Red
+-- ProductID 121: "Collins | (3 mm) Navy Blue Woven Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (121, 4);  -- Blue
+-- ProductID 122: "Collins | (6 mm) Red Leather Wrap Around Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (122, 5);  -- Red
+-- ProductID 123: "Nomen | Triple Gold-tone and Brown Leather Bolo Weave ID Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (123, 6);  -- Gold-Tone
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (123, 3);  -- Brown
+-- ProductID 124: "Black Pure Magnetic Titanium Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (124, 1);  -- Black
+-- ProductID 125: "(3 mm) Silver-Tone Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (125, 2);  -- Silver-Tone
+-- ProductID 126: "Atlas | Silver-tone Stainless Steel North Star Charm Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (126, 2);  -- Silver-Tone
+-- ProductID 127: "Atlas | Silver-tone Stainless Steel North Star Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (127, 2);  -- Silver-Tone
+-- ProductID 128: "Collins | Simple Brown Leather Wrap Around Cord Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (128, 3);  -- Brown
+-- ProductID 129: "Brown &  Beige & Black Wood Bead Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (129, 3);   -- Brown
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (129, 1);   -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (129, 13);  -- Natural/Wooden
+-- ProductID 130: "Arie | Silver-Tone Stainless Steel Rope Texture Bangle Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (130, 2);  -- Silver-Tone
+-- ProductID 131: "Vasilios | Dark Grey & Black Hematite Stone Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (131, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (131, 7);  -- Grey
+-- ProductID 132: "Ankh | Brown Leather & Wooden Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (132, 3);   -- Brown
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (132, 13);  -- Natural/Wooden
+-- ProductID 133: "Sanatio | Black Lava Rock & Tiger's Eye Double Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (133, 1);   -- Black (Lava Rock)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (133, 3);   -- Brown (Tiger's Eye)
+-- ProductID 134: "Naxos | Black Braided Leather & Unakite Bead Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (134, 1);   -- Black (Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (134, 11);  -- Green (Unakite)
+-- ProductID 135: "Amager | Gunmetal Stainless Steel Cable Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (135, 1);  -- Black (Gunmetal)
+-- ProductID 136: "Red & Grey Braided Nylon Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (136, 5);  -- Red
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (136, 7);  -- Grey
+-- ProductID 137: "Matte Black Onyx & Stainless Steel ID Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (137, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (137, 2);  -- Silver-Tone
+-- ProductID 138: "Black Onyx &  Lapis Lazuli & Tiger's Eye Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (138, 1);  -- Black (Onyx)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (138, 4);  -- Blue (Lapis Lazuli)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (138, 3);  -- Brown (Tiger's Eye)
+-- ProductID 139: "Roas | Grey Jasper & Rose Gold-Tone Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (139, 7);  -- Grey
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (139, 6);  -- Gold-Tone
+-- ProductID 140: "Icon | Black Leather & Green Stone Double Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (140, 1);   -- Black (Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (140, 11);  -- Green (Stone)
+-- ProductID 141: "Miro | Black Lava Rock & Multicolour Natural Stone Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (141, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (141, 8);  -- Multicolour
+-- ProductID 142: "Miro | Natural-Tone Bamboo & Coconut Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (142, 13); -- Natural/Wooden
+-- ProductID 143: "Roy | Black & Dark Leather & Steel Single Strap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (143, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (143, 2);  -- Silver-Tone (Steel)
+-- ProductID 144: "Roy | Black & Dark Leather & Stainless Steel Double Strap Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (144, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (144, 2);  -- Silver-Tone
+-- ProductID 145: "Rustic Stainless Steel Double Curb Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (145, 2);  -- Silver-Tone
+-- ProductID 146: "Black Waxed Cotton & Silver Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (146, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (146, 2);  -- Silver-Tone
+-- ProductID 147: "Grey Waxed Cotton & Silver Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (147, 7);  -- Grey
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (147, 2);  -- Silver-Tone
+-- ProductID 148: "Navy Blue & Silver-Tone Anchor Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (148, 4);  -- Blue
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (148, 2);  -- Silver-Tone
+-- ProductID 149: "White Turquoise &  Blue Lapis Lazuli & Black Zirconia Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (149, 10); -- White (White Turquoise)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (149, 4);  -- Blue (Lapis Lazuli)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (149, 1);  -- Black (Zirconia)
+-- ProductID 150: "Black Lava Rock & Alabaster Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (150, 1);  -- Black (Lava Rock)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (150, 10); -- White (Alabaster)
+-- ProductID 151: "Tan & Black Braided Leather Cord Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (151, 3);  -- Brown (Tan)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (151, 1);  -- Black
+-- ProductID 152: "Stainless Steel Band Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (152, 2);  -- Silver-Tone
+-- ProductID 153: "Naxos | Black Braided Leather & Turquoise Imperial Jasper Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (153, 1);  -- Black (Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (153, 4);  -- Blue (Turquoise)
+-- ProductID 154: "Black Leather Adjustable Wide Wrap Cuff Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (154, 1);  -- Black
+-- ProductID 155: "Collins | (8 mm) Black Woven Leather Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (155, 1);  -- Black
+-- ProductID 156: "Collins | (6 mm) Navy Blue Leather Wrap Around Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (156, 4);  -- Blue
+-- ProductID 157: "Amager | Silver-Tone Zirconia Stainless Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (157, 2);  -- Silver-Tone
+-- ProductID 158: "Grey & Black Braided Leather Cord Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (158, 7);  -- Grey
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (158, 1);  -- Black
+-- ProductID 159: "Collins | Simple Black Leather Wrap Around Cord Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (159, 1);  -- Black
+-- ProductID 160: "Naxos | Black Braided Leather & Green Tiger's Eye Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (160, 1);   -- Black (Leather)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (160, 11);  -- Green (Tiger's Eye)
+-- ProductID 161: "Rico | Silver-Tone Stainless Steel Skull Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (161, 2);  -- Silver-Tone
+-- ProductID 162: "Black Lava Rock & Multicolour Natural Stone Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (162, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (162, 8);  -- Multicolour
+-- ProductID 163: "8mm Gold-Tone Stainless Steel Curb Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (163, 6);  -- Gold-Tone
+-- ProductID 164: "Miro | Black Lava Rock & Red Tiger's Eye Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (164, 1);  -- Black
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (164, 5);  -- Red (Red Tiger's Eye)
+-- ProductID 165: "Slim Black Titanium Link Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (165, 1);  -- Black
+-- ProductID 166: "Basic 5mm Stainless Steel Chain Bracelet"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (166, 2);  -- Silver-Tone
+-- ProductID 167: "Black Lava Rock & Natural Stone & Leather Bracelet Set"
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (167, 1);   -- Black (Lava Rock)
+INSERT INTO ProductColor (ProductID, ColorID) VALUES (167, 13);  -- Natural/Wooden (Natural Stone)
 -- ProductID 168: "Blue Agate & Leather Cord Bracelet Set"
 INSERT INTO ProductColor (ProductID, ColorID) VALUES (168, 4);  -- Blue (Agate)
 INSERT INTO ProductColor (ProductID, ColorID) VALUES (168, 1);  -- Black (Leather)
