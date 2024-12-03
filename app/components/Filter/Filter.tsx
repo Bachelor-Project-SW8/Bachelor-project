@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./Filter.module.scss";
 import { Sidepanel } from "../sidepanel/sidepanel";
 import { FilterIcon, X } from "lucide-react";
@@ -10,12 +10,14 @@ type FilterProps = {
   className?: string;
   mobile?: boolean;
   desktop?: boolean;
-  categories: Category[]; // Pass an array of categories
-  colors: Color[]; // Pass an array of colors
+  categories: Category[];
+  colors: Color[];
   onApplyFilters: (
     selectedCategories: number[],
     selectedColors: number[]
   ) => void;
+  selectedCategories: number[];
+  selectedColors: number[];
 };
 
 export const Filter = ({
@@ -25,33 +27,23 @@ export const Filter = ({
   categories,
   colors,
   onApplyFilters,
+  selectedCategories,
+  selectedColors,
 }: FilterProps) => {
-  const [selectedCategories, setSelectedCategories] = useState<number[]>([]); // Store selected category IDs
-  const [selectedColors, setSelectedColors] = useState<number[]>([]); // Store selected color IDs
-
-  useEffect(() => {
-    onApplyFilters(selectedCategories, selectedColors);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCategories, selectedColors]);
-
   // Handle category checkbox change
   const handleCategoryChange = (categoryID: number) => {
-    setSelectedCategories(
-      (prev) =>
-        prev.includes(categoryID)
-          ? prev.filter((id) => id !== categoryID) // Remove from selected
-          : [...prev, categoryID] // Add to selected
-    );
+    const newSelectedCategories = selectedCategories.includes(categoryID)
+      ? selectedCategories.filter((id) => id !== categoryID)
+      : [...selectedCategories, categoryID];
+    onApplyFilters(newSelectedCategories, selectedColors);
   };
 
   // Handle color checkbox change
   const handleColorChange = (colorID: number) => {
-    setSelectedColors(
-      (prev) =>
-        prev.includes(colorID)
-          ? prev.filter((id) => id !== colorID) // Remove from selected
-          : [...prev, colorID] // Add to selected
-    );
+    const newSelectedColors = selectedColors.includes(colorID)
+      ? selectedColors.filter((id) => id !== colorID)
+      : [...selectedColors, colorID];
+    onApplyFilters(selectedCategories, newSelectedColors);
   };
 
   return (
@@ -152,20 +144,6 @@ export const Filter = ({
                   </li>
                 ))}
               </ul>
-              <div
-                onClick={() => {
-                  // Trigger the sidepanel to close
-                  const trigger = document.getElementById(
-                    "mobile-filter-sidepanel"
-                  );
-                  if (trigger) {
-                    trigger.click();
-                  }
-                }}
-                className={styles.applyButton}
-              >
-                Show Result(s)
-              </div>
             </div>
           </Sidepanel>
         </div>

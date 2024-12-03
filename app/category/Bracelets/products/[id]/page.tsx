@@ -31,7 +31,7 @@ const ProductPage = () => {
         if (!response.ok) throw new Error("Error fetching product data");
 
         const data = await response.json();
-        const productId = parseInt(Array.isArray(id) ? id[0] : id);
+        const productId = parseInt(Array.isArray(id) ? id[0] : id || "");
         if (isNaN(productId)) return;
 
         const foundProduct = data.products.find(
