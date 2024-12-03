@@ -3,6 +3,11 @@
   position: relative;
   border-bottom: 1px solid var(--darkGray);
 
+  h3 {
+    margin: 10px 0;
+    font-size: 25px;
+  }
+
   .desktopMenu {
     display: flex;
     justify-content: center;
@@ -29,6 +34,26 @@
       .mobileSidepanelTrigger {
         display: flex;
         margin: 5px;
+      }
+    }
+  }
+
+  .sidePanelLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0px 0px 5px;
+
+    a {
+      align-content: center;
+      text-decoration: none;
+      color: black;
+
+      .categoryLink {
+        display: flex;
+        padding: 0 0 5px;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px;
       }
     }
   }
