@@ -18,6 +18,7 @@
 --     ProductID INTEGER  PRIMARY KEY AUTOINCREMENT,
 --     ProductName TEXT NOT NULL,
 --     Price DECIMAL(10, 2) NOT NULL,
+--     Description TEXT,
 --     ProductPicture TEXT,
 --     Brand TEXT
 -- );
@@ -68,8 +69,11 @@
 -- ("Icon | Black Leather  Onyx & Tigers Eye Double Bracelet",41.30,https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt25d5cf8e3b62b240/60dc0f38c5c41538a1558c47/20315.jpg?format=pjpg&auto=webp&quality=75%2C90&width=800,Lucleon)
 -- ("Icon | Black Leather & Silver-Tone Stainless Steel Bracelet",41.30,https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt454db6faf33a6a7e/60dc10572e95e10f21f2c2a4/20255.jpg?format=pjpg&auto=webp&quality=75%2C90&width=800,Lucleon);
 
+-- UPDATE Product
+-- SET Description = 'Dette armbånd er lavet af høj kvalitet og er designet af Trendhim, et mærke kendt for stilfuldt og moderne tilbehør. Armbåndet er fremstillet med omhu og præcision, hvilket sikrer en holdbar og luksuriøs følelse. Med sit tidløse design passer det perfekt til både hverdagens afslappede look og mere formelle anledninger. Uanset om du ønsker at tilføje et strejf af elegance til din stil eller gøre et statement med et unikt accessory, vil dette armbånd være det ideelle valg. Trendhim leverer produkter, der kombinerer funktionalitet og stil på bedste vis, og dette armbånd er ingen undtagelse. Det er skabt til at imponere og holde i mange år fremover.'
+-- WHERE Brand = 'Seizmont';
 
-
+-- SELECT DISTINCT Brand FROM Product;
 
 
 -- Insert colors (tilføjer nogle farver, som produkter kan bruge)
@@ -110,6 +114,7 @@
 --   (9, 1),  -- Minimalist Black Steel Bracelet er sort
 --   (10, 3); -- Gold Mesh Bracelet er guld
 
+UPDATE
 
 -- INSERT INTO Color (ColorName) VALUES ("Black");
 -- INSERT INTO Color (ColorName) VALUES ("Blue");
