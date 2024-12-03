@@ -27,7 +27,7 @@ const ProductPage = () => {
         if (!response.ok) throw new Error("Error fetching product data");
 
         const data = await response.json();
-        const productId = parseInt(Array.isArray(id) ? id[0] : id);
+        const productId = parseInt(Array.isArray(id) ? id[0] : id || "");
         if (isNaN(productId)) return;
 
         const foundProduct = data.products.find(
@@ -58,44 +58,43 @@ const ProductPage = () => {
     .filter((pc) => pc.ProductID === product.ProductID)
     .map((pc) => colors.find((color) => color.ColorID === pc.ColorID));
 
-    return (
-        <div className={styles.productPage}>
-          <div className={styles.imageContainer}>
-            <img src={product.ProductPicture} alt={product.ProductName} />
-          </div>
-      
-          <div className={styles.details}>
-            <h1>{product.ProductName}</h1>
-            <p className={styles.price}>${product.Price}</p>
-            <p className={styles.brand}>Brand: {product.Brand}</p>
-      
-            <div className={styles.categories}>
-              <h3>Categories:</h3>
-              <ul>
-                {relatedCategories.map((category) =>
-                  category ? (
-                    <li key={category.CategoryID}>{category.CategoryName}</li>
-                  ) : null
-                )}
-              </ul>
-            </div>
-      
-            <div className={styles.colors}>
-              <h3>Colors:</h3>
-              <ul>
-                {relatedColors.map((color) =>
-                  color ? <li key={color.ColorID}>{color.ColorName}</li> : null
-                )}
-              </ul>
-            </div>
-      
-            <div className={styles.addToCart}>
-              <button>Add to Cart</button>
-            </div>
-          </div>
+  return (
+    <div className={styles.productPage}>
+      <div className={styles.imageContainer}>
+        <img src={product.ProductPicture} alt={product.ProductName} />
+      </div>
+
+      <div className={styles.details}>
+        <h1>{product.ProductName}</h1>
+        <p className={styles.price}>${product.Price}</p>
+        <p className={styles.brand}>Brand: {product.Brand}</p>
+
+        <div className={styles.categories}>
+          <h3>Categories:</h3>
+          <ul>
+            {relatedCategories.map((category) =>
+              category ? (
+                <li key={category.CategoryID}>{category.CategoryName}</li>
+              ) : null
+            )}
+          </ul>
         </div>
-      );
-      
+
+        <div className={styles.colors}>
+          <h3>Colors:</h3>
+          <ul>
+            {relatedColors.map((color) =>
+              color ? <li key={color.ColorID}>{color.ColorName}</li> : null
+            )}
+          </ul>
+        </div>
+
+        <div className={styles.addToCart}>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ProductPage;

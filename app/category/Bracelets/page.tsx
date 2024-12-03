@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Widget } from "../../components/widget/widget";
 
+import React, { useEffect, useState } from "react";
+import { Widget } from "../../components/widget/widget";
 import styles from "../../page.module.scss";
 import { ProductTile } from "../../components/productTile/productTile";
 import { Filter } from "../../components/Filter/Filter";
@@ -25,6 +25,8 @@ const Bracelets = () => {
   );
   const [productColors, setProductColors] = useState<ProductColor[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<number[]>([]); // Store selected category IDs
+  const [selectedColors, setSelectedColors] = useState<number[]>([]); // Store selected color IDs
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,6 +84,16 @@ const Bracelets = () => {
     setFilteredProducts(filtered);
   };
 
+  // Update the filters when categories or colors are selected/deselected
+  const handleApplyFilters = (
+    newSelectedCategories: number[],
+    newSelectedColors: number[]
+  ) => {
+    setSelectedCategories(newSelectedCategories);
+    setSelectedColors(newSelectedColors);
+    filterProducts(newSelectedCategories, newSelectedColors);
+  };
+
   return (
     <div className={styles.screengrid}>
       <div className={styles.productContainer}>
@@ -92,7 +104,9 @@ const Bracelets = () => {
             desktop
             categories={categories}
             colors={colors}
-            onApplyFilters={filterProducts}
+            onApplyFilters={handleApplyFilters} // Pass the handler to Filter component
+            selectedCategories={selectedCategories} // Pass selected categories
+            selectedColors={selectedColors} // Pass selected colors
           />
         </div>
 
@@ -109,9 +123,10 @@ const Bracelets = () => {
                     text={categories[index % categories.length].CategoryName}
                     onClick={() => {
                       // Find the category by name and filter products
-                      const selectedCategory = categories[index % categories.length];
+                      const selectedCategory =
+                        categories[index % categories.length];
                       if (selectedCategory) {
-                        filterProducts([selectedCategory.CategoryID], []); // Pass only the clicked category's ID
+                        handleApplyFilters([selectedCategory.CategoryID], []); // Pass only the clicked category's ID
                       }
                     }}
                   />
@@ -120,7 +135,7 @@ const Bracelets = () => {
                 <div key={product.ProductID}>
                   <Link
                     className={styles.productTileLink}
-                    href={`/category/Bracelets/products/${product.ProductID}`}
+                    href={`/category/bracelets/products/${product.ProductID}`}
                   >
                     <ProductTile
                       className={styles.productTile}
@@ -128,7 +143,6 @@ const Bracelets = () => {
                     />
                   </Link>
                 </div>
-
               )
           )}
         </div>
@@ -147,7 +161,7 @@ const Bracelets = () => {
           ))}
         </ProductCarousel>
       </div>
-    </div >
+    </div>
   );
 };
 export default Bracelets;
