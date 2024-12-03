@@ -1,6 +1,25 @@
 /* page.module.scss */
 
 /* Wrapper for hele layoutet */
+.screengrid {
+  .topFilterBar {
+    background-color: white;
+    margin: 10px;
+    gap: 10px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    .filterBarContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 150px;
+      text-align: center;
+      .topFilterPictures {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
 .container {
   margin: auto;
   background-color: var(--white);
@@ -84,7 +103,7 @@
 
 .productContainer {
   display: flex;
-  margin-top: 20px;
+  margin-top: 10px;
 
   @media (max-width: 1024px) {
     flex-direction: column;
