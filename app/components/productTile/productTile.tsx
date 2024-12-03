@@ -13,6 +13,7 @@ export function ProductTile({ className, product }: ProductTileProps) {
     const [likedProduct, setLikedProduct] = useState(false);
 
     const toggleLikeProduct = (e: React.MouseEvent) => {
+        e.preventDefault();
         e.stopPropagation(); // Prevent the link from being followed
         setLikedProduct((prev) => !prev);
     };
