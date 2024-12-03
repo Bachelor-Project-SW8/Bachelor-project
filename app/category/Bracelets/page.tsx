@@ -109,7 +109,8 @@ const Bracelets = () => {
                     text={categories[index % categories.length].CategoryName}
                     onClick={() => {
                       // Find the category by name and filter products
-                      const selectedCategory = categories[index % categories.length];
+                      const selectedCategory =
+                        categories[index % categories.length];
                       if (selectedCategory) {
                         filterProducts([selectedCategory.CategoryID], []); // Pass only the clicked category's ID
                       }
@@ -120,7 +121,7 @@ const Bracelets = () => {
                 <div key={product.ProductID}>
                   <Link
                     className={styles.productTileLink}
-                    href={`/category/Bracelets/products/${product.ProductID}`}
+                    href={`/category/bracelets/products/${product.ProductID}`}
                   >
                     <ProductTile
                       className={styles.productTile}
@@ -128,7 +129,6 @@ const Bracelets = () => {
                     />
                   </Link>
                 </div>
-
               )
           )}
         </div>
@@ -147,7 +147,7 @@ const Bracelets = () => {
           ))}
         </ProductCarousel>
       </div>
-    </div >
+    </div>
   );
 };
 export default Bracelets;

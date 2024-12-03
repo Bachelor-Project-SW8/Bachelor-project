@@ -58,44 +58,55 @@ const ProductPage = () => {
     .filter((pc) => pc.ProductID === product.ProductID)
     .map((pc) => colors.find((color) => color.ColorID === pc.ColorID));
 
-    return (
-        <div className={styles.productPage}>
-          <div className={styles.imageContainer}>
-            <img src={product.ProductPicture} alt={product.ProductName} />
-          </div>
-      
-          <div className={styles.details}>
-            <h1>{product.ProductName}</h1>
-            <p className={styles.price}>${product.Price}</p>
-            <p className={styles.brand}>Brand: {product.Brand}</p>
-      
-            <div className={styles.categories}>
-              <h3>Categories:</h3>
-              <ul>
-                {relatedCategories.map((category) =>
-                  category ? (
-                    <li key={category.CategoryID}>{category.CategoryName}</li>
-                  ) : null
-                )}
-              </ul>
-            </div>
-      
-            <div className={styles.colors}>
-              <h3>Colors:</h3>
-              <ul>
-                {relatedColors.map((color) =>
-                  color ? <li key={color.ColorID}>{color.ColorName}</li> : null
-                )}
-              </ul>
-            </div>
-      
-            <div className={styles.addToCart}>
-              <button>Add to Cart</button>
-            </div>
+  return (
+    <div className={styles.productPage}>
+      <div className={styles.imageContainer}>
+        <img src={product.ProductPicture} alt={product.ProductName} />
+      </div>
+
+      <div className={styles.details}>
+        <p className={styles.brand}> {product.Brand}</p>
+        <div className={styles.productnamecontainer}>
+          <h1>{product.ProductName}</h1>
+          <p className={styles.price}>${product.Price}</p>
+        </div>
+        <div className={styles.categories}>
+          <h3>Categories:</h3>
+          <ul>
+            {relatedCategories.map((category) =>
+              category ? (
+                <li key={category.CategoryID}>{category.CategoryName}</li>
+              ) : null
+            )}
+          </ul>
+        </div>
+
+        <div className={styles.colors}>
+          <h3>Colors:</h3>
+          <ul>
+            {relatedColors.map((color) =>
+              color ? <li key={color.ColorID}>{color.ColorName}</li> : null
+            )}
+          </ul>
+        </div>
+
+        <div className={styles.addToCart}>
+          <button>Add to Cart</button>
+        </div>
+        <div>
+          <ul className={styles.infoList}>
+            <li>Gratis levering på ordrer over $50</li>
+            <li>30 dages returret</li>
+            <li>Hurtig levering: 1-2 hverdage</li>
+          </ul>
+
+          <div className={styles.description}>
+            <p>product.</p>
           </div>
         </div>
-      );
-      
+      </div>
+    </div>
+  );
 };
 
 export default ProductPage;
