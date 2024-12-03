@@ -15,6 +15,7 @@ import {
 } from "../../types/types"; // Importer typerne
 import { ProductCarousel } from "../../components/productCarousel/productCarousel";
 import Link from "next/link";
+import { Filterbar } from "@/app/components/filterBar/filterBar";
 
 const Bracelets = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -96,6 +97,16 @@ const Bracelets = () => {
 
   return (
     <div className={styles.screengrid}>
+      <Filterbar
+        className={styles.topFilterBar}
+      >
+        {products.map((category) => (
+          <div className={styles.filterBarContent} key={category.ProductID}>
+            <img className={styles.topFilterPictures} src={category.ProductPicture} />
+            {category.ProductName}
+          </div>
+        ))}
+      </Filterbar>
       <div className={styles.productContainer}>
         <div className={styles.filterContainer}>
           <Filter
