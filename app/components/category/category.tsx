@@ -19,7 +19,7 @@ export const CategoryBar = ({
   const categories = [
     //Remeber lowercasing
     { name: "Bracelets", path: "/category/bracelets" }, // Changed to absolute path
-    { name: "Necklaces", path: "/category/Necklaces" },
+    { name: "Necklaces", path: "/category/electronics" },
     { name: "Rings", path: "/category/Rings" },
     { name: "Earrings", path: "/category/Earrings" },
   ];
