@@ -63,6 +63,8 @@ const Bracelets = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]); // Store selected category IDs
   const [selectedColors, setSelectedColors] = useState<number[]>([]); // Store selected color IDs
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [selectedSort, setSelectedSort] = React.useState("Most Sold");
 
   const nameMapping: { [key: string]: string } = {
     "Steel Bracelets": "Stainless Steel",
@@ -153,6 +155,31 @@ const Bracelets = () => {
     filterProducts(newSelectedCategories, newSelectedColors);
   };
 
+  const handleSortChange = (value: string) => {
+    setSelectedSort(value === "most-sold" ? "Most Sold" : value.replace("-", " "));
+    setDropdownOpen(false); // Close dropdown after selection
+
+    const productsToSort = filteredProducts.length > 0 ? [...filteredProducts] : [...products]; // Default to products if filteredProducts is empty
+
+    console.log("Products before sorting:", productsToSort);
+
+    if (value === "Lowest-Price") {
+      productsToSort.sort((a, b) => a.Price - b.Price); // Sort by price ascending
+    } else if (value === "Highest-Price") {
+      productsToSort.sort((a, b) => b.Price - a.Price); // Sort by price descending
+    } else if (value === "Most-Sold") {
+      productsToSort.sort((a, b) => a.ProductID - b.ProductID);
+    } else if (value === "Newest") {
+      productsToSort.sort((a, b) => a.ProductID - b.ProductID);
+    }
+
+
+    console.log("Sorted Products:", productsToSort);
+
+    setFilteredProducts(productsToSort); // Update the filtered products state
+  };
+
+
   return (
     <div className={styles.screengrid}>
       <Filterbar
@@ -193,6 +220,33 @@ const Bracelets = () => {
           </div>
         ))}
       </Filterbar>
+      <div className={styles.infoBar}>
+        <div className={styles.filterHeaderContainer}>
+          <div className={styles.filterHeader}>Filters</div>
+        </div>
+        <div className={styles.productsHeader}>
+          <p>{filteredProducts.length > 0 ? filteredProducts.length : products.length} products</p>
+          <div className={styles.mostSold}>
+            Sort By:
+            <div className={styles.dropdown}>
+              <button
+                className={styles.dropdownToggle}
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                {selectedSort || "Most Sold"}
+              </button>
+              {dropdownOpen && (
+                <div className={styles.dropdownMenu}>
+                  <button onClick={() => handleSortChange("Most-Sold")}>Most Sold</button>
+                  <button onClick={() => handleSortChange("Newest")}>Newest</button>
+                  <button onClick={() => handleSortChange("Lowest-Price")}>Lowest Price</button>
+                  <button onClick={() => handleSortChange("Highest-Price")}>Highest Price</button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
       <div className={styles.productContainer}>
         <div className={styles.filterContainer}>
           <Filter

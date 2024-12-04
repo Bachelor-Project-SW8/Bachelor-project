@@ -13,14 +13,13 @@
   }
   .desktopFilter {
     position: sticky;
-    top: 0;
+    top: 40px;
     width: 250px;
-    background-color: white;
     padding: 20px;
     margin: 0 10px 10px 10px;
     height: calc(100vh - 80px);
     overflow-y: auto;
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid lightgray;
 
     @media (max-width: 1024px) {
       display: none;
