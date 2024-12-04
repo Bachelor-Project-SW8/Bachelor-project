@@ -3,18 +3,28 @@
 /* Wrapper for hele layoutet */
 .screengrid {
   .topFilterBar {
-    background-color: white;
-    margin: 10px;
+    background-color: var(--white);
+    margin: 30px 0px 30px 30px;
     gap: 10px;
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
     .filterBarContent {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       width: 150px;
       text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
       .topFilterPictures {
         margin-bottom: 20px;
+      }
+
+      p {
+        margin: 0 auto;
       }
     }
   }
@@ -45,6 +55,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+  height: fit-content;
 
   .productTile {
     width: 180px;

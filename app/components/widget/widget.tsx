@@ -5,14 +5,15 @@ type WidgetProps = {
   picture: string;
   text?: string;
   className?: string;
+  seeAll?: string,
   onClick?: () => void;
 };
 
-export function Widget({ picture, text, className, onClick }: WidgetProps) {
+export function Widget({ picture, text, seeAll, className, onClick }: WidgetProps) {
   return (
     <div className={clsx(styles.widgetContainer, className)} onClick={onClick}>
       <p className={clsx(text ? styles.productText : "")}>{text}</p>
-      <p className={styles.seeAll}>See All</p>
+      <p className={seeAll && styles.seeAll}>{seeAll}</p>
       <img className={styles.widgetPicture} src={picture} />
     </div>
   );
