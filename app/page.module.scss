@@ -1,4 +1,10 @@
-/* page.module.scss */
+/* Add this at the top of your CSS or SCSS */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+
+.fontOnly {
+  font-family: "Open Sans", sans-serif; /* Applying Open Sans */
+  font-weight: 300; /* Light weight */
+}
 
 /* Wrapper for hele layoutet */
 .screengrid {
