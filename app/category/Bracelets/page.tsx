@@ -208,42 +208,37 @@ const Bracelets = () => {
         </div>
 
         <div className={styles.productTileGrid}>
-          {(filteredProducts.length > 0 ? filteredProducts : products).map(
-            (product, index) =>
-              index % 20 === 19 ? (
+          {(filteredProducts.length > 0 ? filteredProducts : products).map((product, index) => (
+            <>
+              {/* Product Tile */}
+              <div key={product.ProductID}>
+                <Link className={styles.productTileLink} href={`/category/bracelets/products/${product.ProductID}`}>
+                  <ProductTile className={styles.productTile} product={product} />
+                </Link>
+              </div>
+
+              {/* Widget at every 20th index */}
+              {index % 20 === 19 && (
                 <div key={`widget-${index}`} className={styles.widgetContainer}>
                   <Widget
                     key={`widget-${index}`}
-                    picture={
-                      categories[index % categories.length].CategoryPicture
-                    } // Increment index for widget
+                    picture={categories[index % categories.length].CategoryPicture}
                     text={categories[index % categories.length].CategoryName}
                     seeAll="See All"
                     onClick={() => {
                       // Find the category by name and filter products
-                      const selectedCategory =
-                        categories[index % categories.length];
+                      const selectedCategory = categories[index % categories.length];
                       if (selectedCategory) {
                         handleApplyFilters([selectedCategory.CategoryID], []); // Pass only the clicked category's ID
                       }
                     }}
                   />
                 </div>
-              ) : (
-                <div key={product.ProductID}>
-                  <Link
-                    className={styles.productTileLink}
-                    href={`/category/bracelets/products/${product.ProductID}`}
-                  >
-                    <ProductTile
-                      className={styles.productTile}
-                      product={product}
-                    />
-                  </Link>
-                </div>
-              )
-          )}
+              )}
+            </>
+          ))}
         </div>
+
       </div>
       <div className={styles.productCarouselContainer}>
         <h2 className={styles.productCarouselHeader}>
