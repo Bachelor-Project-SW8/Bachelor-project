@@ -66,8 +66,6 @@ export const Filter = ({
     <div className={clsx(styles.filterContent, className)}>
       {desktop && (
         <div className={styles.desktopFilter}>
-          <h3>Filter Products</h3>
-
           {/* Categories Section */}
           <h4>Categories</h4>
           <ul className={styles.generalFilterStyling}>

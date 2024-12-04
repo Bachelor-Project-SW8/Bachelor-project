@@ -132,3 +132,86 @@
   text-decoration: none;
   color: black;
 }
+
+.infoBar {
+  display: grid;
+  grid-template-columns: 320px 1fr max-content;
+  grid-area: 1 / 1 / 2 / 4;
+  height: 100%;
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
+  z-index: 10;
+  align-items: center;
+  margin-top: 20px;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  .filterHeaderContainer {
+    grid-area: 1 / 1 / 2 / 2;
+    width: unset;
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+    border-top: 1px solid lightgray;
+    box-sizing: border-box;
+
+    .filterHeader {
+      font-size: 22px;
+      font-weight: bold;
+      padding: 20px;
+    }
+  }
+
+  .productsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    height: inherit;
+    box-sizing: border-box;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdownToggle {
+    border: none;
+    background: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    margin-top: 8px;
+    z-index: 10;
+    padding: 15px 0;
+  }
+
+  .dropdownMenu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    > * {
+      text-transform: capitalize;
+    }
+  }
+
+  .dropdownMenu button:hover {
+    text-decoration: underline;
+  }
+}
