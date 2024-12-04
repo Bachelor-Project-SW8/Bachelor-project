@@ -114,12 +114,8 @@ const Bracelets = () => {
     fetchData();
   }, []);
 
-  const filterProducts = (
-    selectedCategories: number[],
-    selectedColors: number[]
-  ) => {
+  const filterProducts = (selectedCategories: number[], selectedColors: number[], sortOrder: string) => {
     const filtered = products.filter((product) => {
-      // Match categories
       const categoryMatch =
         selectedCategories.length === 0 ||
         productCategories.some(
@@ -128,7 +124,6 @@ const Bracelets = () => {
             selectedCategories.includes(pc.CategoryID)
         );
 
-      // Match colors
       const colorMatch =
         selectedColors.length === 0 ||
         productColors.some(
@@ -140,45 +135,44 @@ const Bracelets = () => {
       return categoryMatch && colorMatch;
     });
 
-    console.log("Filtered Products:", filtered);
-
-    setFilteredProducts(filtered);
+    const sorted = sortProducts(filtered, sortOrder);
+    setFilteredProducts(sorted);
   };
 
-  // Update the filters when categories or colors are selected/deselected
-  const handleApplyFilters = (
-    newSelectedCategories: number[],
-    newSelectedColors: number[]
-  ) => {
-    setSelectedCategories(newSelectedCategories);
-    setSelectedColors(newSelectedColors);
-    filterProducts(newSelectedCategories, newSelectedColors);
-  };
 
-  const handleSortChange = (value: string) => {
-    setSelectedSort(value === "most-sold" ? "Most Sold" : value.replace("-", " "));
-    setDropdownOpen(false); // Close dropdown after selection
+  // Separate function to handle sorting
+  const sortProducts = (productsToSort: Product[], sortOrder: string) => {
+    const sortedProducts = [...productsToSort]; // Create a copy to avoid mutating state
 
-    const productsToSort = filteredProducts.length > 0 ? [...filteredProducts] : [...products]; // Default to products if filteredProducts is empty
-
-    console.log("Products before sorting:", productsToSort);
-
-    if (value === "Lowest-Price") {
-      productsToSort.sort((a, b) => a.Price - b.Price); // Sort by price ascending
-    } else if (value === "Highest-Price") {
-      productsToSort.sort((a, b) => b.Price - a.Price); // Sort by price descending
-    } else if (value === "Most-Sold") {
-      productsToSort.sort((a, b) => a.ProductID - b.ProductID);
-    } else if (value === "Newest") {
-      productsToSort.sort((a, b) => a.ProductID - b.ProductID);
+    if (sortOrder === "Lowest Price") {
+      sortedProducts.sort((a, b) => a.Price - b.Price);
+    } else if (sortOrder === "Highest Price") {
+      sortedProducts.sort((a, b) => b.Price - a.Price);
+    } else if (sortOrder === "Most Sold") {
+      sortedProducts.sort((a, b) => a.ProductID - b.ProductID); // Replace with actual logic for "Most Sold"
+    } else if (sortOrder === "Newest") {
+      sortedProducts.sort((a, b) => a.ProductID - b.ProductID); // Replace with actual logic for "Newest"
     }
 
-
-    console.log("Sorted Products:", productsToSort);
-
-    setFilteredProducts(productsToSort); // Update the filtered products state
+    return sortedProducts;
   };
 
+  // Update handleApplyFilters to apply the sort after filtering
+  const handleApplyFilters = (newSelectedCategories: number[], newSelectedColors: number[]) => {
+    setSelectedCategories(newSelectedCategories);
+    setSelectedColors(newSelectedColors);
+    filterProducts(newSelectedCategories, newSelectedColors, selectedSort);
+  };
+
+  // Update handleSortChange to apply sorting to filtered products
+  const handleSortChange = (value: string) => {
+    setSelectedSort(value);
+    setDropdownOpen(false);
+
+    const productsToSort = filteredProducts.length > 0 ? filteredProducts : products;
+    const sorted = sortProducts(productsToSort, value);
+    setFilteredProducts(sorted);
+  };
 
   return (
     <div className={styles.screengrid}>
@@ -237,10 +231,10 @@ const Bracelets = () => {
               </button>
               {dropdownOpen && (
                 <div className={styles.dropdownMenu}>
-                  <button onClick={() => handleSortChange("Most-Sold")}>Most Sold</button>
+                  <button onClick={() => handleSortChange("Most Sold")}>Most Sold</button>
                   <button onClick={() => handleSortChange("Newest")}>Newest</button>
-                  <button onClick={() => handleSortChange("Lowest-Price")}>Lowest Price</button>
-                  <button onClick={() => handleSortChange("Highest-Price")}>Highest Price</button>
+                  <button onClick={() => handleSortChange("Lowest Price")}>Lowest Price</button>
+                  <button onClick={() => handleSortChange("Highest Price")}>Highest Price</button>
                 </div>
               )}
             </div>
