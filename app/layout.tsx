@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={styles.fontOnly}>        {/* Ik' rør ved den her eller tilføj mere styling. Det er kun til font og MÅSKE andet global styling vi mangler */}
         <div className={styles.container}>
           <Header />
           {children}
