@@ -66,14 +66,14 @@ const Bracelets = () => {
   const [selectedSort, setSelectedSort] = React.useState("Most Sold");
 
   const nameMapping: { [key: string]: string } = {
-    "Steel Bracelets": "Stainless Steel",
+    "Steel Bracelets": "Steel",
     "Anchor Bracelets": "Anchor",
     "Bangle Bracelets": "Bangle",
-    "Beaded Bracelets": "Beaded Bracelets",
+    "Beaded Bracelets": "Beaded",
     "Bracelets with Stones": "Bracelets with Stones",
     "Braided Bracelets": "Braided",
     "Chain Bracelets": "Chain",
-    "Charm Bracelets": "Charm",
+    "Charm Bracelets": "With attachment",
     "Cross Bracelets": "Cross",
     "Cuff Bracelets": "Cuff",
     "Gold Bracelets": "Gold",
@@ -171,6 +171,7 @@ const Bracelets = () => {
     setSelectedCategories(newSelectedCategories);
     setSelectedColors(newSelectedColors);
     filterProducts(newSelectedCategories, newSelectedColors, selectedSort);
+    window.scroll({ top: 0, behavior: "smooth" });
   };
 
   // Update handleSortChange to apply sorting to filtered products
@@ -313,6 +314,7 @@ const Bracelets = () => {
                     className={styles.widgetContainer}
                   >
                     <Widget
+                      className={styles.regularWidget}
                       key={categories[index % categories.length].CategoryID}
                       picture={
                         categories[index % categories.length].CategoryPicture
@@ -338,6 +340,9 @@ const Bracelets = () => {
                         picture={category.CategoryPicture}
                         text={category.CategoryName}
                         seeAll="See All"
+                        onClick={() => {
+                          handleApplyFilters([category.CategoryID], []); // Pass only the clicked category's ID
+                        }}
                       />
                     ))}
                   </WidgetCarousel>
