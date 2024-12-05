@@ -247,3 +247,36 @@
     text-decoration: underline;
   }
 }
+
+.widgetCarousel {
+  /* Basic carousel container styling */
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f4f4f4;  /* background color */
+  padding: 10px;
+  
+  /* Ensure proper display for the items inside */
+  .react-multi-carousel-track {
+    display: flex;
+    align-items: center;  /* Align items vertically */
+  }
+
+  .react-multi-carousel-item {
+    display: block;
+    width: 100%; /* Make sure each item takes full width of the carousel */
+    padding: 0 10px; /* Add space between items */
+    box-sizing: border-box;
+  }
+}
+
+.widgetCarouselContainer {
+  width: 100%;
+  background-color: grey;
+  grid-column: span 2;
+  display: flex;
+
+  > ul > li {
+    width: 202px;
+  }
+}
