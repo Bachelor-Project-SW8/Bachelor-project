@@ -5,7 +5,6 @@ import { Widget } from "../../components/widget/widget";
 import styles from "../../page.module.scss";
 import { ProductTile } from "../../components/productTile/productTile";
 import { Filter } from "../../components/Filter/Filter";
-
 import {
   Product,
   Category,
@@ -13,43 +12,42 @@ import {
   ProductCategory,
   ProductColor,
 } from "../../types/types"; // Importer typerne
-import { ProductCarousel } from "../../components/productCarousel/productCarousel";
 import Link from "next/link";
 import { Filterbar } from "@/app/components/filterBar/filterBar";
 
-import Anchor from '../../../images/filterbarImages/AnchorBracelets.png'
-import Bangle from '../../../images/filterbarImages/BangleBracelets.png'
-import Beaded from '../../../images/filterbarImages/BeadedBracelets.png'
-import Stones from '../../../images/filterbarImages/BraceletsWStones.png'
-import Braided from '../../../images/filterbarImages/BraidedBracelets.png'
-import Chain from '../../../images/filterbarImages/ChainBracelets.png'
-import Charm from '../../../images/filterbarImages/CharmBracelets.png'
-import Cross from '../../../images/filterbarImages/CrossBracelets.png'
-import Cuff from '../../../images/filterbarImages/CuffBracelets.png'
-import Gold from '../../../images/filterbarImages/GoldBracelets.png'
-import Leather from '../../../images/filterbarImages/LeatherBracelets.png'
-import Paracord from '../../../images/filterbarImages/ParacordBracelets.png'
-import Silver from '../../../images/filterbarImages/SilverBracelets.png'
-import Steel from '../../../images/filterbarImages/SteelBracelets.png'
-import Wide from '../../../images/filterbarImages/WideBracelets.png'
+import Anchor from "../../../images/filterbarImages/AnchorBracelets.png";
+import Bangle from "../../../images/filterbarImages/BangleBracelets.png";
+import Beaded from "../../../images/filterbarImages/BeadedBracelets.png";
+import Stones from "../../../images/filterbarImages/BraceletsWStones.png";
+import Braided from "../../../images/filterbarImages/BraidedBracelets.png";
+import Chain from "../../../images/filterbarImages/ChainBracelets.png";
+import Charm from "../../../images/filterbarImages/CharmBracelets.png";
+import Cross from "../../../images/filterbarImages/CrossBracelets.png";
+import Cuff from "../../../images/filterbarImages/CuffBracelets.png";
+import Gold from "../../../images/filterbarImages/GoldBracelets.png";
+import Leather from "../../../images/filterbarImages/LeatherBracelets.png";
+import Paracord from "../../../images/filterbarImages/ParacordBracelets.png";
+import Silver from "../../../images/filterbarImages/SilverBracelets.png";
+import Steel from "../../../images/filterbarImages/SteelBracelets.png";
+import Wide from "../../../images/filterbarImages/WideBracelets.png";
 import Image from "next/image";
 
 const braceletTypes = [
-  { name: 'Anchor Bracelets', src: Anchor },
-  { name: 'Bangle Bracelets', src: Bangle },
-  { name: 'Beaded Bracelets', src: Beaded },
-  { name: 'Bracelets with Stones', src: Stones },
-  { name: 'Braided Bracelets', src: Braided },
-  { name: 'Chain Bracelets', src: Chain },
-  { name: 'Charm Bracelets', src: Charm },
-  { name: 'Cross Bracelets', src: Cross },
-  { name: 'Cuff Bracelets', src: Cuff },
-  { name: 'Gold Bracelets', src: Gold },
-  { name: 'Leather Bracelets', src: Leather },
-  { name: 'Paracord Bracelets', src: Paracord },
-  { name: 'Silver Bracelets', src: Silver },
-  { name: 'Steel Bracelets', src: Steel },
-  { name: 'Wide Bracelets', src: Wide },
+  { name: "Anchor Bracelets", src: Anchor },
+  { name: "Bangle Bracelets", src: Bangle },
+  { name: "Beaded Bracelets", src: Beaded },
+  { name: "Bracelets with Stones", src: Stones },
+  { name: "Braided Bracelets", src: Braided },
+  { name: "Chain Bracelets", src: Chain },
+  { name: "Charm Bracelets", src: Charm },
+  { name: "Cross Bracelets", src: Cross },
+  { name: "Cuff Bracelets", src: Cuff },
+  { name: "Gold Bracelets", src: Gold },
+  { name: "Leather Bracelets", src: Leather },
+  { name: "Paracord Bracelets", src: Paracord },
+  { name: "Silver Bracelets", src: Silver },
+  { name: "Steel Bracelets", src: Steel },
+  { name: "Wide Bracelets", src: Wide },
 ];
 
 const Bracelets = () => {
@@ -85,8 +83,12 @@ const Bracelets = () => {
   };
 
   const colorMapping: { [key: string]: number[] } = {
-    "Gold Bracelets": [colors.find(color => color.ColorName === "Gold-Tone")?.ColorID ?? -1],
-    "Silver Bracelets": [colors.find(color => color.ColorName === "Silver-Tone")?.ColorID ?? -1],
+    "Gold Bracelets": [
+      colors.find((color) => color.ColorName === "Gold-Tone")?.ColorID ?? -1,
+    ],
+    "Silver Bracelets": [
+      colors.find((color) => color.ColorName === "Silver-Tone")?.ColorID ?? -1,
+    ],
   };
 
   useEffect(() => {
@@ -114,7 +116,11 @@ const Bracelets = () => {
     fetchData();
   }, []);
 
-  const filterProducts = (selectedCategories: number[], selectedColors: number[], sortOrder: string) => {
+  const filterProducts = (
+    selectedCategories: number[],
+    selectedColors: number[],
+    sortOrder: string
+  ) => {
     const filtered = products.filter((product) => {
       const categoryMatch =
         selectedCategories.length === 0 ||
@@ -139,7 +145,6 @@ const Bracelets = () => {
     setFilteredProducts(sorted);
   };
 
-
   // Separate function to handle sorting
   const sortProducts = (productsToSort: Product[], sortOrder: string) => {
     const sortedProducts = [...productsToSort]; // Create a copy to avoid mutating state
@@ -158,7 +163,10 @@ const Bracelets = () => {
   };
 
   // Update handleApplyFilters to apply the sort after filtering
-  const handleApplyFilters = (newSelectedCategories: number[], newSelectedColors: number[]) => {
+  const handleApplyFilters = (
+    newSelectedCategories: number[],
+    newSelectedColors: number[]
+  ) => {
     setSelectedCategories(newSelectedCategories);
     setSelectedColors(newSelectedColors);
     filterProducts(newSelectedCategories, newSelectedColors, selectedSort);
@@ -169,26 +177,30 @@ const Bracelets = () => {
     setSelectedSort(value);
     setDropdownOpen(false);
 
-    const productsToSort = filteredProducts.length > 0 ? filteredProducts : products;
+    const productsToSort =
+      filteredProducts.length > 0 ? filteredProducts : products;
     const sorted = sortProducts(productsToSort, value);
     setFilteredProducts(sorted);
   };
 
+  console.log(categories);
+
   return (
     <div className={styles.screengrid}>
-      <Filterbar
-        className={styles.topFilterBar}
-      >
+      <Filterbar className={styles.topFilterBar}>
         {braceletTypes.map((bracelet, index) => (
           <div
             onClick={() => {
               // Normalize the bracelet name using the nameMapping
-              const normalizedBraceletName = nameMapping[bracelet.name] || bracelet.name.replace(/ Bracelets$/, "").toLowerCase();
+              const normalizedBraceletName =
+                nameMapping[bracelet.name] ||
+                bracelet.name.replace(/ Bracelets$/, "").toLowerCase();
 
               // Convert both to lowercase for a case-insensitive match
               const selectedCategory = categories.find(
                 (category) =>
-                  category.CategoryName.toLowerCase() === normalizedBraceletName.toLowerCase()
+                  category.CategoryName.toLowerCase() ===
+                  normalizedBraceletName.toLowerCase()
               );
 
               // Get the corresponding color filters for Gold and Silver Bracelets
@@ -205,11 +217,19 @@ const Bracelets = () => {
                 handleApplyFilters([], selectedColorFilters); // Apply only the color filter
               } else {
                 // If no match is found in either categories or color mapping, do nothing
-                console.log(`No category or color match found for ${bracelet.name}`);
+                console.log(
+                  `No category or color match found for ${bracelet.name}`
+                );
               }
             }}
-            className={styles.filterBarContent} key={index}>
-            <Image className={styles.topFilterPictures} src={bracelet.src} alt={bracelet.name} />
+            className={styles.filterBarContent}
+            key={index}
+          >
+            <Image
+              className={styles.topFilterPictures}
+              src={bracelet.src}
+              alt={bracelet.name}
+            />
             <p>{bracelet.name}</p>
           </div>
         ))}
@@ -219,7 +239,12 @@ const Bracelets = () => {
           <div className={styles.filterHeader}>Filters</div>
         </div>
         <div className={styles.productsHeader}>
-          <p>{filteredProducts.length > 0 ? filteredProducts.length : products.length} products</p>
+          <p>
+            {filteredProducts.length > 0
+              ? filteredProducts.length
+              : products.length}{" "}
+            products
+          </p>
           <div className={styles.mostSold}>
             Sort By:
             <div className={styles.dropdown}>
@@ -231,10 +256,18 @@ const Bracelets = () => {
               </button>
               {dropdownOpen && (
                 <div className={styles.dropdownMenu}>
-                  <button onClick={() => handleSortChange("Most Sold")}>Most Sold</button>
-                  <button onClick={() => handleSortChange("Newest")}>Newest</button>
-                  <button onClick={() => handleSortChange("Lowest Price")}>Lowest Price</button>
-                  <button onClick={() => handleSortChange("Highest Price")}>Highest Price</button>
+                  <button onClick={() => handleSortChange("Most Sold")}>
+                    Most Sold
+                  </button>
+                  <button onClick={() => handleSortChange("Newest")}>
+                    Newest
+                  </button>
+                  <button onClick={() => handleSortChange("Lowest Price")}>
+                    Lowest Price
+                  </button>
+                  <button onClick={() => handleSortChange("Highest Price")}>
+                    Highest Price
+                  </button>
                 </div>
               )}
             </div>
@@ -256,51 +289,50 @@ const Bracelets = () => {
         </div>
 
         <div className={styles.productTileGrid}>
-          {(filteredProducts.length > 0 ? filteredProducts : products).map((product, index) => (
-            <>
-              {/* Product Tile */}
-              <div key={product.ProductID}>
-                <Link className={styles.productTileLink} href={`/category/bracelets/products/${product.ProductID}`}>
-                  <ProductTile className={styles.productTile} product={product} />
-                </Link>
-              </div>
-
-              {/* Widget at every 20th index */}
-              {index % 20 === 19 && (
-                <div key={`widget-${index}`} className={styles.widgetContainer}>
-                  <Widget
-                    key={`widget-${index}`}
-                    picture={categories[index % categories.length].CategoryPicture}
-                    text={categories[index % categories.length].CategoryName}
-                    seeAll="See All"
-                    onClick={() => {
-                      // Find the category by name and filter products
-                      const selectedCategory = categories[index % categories.length];
-                      if (selectedCategory) {
-                        handleApplyFilters([selectedCategory.CategoryID], []); // Pass only the clicked category's ID
-                      }
-                    }}
-                  />
+          {(filteredProducts.length > 0 ? filteredProducts : products).map(
+            (product, index) => (
+              <>
+                {/* Product Tile */}
+                <div key={product.ProductID}>
+                  <Link
+                    className={styles.productTileLink}
+                    href={`/category/bracelets/products/${product.ProductID}`}
+                  >
+                    <ProductTile
+                      className={styles.productTile}
+                      product={product}
+                    />
+                  </Link>
                 </div>
-              )}
-            </>
-          ))}
-        </div>
 
-      </div>
-      <div className={styles.productCarouselContainer}>
-        <h2 className={styles.productCarouselHeader}>
-          Looking for something specific?
-        </h2>
-        <ProductCarousel>
-          {products.map((product) => (
-            <Widget
-              key={product.ProductID}
-              picture={product.ProductPicture}
-              text={product.ProductName}
-            />
-          ))}
-        </ProductCarousel>
+                {/* Widget at every 20th index */}
+                {index % 20 === 19 && (
+                  <div
+                    key={`widget-${index}`}
+                    className={styles.widgetContainer}
+                  >
+                    <Widget
+                      key={`widget-${index}`}
+                      picture={
+                        categories[index % categories.length].CategoryPicture
+                      }
+                      text={categories[index % categories.length].CategoryName}
+                      seeAll="See All"
+                      onClick={() => {
+                        // Find the category by name and filter products
+                        const selectedCategory =
+                          categories[index % categories.length];
+                        if (selectedCategory) {
+                          handleApplyFilters([selectedCategory.CategoryID], []); // Pass only the clicked category's ID
+                        }
+                      }}
+                    />
+                  </div>
+                )}
+              </>
+            )
+          )}
+        </div>
       </div>
     </div>
   );
