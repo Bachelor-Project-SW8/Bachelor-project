@@ -330,7 +330,7 @@ const Bracelets = () => {
                     />
                   </div>
                 )}
-                {index % 50 === 49 && (
+                {index % 40 === 39 && (
                   <WidgetCarousel className={styles.widgetCarouselContainer}>
                     {categories.map((category) => (
                       <Widget
