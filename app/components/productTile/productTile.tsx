@@ -26,7 +26,7 @@ export function ProductTile({ className, product }: ProductTileProps) {
                 </div>
                 <img className={styles.productTilePicture} src={product.ProductPicture} />
                 <div className={styles.productTileName}>{product.ProductName}</div>
-                <div>{`$${product.Price}`}</div>
+                <div className={styles.priceContainer}>{`$${product.Price}`}</div>
                 <div className={styles.brandContainer}>
                     <div className={styles.brandTag}>{product.Brand}</div>
                 </div>

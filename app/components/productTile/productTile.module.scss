@@ -3,12 +3,12 @@
   height: 100%;
   display: flex;
   cursor: pointer;
+  font-size: 22px;
 
   .productTileContainer {
     position: relative;
     background-color: white;
     border: 1px solid black;
-    padding: 10px;
 
     .heartIconContainer {
       display: flex;
@@ -16,6 +16,7 @@
       .heartIcon {
         position: absolute;
         right: 0;
+        top: 15px;
         margin: 0px 10px;
         cursor: pointer;
 
@@ -44,10 +45,16 @@
       display: block;
     }
 
+    .priceContainer {
+      display: flex;
+      justify-content: end;
+      width: 100%;
+    }
+
     .brandContainer {
       width: 100%;
       border-top: 1px solid black;
-      margin-top: 5px;
+      margin-top: 25px;
       padding-bottom: 5px;
       .brandTag {
         text-align: center;

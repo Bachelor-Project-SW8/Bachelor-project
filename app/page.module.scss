@@ -59,71 +59,88 @@
 .productTileGrid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(160px, 1fr)
+  ); /* Default grid with auto-fit and minmax */
+  gap: 10px; /* Default gap */
   height: fit-content;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  /* Ensure no overflow */
+  overflow: hidden;
 
   .productTile {
-    width: 180px;
-    height: 325px;
-
-    @media (min-width: 1140px) {
-      width: 360px;
-      height: 650px;
-    }
+    width: 100%; /* The tile fully spans its grid cell */
+    height: auto;
+    aspect-ratio: 9 / 16; /* Maintains the tile's aspect ratio */
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Center-align content */
+    align-items: center;
+    box-sizing: border-box;
   }
 
   .widgetContainer {
     display: flex;
     cursor: pointer;
-  }
 
-  
-
-  @media (min-width: 700px) {
-    &.productTileGrid {
-      grid-template-columns: repeat(3, 1fr); /* 3 columns for width >= 650px */
-      justify-items: center;
+    .regularWidget {
+      width: unset;
+      height: unset;
+      font-size: 22px;
     }
   }
 
-  @media (min-width: 940px) {
-    &.productTileGrid {
-      grid-template-columns: repeat(4, 1fr); /* 3 columns for width >= 650px */
-      justify-items: center;
-    }
+  /* Adjust layout for medium screens (mobile to tablet range) */
+  @media (min-width: 530px) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    ); /* Tiles grow to fit 180px */
   }
 
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* Increase tiles to fit 200px */
+  }
+
+  /* For larger screens (tablet and low desktop range) */
   @media (min-width: 1024px) {
-    &.productTileGrid {
-      grid-template-columns: repeat(3, 1fr); /* 3 columns for width >= 650px */
-      justify-items: center;
-    }
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(250px, 1fr)
+    ); /* Bigger tiles for 1024px and above */
+    padding: 0 20px; /* Increase padding on the sides to prevent overflow */
   }
 
-  @media (min-width: 1140px) {
-    &.productTileGrid {
-      grid-template-columns: repeat(2, 1fr); /* 3 columns for width >= 650px */
-      justify-items: center;
-    }
+  /* For large screens (desktop) */
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    ); /* Even bigger tiles for large desktops */
   }
 
-  @media (min-width: 1530px) {
-    &.productTileGrid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  /* For extra large screens (large desktop / wide monitors) */
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(320px, 1fr)
+    ); /* More spacious tiles on bigger screens */
   }
 
-  @media (min-width: 1890px) {
-    &.productTileGrid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  @media (min-width: 2280px) {
-    &.productTileGrid {
-      grid-template-columns: repeat(5, 1fr);
-    }
+  /* For super wide screens (2000px and beyond) */
+  @media (min-width: 2000px) {
+    grid-template-columns: repeat(
+      5,
+      minmax(320px, 1fr)
+    ); /* Force 5 products across the row */
+    gap: 20px; /* Increase gap on large screens for visual balance */
   }
 }
 
@@ -246,16 +263,21 @@
 }
 
 .widgetCarouselContainer {
-  // width: 430px;
+  width: 100%; /* Ensure the container spans the full width available */
   background-color: grey;
-  grid-column: span 2;
+  grid-column: span 2; /* Makes sure the carousel spans 2 columns */
   display: flex;
 
-  @media (min-width: 430px) {
-    width: 410px;
+  > ul {
+    padding: 10px 10px 10px 10px;
   }
 
-  > ul {
-    gap: 10px;
+  > button {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%); /* Centers the buttons vertically */
+    border-radius: 50%; /* Rounded buttons */
+    padding: 10px;
+    z-index: 10;
   }
 }

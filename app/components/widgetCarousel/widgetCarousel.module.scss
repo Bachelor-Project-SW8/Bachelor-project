@@ -1,0 +1,35 @@
+.carouselContainer {
+  grid-column: span 2;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+
+  .widgetCarouselHeader {
+    font-size: 30px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .widgetCarouselContainer {
+    width: 100%; /* Ensure the container spans the full width available */
+    background-color: grey;
+    grid-column: span 2; /* Makes sure the carousel spans 2 columns */
+    display: flex;
+    margin-top: auto;
+    cursor: pointer;
+
+    > ul {
+      padding: 10px 10px 10px 10px;
+    }
+
+    > button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%); /* Centers the buttons vertically */
+      border-radius: 50%; /* Rounded buttons */
+      padding: 10px;
+      z-index: 10;
+    }
+  }
+}
