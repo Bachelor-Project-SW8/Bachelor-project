@@ -31,6 +31,7 @@ import Silver from "../../../images/filterbarImages/SilverBracelets.png";
 import Steel from "../../../images/filterbarImages/SteelBracelets.png";
 import Wide from "../../../images/filterbarImages/WideBracelets.png";
 import Image from "next/image";
+import { WidgetCarousel } from "@/app/components/widgetCarousel/widgetCarousel";
 
 const braceletTypes = [
   { name: "Anchor Bracelets", src: Anchor },
@@ -306,13 +307,13 @@ const Bracelets = () => {
                 </div>
 
                 {/* Widget at every 20th index */}
-                {index % 20 === 19 && (
+                {index % 19 === 18 && (
                   <div
                     key={`widget-${index}`}
                     className={styles.widgetContainer}
                   >
                     <Widget
-                      key={`widget-${index}`}
+                      key={categories[index % categories.length].CategoryID}
                       picture={
                         categories[index % categories.length].CategoryPicture
                       }
@@ -328,6 +329,18 @@ const Bracelets = () => {
                       }}
                     />
                   </div>
+                )}
+                {index % 50 === 49 && (
+                  <WidgetCarousel className={styles.widgetCarouselContainer}>
+                    {categories.map((category) => (
+                      <Widget
+                        key={category.CategoryID}
+                        picture={category.CategoryPicture}
+                        text={category.CategoryName}
+                        seeAll="See All"
+                      />
+                    ))}
+                  </WidgetCarousel>
                 )}
               </>
             )
