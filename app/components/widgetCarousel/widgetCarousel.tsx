@@ -20,11 +20,11 @@ export function WidgetCarousel({ children, className }: ProductCarouselProps) {
       items: 2,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 600 },
+      breakpoint: { max: 1024, min: 650 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 600, min: 0 },
+      breakpoint: { max: 650, min: 0 },
       items: 2,
     },
   };
