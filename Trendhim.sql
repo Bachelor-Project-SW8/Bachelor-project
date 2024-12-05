@@ -75,6 +75,14 @@
 
 -- SELECT DISTINCT Brand FROM Product;
 
+-- SELECT * from ProductCategory;
+
+-- UPDATE Category SET CategoryName = 'Steel' WHERE CategoryName ='Stainless Steel';
+-- INSERT INTO Category (CategoryName, CategoryPicture)
+-- VALUES 
+-- ("Braided","https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt3b01966b2c943c97/60dbe2e696e07e0f6e54f357/10508_bracelet.jpg?format=pjpg&auto=webp&quality=75%2C90&width=1920"),
+-- ("With attachment","https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt9d4b76155cf54762/60dbc13d63584e0ecae47cef/jwm-megashoot-brace-2-11162.jpg?format=pjpg&auto=webp&quality=75%2C90&width=640"),
+-- ("Cuff","https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/blt20d888cd831967dd/60dc280c0bc1b20fa6bb30df/Silvfc6293c07c63b1d5f3fe315de55e1731_2.jpg?format=pjpg&auto=webp&quality=75%2C90&width=640");
 
 -- Insert colors (tilføjer nogle farver, som produkter kan bruge)
 -- INSERT INTO Color (ColorName)
@@ -84,6 +92,34 @@
 --   ('Gold'),
 --   ('Blue'),
 --   ('Red');
+
+-- Remove previous CategoryID 5 associations
+DELETE FROM productCategory
+WHERE CategoryID = 5 AND ProductID IN (
+    SELECT ProductID
+    FROM ProductCategory
+    WHERE CategoryID = 5 AND ProductID IN (
+        -- Previously added ProductIDs for CategoryID 5 (e.g., those containing "attachment")
+        1, 2, 3, 4, 5 -- Add actual ProductIDs here
+    )
+);
+
+-- Add new CategoryID 5 associations based on product name containing "Cross" or "Anchor"
+INSERT INTO productCategory (ProductID, CategoryID)
+SELECT ProductID, 5
+FROM Product
+WHERE LOWER(ProductName) LIKE '%cross%'
+   OR LOWER(ProductName) LIKE '%anchor%';
+
+-- Add new CategoryID 6 associations based on product name containing "Bangle" or "Cuff"
+INSERT INTO productCategory (ProductID, CategoryID)
+SELECT ProductID, 6
+FROM product
+WHERE LOWER(ProductName) LIKE '%bangle%'
+   OR LOWER(ProductName) LIKE '%cuff%';
+
+
+
 
 -- Insert product-category relations (mange-til-mange forhold mellem produkter og kategorier)
 -- INSERT INTO ProductCategory (ProductID, CategoryID)
@@ -724,439 +760,439 @@
 
 
 --Delete existing entries for ProductID 1 to 196
-DELETE FROM ProductCategory WHERE ProductID BETWEEN 1 AND 196;
+-- DELETE FROM ProductCategory WHERE ProductID BETWEEN 1 AND 196;
 
--- ProductID 1
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (1, 3);  -- Beaded
--- ProductID 2
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (2, 3);  -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (2, 2);  -- Leather
--- ProductID 3
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (3, 2);  -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (3, 1);  -- Steel
--- ProductID 4
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (4, 3);  -- Beaded
--- ProductID 5
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (5, 1);  -- Steel
--- ProductID 6
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (6, 3);  -- Beaded
--- ProductID 7
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (7, 1);  -- Steel
--- ProductID 8
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (8, 2);  -- Leather
--- ProductID 9
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (9, 2);  -- Leather
--- ProductID 10
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (10, 3); -- Beaded
--- ProductID 11
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (11, 3); -- Beaded
--- ProductID 12
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (12, 2); -- Leather
--- ProductID 13
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (13, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (13, 1); -- Steel
--- ProductID 14
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (14, 2); -- Leather
--- ProductID 15
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (15, 2); -- Leather
--- ProductID 16
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (16, 2); -- leather
--- ProductID 17
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (17, 1); -- Steel
--- ProductID 18
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (18, 1); -- Steel
--- ProductID 19
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (19, 3); -- Beaded
--- ProductID 20
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (20, 1); -- Steel
--- ProductID 21
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (21, 1); -- Steel
--- ProductID 22
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (22, 2); -- leather
--- ProductID 23
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (23, 2); -- Leather
--- ProductID 24
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (24, 2); -- Leather
--- ProductID 25
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (25, 2); -- Leather
--- ProductID 26
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (26, 3); -- Beaded
--- ProductID 27
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (27, 3); -- Beaded
--- ProductID 28
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (28, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (28, 2); -- leather
--- ProductID 29
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (29, 3); -- Beaded
--- ProductID 30
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (30, 1); -- steel
--- ProductID 31
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (31, 3); -- Beaded
--- ProductID 32
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (32, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (32, 2); -- leather
--- ProductID 33
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (33, 1); -- Steel
--- ProductID 34
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (34, 2); -- leather
--- ProductID 35
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (35, 2); -- leather
--- ProductID 36
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (36, 3); -- beaded
--- ProductID 37
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (37, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (37, 3); -- beaded
--- ProductID 38
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (38, 3); -- beaded
--- ProductID 39
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (39, 3); -- Beaded
--- ProductID 40
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (40, 2); -- Leather
--- ProductID 41
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (41, 3); -- Beaded
--- ProductID 42
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (42, 3); -- Beaded
--- ProductID 43
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (43, 3); -- Beaded
--- ProductID 44
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (44, 2); -- Leather
--- ProductID 45
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (45, 2); -- leather
--- ProductID 46
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (46, 3); -- Beaded
--- ProductID 47
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (47, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (47, 2); -- Leather
--- ProductID 48
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (48, 2); -- Leather
--- ProductID 49
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (49, 2); -- Leather
--- ProductID 50
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (50, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (50, 2); -- leather
--- ProductID 51
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (51, 2); -- Leather
--- ProductID 52
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (52, 3); -- beaded
--- ProductID 53
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (53, 2); -- leather
--- ProductID 54
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (54, 3); -- Beaded
--- ProductID 55
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (55, 2); -- Leather
--- ProductID 56
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (56, 3); -- Beaded
--- ProductID 57
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (57, 3); -- Beaded
--- ProductID 58
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (58, 3); -- Beaded
--- ProductID 59
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (59, 1); -- steel
--- ProductID 60
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (60, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (60, 3); -- Beaded
--- ProductID 61
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (61, 1); -- Steel
--- ProductID 62
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (62, 1); -- Steel
--- ProductID 63
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (63, 3); -- Beaded
--- ProductID 64
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (64, 2); -- Leather
--- ProductID 65
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (65, 1); -- Steel
--- ProductID 66
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (66, 1); -- Steel
--- ProductID 67
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (67, 3); -- Beaded
--- ProductID 68
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (68, 2); -- Leather
--- ProductID 69
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (69, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (69, 3); -- Beaded
--- ProductID 70
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (70, 3); -- Beaded
--- ProductID 71
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (71, 2); -- Leather
--- ProductID 72
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (72, 3); -- Beaded
--- ProductID 73
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (73, 3); -- Beaded
--- ProductID 74
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (74, 2); -- leather
--- ProductID 75
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (75, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (75, 1); -- steel
--- ProductID 76
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (76, 2); -- leather
--- ProductID 77
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (77, 3); -- Beaded
--- ProductID 78
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (78, 3); -- Beaded
--- ProductID 79
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (79, 3); -- Beaded
--- ProductID 80
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (80, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (80, 3); -- beaded
--- ProductID 81
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (81, 1); -- Steel
--- ProductID 82
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (82, 1); -- Steel
--- ProductID 83
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (83, 1); -- steel
--- ProductID 84
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (84, 3); -- Beaded
--- ProductID 85
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (85, 3); -- Beaded
--- ProductID 86
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (86, 3); -- Beaded
--- ProductID 87
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (87, 2); -- Leather
--- ProductID 88
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (88, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (88, 2); -- leather
--- ProductID 89
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (89, 3); -- Beaded
--- ProductID 90
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (90, 1); -- Steel
--- ProductID 91
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (91, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (91, 3); -- beaded
--- ProductID 92
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (92, 3); -- Beaded
--- ProductID 93
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (93, 3); -- Beaded
--- ProductID 94
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (94, 2); -- Leather
--- ProductID 95
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (95, 2); -- Leather
--- ProductID 96
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (96, 2); -- leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (96, 3); -- Beaded
--- ProductID 97
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (97, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (97, 3); -- Beaded
--- ProductID 98
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (98, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (98, 3); -- Beaded
--- ProductID 99
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (99, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (99, 3); -- Beaded
--- ProductID 100
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (100, 1); -- Steel
--- ProductID 101
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (101, 1); -- Steel
--- ProductID 102
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (102, 1); -- Steel
--- ProductID 103
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (103, 1); -- Steel
--- ProductID 104
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (104, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (104, 2); -- Leather
--- ProductID 105
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (105, 1); -- Steel
--- ProductID 106
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (106, 1); -- Steel
--- ProductID 107
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (107, 2); -- Leather
--- ProductID 108
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (108, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (108, 2); -- Leather
--- ProductID 109
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (109, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (109, 2); -- Leather
--- ProductID 110
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (110, 2); -- Leather
--- ProductID 111
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (111, 3); -- Beaded
--- ProductID 112
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (112, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (112, 2); -- Leather
--- ProductID 113
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (113, 1); -- Steel
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (113, 2); -- Leather
--- ProductID 114
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (114, 2); -- Leather
--- ProductID 115
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (115, 2); -- Leather
--- ProductID 116
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (116, 2); -- Leather
--- ProductID 117
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (117, 2); -- Leather
--- ProductID 118
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (118, 1); -- Steel
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (118, 2); -- Leather
--- ProductID 119
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (119, 1); -- Steel
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (119, 2); -- Leather
--- ProductID 120
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (120, 2); -- Leather
--- ProductID 121
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (121, 2); -- Leather
--- ProductID 122
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (122, 2); -- Leather
--- ProductID 123
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (123, 1); -- Steel
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (123, 2); -- Leather
--- ProductID 124
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (124, 1); -- Steel
--- ProductID 125
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (125, 1); -- Steel
--- ProductID 126
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (126, 1); -- Steel
--- ProductID 127
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (127, 1); -- steel
--- ProductID 128
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (128, 2); -- leather
--- ProductID 129
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (129, 3); -- beaded
--- ProductID 130
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (130, 1); -- steel
--- ProductID 131
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (131, 3); -- Beaded
--- ProductID 132
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (132, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (132, 3); -- Beaded
--- ProductID 133
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (133, 3); -- Beaded
--- ProductID 134
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (134, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (134, 3); -- Beaded
--- ProductID 135
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (135, 1); -- steel
--- ProductID 136
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (136, 3); -- beaded
--- ProductID 137
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (137, 3); -- Beaded
--- ProductID 138
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (138, 3); -- Beaded
--- ProductID 139
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (139, 3); -- Beaded
--- ProductID 140
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (140, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (140, 2); -- Leather
--- ProductID 141
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (141, 3); -- Beaded
--- ProductID 142
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (142, 3); -- Beaded
--- ProductID 143
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (143, 2); -- leather
--- ProductID 144
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (144, 2); -- leather
--- ProductID 145
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (145, 1); -- steel
--- ProductID 146
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (146, 3); -- Beaded
--- ProductID 147
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (147, 3); -- Beaded
--- ProductID 148
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (148, 3); -- Beaded
--- ProductID 149
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (149, 3); -- Beaded
--- ProductID 150
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (150, 3); -- Beaded
--- ProductID 151
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (151, 2); -- Leather
--- ProductID 152
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (152, 1); -- Steel
--- ProductID 153
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (153, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (153, 2); -- Leather
--- ProductID 154
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (154, 2); -- Leather
--- ProductID 155
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (155, 2); -- leather
--- ProductID 156
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (156, 2); -- Leather
--- ProductID 157
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (157, 1); -- steel
--- ProductID 158
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (158, 2); -- Leather
--- ProductID 159
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (159, 2); -- Leather
--- ProductID 160
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (160, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (160, 3); -- Beaded
--- ProductID 161
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (161, 1); -- Steel
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (161, 3); -- Beaded
--- ProductID 162
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (162, 3); -- Beaded
--- ProductID 163
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (163, 1); -- Steel
--- ProductID 164
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (164, 3); -- beaded
--- ProductID 165
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (165, 1); -- Steel
--- ProductID 166
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (166, 1); -- Steel
--- ProductID 167
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (167, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (167, 3); -- beaded
--- ProductID 168
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (168, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (168, 3); -- beaded
--- ProductID 169
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (169, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (169, 3); -- beaded
--- ProductID 170
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (170, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (170, 3); -- beaded
--- ProductID 171
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (171, 3); -- Beaded
--- ProductID 172
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (172, 3); -- Beaded
--- ProductID 173
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (173, 3); -- Beaded
--- ProductID 174
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (174, 3); -- Beaded
--- ProductID 175
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (175, 1); -- Steel
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (175, 2); -- leather
--- ProductID 176
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (176, 1); -- steel
--- ProductID 177
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (177, 3); -- Beaded
--- ProductID 178
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (178, 1); -- Steel
--- ProductID 179
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (179, 1); -- Steel
--- ProductID 180
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (180, 2); -- Leather
--- ProductID 181
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (181, 1); -- Steel
--- ProductID 182
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (182, 1); -- Steel
--- ProductID 183
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (183, 1); -- steel
--- ProductID 184
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (184, 1); -- Steel
--- ProductID 185
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (185, 1); -- steel
--- ProductID 186
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (186, 1); -- Steel
--- ProductID 187
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (187, 1); -- Steel
--- ProductID 188
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (188, 2); -- Leather
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (188, 1); -- Steel
--- ProductID 189
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (189, 2); -- Leather
--- ProductID 190
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (190, 3); -- Beaded
--- ProductID 191
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (191, 3); -- Beaded
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (191, 1); -- Steel
--- ProductID 192
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (192, 3); -- Beaded
--- ProductID 193
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (193, 3); -- Beaded
--- ProductID 194
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (194, 3); -- Beaded
--- ProductID 195
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (195, 1); -- Steel
--- ProductID 196
-INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (196, 2); -- Leather
+-- -- ProductID 1
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (1, 3);  -- Beaded
+-- -- ProductID 2
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (2, 3);  -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (2, 2);  -- Leather
+-- -- ProductID 3
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (3, 2);  -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (3, 1);  -- Steel
+-- -- ProductID 4
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (4, 3);  -- Beaded
+-- -- ProductID 5
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (5, 1);  -- Steel
+-- -- ProductID 6
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (6, 3);  -- Beaded
+-- -- ProductID 7
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (7, 1);  -- Steel
+-- -- ProductID 8
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (8, 2);  -- Leather
+-- -- ProductID 9
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (9, 2);  -- Leather
+-- -- ProductID 10
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (10, 3); -- Beaded
+-- -- ProductID 11
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (11, 3); -- Beaded
+-- -- ProductID 12
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (12, 2); -- Leather
+-- -- ProductID 13
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (13, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (13, 1); -- Steel
+-- -- ProductID 14
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (14, 2); -- Leather
+-- -- ProductID 15
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (15, 2); -- Leather
+-- -- ProductID 16
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (16, 2); -- leather
+-- -- ProductID 17
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (17, 1); -- Steel
+-- -- ProductID 18
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (18, 1); -- Steel
+-- -- ProductID 19
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (19, 3); -- Beaded
+-- -- ProductID 20
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (20, 1); -- Steel
+-- -- ProductID 21
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (21, 1); -- Steel
+-- -- ProductID 22
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (22, 2); -- leather
+-- -- ProductID 23
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (23, 2); -- Leather
+-- -- ProductID 24
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (24, 2); -- Leather
+-- -- ProductID 25
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (25, 2); -- Leather
+-- -- ProductID 26
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (26, 3); -- Beaded
+-- -- ProductID 27
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (27, 3); -- Beaded
+-- -- ProductID 28
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (28, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (28, 2); -- leather
+-- -- ProductID 29
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (29, 3); -- Beaded
+-- -- ProductID 30
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (30, 1); -- steel
+-- -- ProductID 31
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (31, 3); -- Beaded
+-- -- ProductID 32
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (32, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (32, 2); -- leather
+-- -- ProductID 33
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (33, 1); -- Steel
+-- -- ProductID 34
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (34, 2); -- leather
+-- -- ProductID 35
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (35, 2); -- leather
+-- -- ProductID 36
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (36, 3); -- beaded
+-- -- ProductID 37
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (37, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (37, 3); -- beaded
+-- -- ProductID 38
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (38, 3); -- beaded
+-- -- ProductID 39
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (39, 3); -- Beaded
+-- -- ProductID 40
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (40, 2); -- Leather
+-- -- ProductID 41
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (41, 3); -- Beaded
+-- -- ProductID 42
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (42, 3); -- Beaded
+-- -- ProductID 43
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (43, 3); -- Beaded
+-- -- ProductID 44
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (44, 2); -- Leather
+-- -- ProductID 45
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (45, 2); -- leather
+-- -- ProductID 46
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (46, 3); -- Beaded
+-- -- ProductID 47
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (47, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (47, 2); -- Leather
+-- -- ProductID 48
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (48, 2); -- Leather
+-- -- ProductID 49
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (49, 2); -- Leather
+-- -- ProductID 50
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (50, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (50, 2); -- leather
+-- -- ProductID 51
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (51, 2); -- Leather
+-- -- ProductID 52
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (52, 3); -- beaded
+-- -- ProductID 53
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (53, 2); -- leather
+-- -- ProductID 54
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (54, 3); -- Beaded
+-- -- ProductID 55
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (55, 2); -- Leather
+-- -- ProductID 56
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (56, 3); -- Beaded
+-- -- ProductID 57
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (57, 3); -- Beaded
+-- -- ProductID 58
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (58, 3); -- Beaded
+-- -- ProductID 59
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (59, 1); -- steel
+-- -- ProductID 60
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (60, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (60, 3); -- Beaded
+-- -- ProductID 61
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (61, 1); -- Steel
+-- -- ProductID 62
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (62, 1); -- Steel
+-- -- ProductID 63
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (63, 3); -- Beaded
+-- -- ProductID 64
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (64, 2); -- Leather
+-- -- ProductID 65
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (65, 1); -- Steel
+-- -- ProductID 66
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (66, 1); -- Steel
+-- -- ProductID 67
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (67, 3); -- Beaded
+-- -- ProductID 68
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (68, 2); -- Leather
+-- -- ProductID 69
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (69, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (69, 3); -- Beaded
+-- -- ProductID 70
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (70, 3); -- Beaded
+-- -- ProductID 71
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (71, 2); -- Leather
+-- -- ProductID 72
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (72, 3); -- Beaded
+-- -- ProductID 73
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (73, 3); -- Beaded
+-- -- ProductID 74
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (74, 2); -- leather
+-- -- ProductID 75
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (75, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (75, 1); -- steel
+-- -- ProductID 76
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (76, 2); -- leather
+-- -- ProductID 77
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (77, 3); -- Beaded
+-- -- ProductID 78
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (78, 3); -- Beaded
+-- -- ProductID 79
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (79, 3); -- Beaded
+-- -- ProductID 80
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (80, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (80, 3); -- beaded
+-- -- ProductID 81
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (81, 1); -- Steel
+-- -- ProductID 82
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (82, 1); -- Steel
+-- -- ProductID 83
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (83, 1); -- steel
+-- -- ProductID 84
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (84, 3); -- Beaded
+-- -- ProductID 85
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (85, 3); -- Beaded
+-- -- ProductID 86
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (86, 3); -- Beaded
+-- -- ProductID 87
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (87, 2); -- Leather
+-- -- ProductID 88
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (88, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (88, 2); -- leather
+-- -- ProductID 89
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (89, 3); -- Beaded
+-- -- ProductID 90
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (90, 1); -- Steel
+-- -- ProductID 91
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (91, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (91, 3); -- beaded
+-- -- ProductID 92
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (92, 3); -- Beaded
+-- -- ProductID 93
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (93, 3); -- Beaded
+-- -- ProductID 94
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (94, 2); -- Leather
+-- -- ProductID 95
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (95, 2); -- Leather
+-- -- ProductID 96
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (96, 2); -- leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (96, 3); -- Beaded
+-- -- ProductID 97
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (97, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (97, 3); -- Beaded
+-- -- ProductID 98
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (98, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (98, 3); -- Beaded
+-- -- ProductID 99
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (99, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (99, 3); -- Beaded
+-- -- ProductID 100
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (100, 1); -- Steel
+-- -- ProductID 101
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (101, 1); -- Steel
+-- -- ProductID 102
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (102, 1); -- Steel
+-- -- ProductID 103
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (103, 1); -- Steel
+-- -- ProductID 104
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (104, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (104, 2); -- Leather
+-- -- ProductID 105
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (105, 1); -- Steel
+-- -- ProductID 106
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (106, 1); -- Steel
+-- -- ProductID 107
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (107, 2); -- Leather
+-- -- ProductID 108
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (108, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (108, 2); -- Leather
+-- -- ProductID 109
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (109, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (109, 2); -- Leather
+-- -- ProductID 110
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (110, 2); -- Leather
+-- -- ProductID 111
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (111, 3); -- Beaded
+-- -- ProductID 112
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (112, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (112, 2); -- Leather
+-- -- ProductID 113
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (113, 1); -- Steel
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (113, 2); -- Leather
+-- -- ProductID 114
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (114, 2); -- Leather
+-- -- ProductID 115
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (115, 2); -- Leather
+-- -- ProductID 116
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (116, 2); -- Leather
+-- -- ProductID 117
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (117, 2); -- Leather
+-- -- ProductID 118
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (118, 1); -- Steel
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (118, 2); -- Leather
+-- -- ProductID 119
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (119, 1); -- Steel
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (119, 2); -- Leather
+-- -- ProductID 120
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (120, 2); -- Leather
+-- -- ProductID 121
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (121, 2); -- Leather
+-- -- ProductID 122
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (122, 2); -- Leather
+-- -- ProductID 123
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (123, 1); -- Steel
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (123, 2); -- Leather
+-- -- ProductID 124
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (124, 1); -- Steel
+-- -- ProductID 125
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (125, 1); -- Steel
+-- -- ProductID 126
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (126, 1); -- Steel
+-- -- ProductID 127
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (127, 1); -- steel
+-- -- ProductID 128
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (128, 2); -- leather
+-- -- ProductID 129
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (129, 3); -- beaded
+-- -- ProductID 130
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (130, 1); -- steel
+-- -- ProductID 131
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (131, 3); -- Beaded
+-- -- ProductID 132
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (132, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (132, 3); -- Beaded
+-- -- ProductID 133
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (133, 3); -- Beaded
+-- -- ProductID 134
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (134, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (134, 3); -- Beaded
+-- -- ProductID 135
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (135, 1); -- steel
+-- -- ProductID 136
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (136, 3); -- beaded
+-- -- ProductID 137
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (137, 3); -- Beaded
+-- -- ProductID 138
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (138, 3); -- Beaded
+-- -- ProductID 139
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (139, 3); -- Beaded
+-- -- ProductID 140
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (140, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (140, 2); -- Leather
+-- -- ProductID 141
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (141, 3); -- Beaded
+-- -- ProductID 142
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (142, 3); -- Beaded
+-- -- ProductID 143
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (143, 2); -- leather
+-- -- ProductID 144
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (144, 2); -- leather
+-- -- ProductID 145
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (145, 1); -- steel
+-- -- ProductID 146
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (146, 3); -- Beaded
+-- -- ProductID 147
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (147, 3); -- Beaded
+-- -- ProductID 148
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (148, 3); -- Beaded
+-- -- ProductID 149
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (149, 3); -- Beaded
+-- -- ProductID 150
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (150, 3); -- Beaded
+-- -- ProductID 151
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (151, 2); -- Leather
+-- -- ProductID 152
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (152, 1); -- Steel
+-- -- ProductID 153
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (153, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (153, 2); -- Leather
+-- -- ProductID 154
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (154, 2); -- Leather
+-- -- ProductID 155
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (155, 2); -- leather
+-- -- ProductID 156
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (156, 2); -- Leather
+-- -- ProductID 157
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (157, 1); -- steel
+-- -- ProductID 158
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (158, 2); -- Leather
+-- -- ProductID 159
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (159, 2); -- Leather
+-- -- ProductID 160
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (160, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (160, 3); -- Beaded
+-- -- ProductID 161
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (161, 1); -- Steel
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (161, 3); -- Beaded
+-- -- ProductID 162
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (162, 3); -- Beaded
+-- -- ProductID 163
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (163, 1); -- Steel
+-- -- ProductID 164
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (164, 3); -- beaded
+-- -- ProductID 165
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (165, 1); -- Steel
+-- -- ProductID 166
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (166, 1); -- Steel
+-- -- ProductID 167
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (167, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (167, 3); -- beaded
+-- -- ProductID 168
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (168, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (168, 3); -- beaded
+-- -- ProductID 169
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (169, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (169, 3); -- beaded
+-- -- ProductID 170
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (170, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (170, 3); -- beaded
+-- -- ProductID 171
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (171, 3); -- Beaded
+-- -- ProductID 172
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (172, 3); -- Beaded
+-- -- ProductID 173
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (173, 3); -- Beaded
+-- -- ProductID 174
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (174, 3); -- Beaded
+-- -- ProductID 175
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (175, 1); -- Steel
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (175, 2); -- leather
+-- -- ProductID 176
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (176, 1); -- steel
+-- -- ProductID 177
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (177, 3); -- Beaded
+-- -- ProductID 178
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (178, 1); -- Steel
+-- -- ProductID 179
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (179, 1); -- Steel
+-- -- ProductID 180
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (180, 2); -- Leather
+-- -- ProductID 181
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (181, 1); -- Steel
+-- -- ProductID 182
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (182, 1); -- Steel
+-- -- ProductID 183
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (183, 1); -- steel
+-- -- ProductID 184
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (184, 1); -- Steel
+-- -- ProductID 185
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (185, 1); -- steel
+-- -- ProductID 186
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (186, 1); -- Steel
+-- -- ProductID 187
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (187, 1); -- Steel
+-- -- ProductID 188
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (188, 2); -- Leather
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (188, 1); -- Steel
+-- -- ProductID 189
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (189, 2); -- Leather
+-- -- ProductID 190
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (190, 3); -- Beaded
+-- -- ProductID 191
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (191, 3); -- Beaded
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (191, 1); -- Steel
+-- -- ProductID 192
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (192, 3); -- Beaded
+-- -- ProductID 193
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (193, 3); -- Beaded
+-- -- ProductID 194
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (194, 3); -- Beaded
+-- -- ProductID 195
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (195, 1); -- Steel
+-- -- ProductID 196
+-- INSERT INTO ProductCategory (ProductID, CategoryID) VALUES (196, 2); -- Leather
 
 -- -- Drop the existing ProductColor table
 -- DROP TABLE IF EXISTS ProductColor;
