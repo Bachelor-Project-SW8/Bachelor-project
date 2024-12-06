@@ -271,23 +271,3 @@
     text-decoration: underline;
   }
 }
-
-.widgetCarouselContainer {
-  width: 100%; /* Ensure the container spans the full width available */
-  background-color: grey;
-  grid-column: span 2; /* Makes sure the carousel spans 2 columns */
-  display: flex;
-
-  > ul {
-    padding: 10px 10px 10px 10px;
-  }
-
-  > button {
-    position: absolute;
-    top: 70%;
-    transform: translateY(-50%); /* Centers the buttons vertically */
-    border-radius: 50%; /* Rounded buttons */
-    padding: 10px;
-    z-index: 10;
-  }
-}
