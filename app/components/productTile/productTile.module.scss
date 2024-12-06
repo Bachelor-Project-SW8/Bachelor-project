@@ -3,7 +3,10 @@
   height: 100%;
   display: flex;
   cursor: pointer;
-  font-size: 22px;
+
+  @media (min-width: 1200px) {
+    font-size: 22px;
+  }
 
   .productTileContainer {
     position: relative;
