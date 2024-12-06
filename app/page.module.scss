@@ -6,32 +6,48 @@
   font-weight: 300; /* Light weight */
 }
 
-/* Wrapper for hele layoutet */
-.screengrid {
-  .topFilterBar {
-    background-color: var(--white);
-    margin: 30px 0px 30px 30px;
-    gap: 10px;
-    .filterBarContent {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 150px;
-      text-align: center;
-      cursor: pointer;
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-      &:hover {
-        text-decoration: underline;
-      }
+  .carousel {
+    max-width: fit-content;
+    width: 100%;
+    height: 740px;
+    margin: 5px auto;
+  }
 
-      .topFilterPictures {
-        margin-bottom: 20px;
-      }
+  .allJewelryHeader {
+    margin: 40px 0 20px 0;
+    line-height: 1.2;
+    font-size: 2rem;
+  }
+}
 
-      p {
-        margin: 0 auto;
-      }
+.topFilterBar {
+  background-color: var(--white);
+  margin: 30px 0px 30px 30px;
+  gap: 10px;
+  .filterBarContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .topFilterPictures {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 0 auto;
     }
   }
 }
@@ -39,14 +55,6 @@
 .container {
   margin: auto;
   background-color: var(--white);
-}
-
-/* Carousel styling */
-.carousel {
-  max-width: 1200px;
-  width: 100%;
-  height: 500px;
-  margin: 10px auto;
 }
 
 /* Styling for widget picture */
@@ -218,6 +226,7 @@
     border-top: 1px solid lightgray;
     height: inherit;
     box-sizing: border-box;
+    margin-left: 12px;
   }
 
   .dropdown {
