@@ -1,0 +1,32 @@
+.categoryCarouselContainer {
+  width: 60%;
+  display: flex;
+  margin-top: auto;
+  cursor: pointer;
+
+  > ul {
+    > li {
+      overflow: hidden;
+      > img {
+        width: 410px;
+        height: 600px;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+
+      > a > img {
+        width: 410px;
+        height: 600px;
+        box-sizing: border-box;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
