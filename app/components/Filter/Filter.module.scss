@@ -53,6 +53,21 @@
   display: flex; /* Use flexbox for the layout */
   flex-direction: column; /* Stack elements vertically */
   height: 94%;
+
+  .filterProductsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .clearFilterButton {
+      padding: 10px;
+      background-color: #4d4d4d;
+      cursor: pointer;
+      border-radius: 6px;
+      color: white;
+    }
+  }
 }
 
 .generalFilterStyling {
@@ -102,7 +117,7 @@
 }
 
 .showResultsButton {
-  background-color: #333; /* Dark grey background */
+  background-color: #4d4d4d; /* Dark grey background */
   color: white; /* White text color */
   width: 100%; /* Full width */
   padding: 1rem; /* Add padding for better spacing */
@@ -110,8 +125,4 @@
   cursor: pointer; /* Pointer on hover */
   box-sizing: border-box;
   margin-top: auto;
-}
-
-.showResultsButton:hover {
-  background-color: #444; /* Slightly lighter grey on hover */
 }

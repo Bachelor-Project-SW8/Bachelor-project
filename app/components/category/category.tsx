@@ -45,7 +45,14 @@ export const CategoryBar = ({
               <h3>Categories</h3>
               <ul className={styles.sidePanelLinks}>
                 {categories.map((category) => (
-                  <Link key={category.name} href={category.path}>
+                  <Link
+                    onClick={() => {
+                      const closeButton = document.getElementById("menu-sidepanel-trigger");
+                      if (closeButton) {
+                        closeButton.click();
+                      }
+                    }}
+                    key={category.name} href={category.path}>
                     <li className={styles.categoryLink}>
                       {category.name}
                       <ChevronRight />

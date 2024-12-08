@@ -18,6 +18,7 @@ type FilterProps = {
   ) => void;
   selectedCategories: number[];
   selectedColors: number[];
+  onClearFilters: () => void;
 };
 
 export const Filter = ({
@@ -29,6 +30,7 @@ export const Filter = ({
   onApplyFilters,
   selectedCategories,
   selectedColors,
+  onClearFilters,
 }: FilterProps) => {
   // Handle category checkbox change
   const handleCategoryChange = (categoryID: number) => {
@@ -133,8 +135,12 @@ export const Filter = ({
             SVG={<X />}
           >
             <div className={styles.SidepanelFilterContainer}>
-              <h3>Filter Products</h3>
-
+              <div className={styles.filterProductsContainer}>
+                <h3>Filter Products</h3>
+                {(selectedCategories.length > 0 || selectedColors.length > 0) && (
+                  <div onClick={onClearFilters} className={styles.clearFilterButton}>Clear Filters ({selectedCategories.length + selectedColors.length})</div>
+                )}
+              </div>
               {/* Categories Section */}
               <h4>Categories</h4>
               <ul className={styles.generalFilterStyling}>
