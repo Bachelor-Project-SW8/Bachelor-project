@@ -69,6 +69,11 @@ const ProductPage = () => {
 
   // Filter products based on matching category and color
   const relatedProducts = products.filter((prod) => {
+    // Exclude the current product
+    if (prod.ProductID === product.ProductID) {
+      return false;
+    }
+
     const productCategoriesForProd = productCategories
       .filter((pc) => pc.ProductID === prod.ProductID)
       .map((pc) => categories.find((cat) => cat.CategoryID === pc.CategoryID))
@@ -94,6 +99,7 @@ const ProductPage = () => {
 
     return matchesCategory && matchesColor;
   });
+
 
   return (
     <div className={styles.productPage}>
