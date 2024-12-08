@@ -1,5 +1,4 @@
-/* Import the Dancing Script font from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 .carouselContainer {
   grid-column: span 2;
@@ -15,7 +14,7 @@
   .widgetCarouselHeader {
     font-size: 40px;
     font-weight: bold;
-    font-family: "Dancing Script", cursive;
+    font-family: "Varela Round", sans-serif;
     padding: 10px 10px 10px 10px;
     display: flex;
     justify-content: center;

@@ -12,6 +12,7 @@ import styles from "../products.module.scss";
 import { ProductCarousel } from "@/app/components/productCarousel/productCarousel";
 import { Widget } from "@/app/components/widget/widget";
 import Link from "next/link";
+import { ProductTile } from "@/app/components/productTile/productTile";
 
 const ProductPage = () => {
   const { id } = useParams(); // Get the dynamic product ID from URL
@@ -143,34 +144,36 @@ const ProductPage = () => {
         </div>
       </div>
       <div className={styles.productCarouselContainer}>
-        <h4 className={styles.productCarouselHeader}>Variants</h4>
+        <h4 className={styles.productCarouselHeader}>Related products</h4>
         <ProductCarousel>
           {relatedProducts.map((product) => (
             <Link
+              className={styles.productTileLink}
               key={product.ProductID}
               href={`/category/bracelets/products/${product.ProductID}`}
             >
-              <Widget
-                className={styles.widgetForCarousel}
-                key={product.ProductID}
-                picture={product.ProductPicture}
-              />
+              <ProductTile
+                className={styles.carouselProductTiles}
+                product={product}
+              ></ProductTile>
             </Link>
           ))}
         </ProductCarousel>
       </div>
       <div className={styles.videoContainer}>
         <h2>Product Video</h2>
-        <iframe
-          className={styles.productVideo}
-          width="100%"
-          height="400"
-          src="https://player.vimeo.com/video/870984545?autopause=0&loop=1&quality=auto&app_id=122963"
-          title="Product Video"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <div className={styles.videoFrame}>
+          <iframe
+            className={styles.productVideo}
+            width="100%"
+            height="400"
+            src="https://player.vimeo.com/video/870984545?autopause=0&loop=1&quality=auto&app_id=122963"
+            title="Product Video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       </div>
     </div>
   );
