@@ -171,7 +171,17 @@ const Bracelets = () => {
     setSelectedCategories(newSelectedCategories);
     setSelectedColors(newSelectedColors);
     filterProducts(newSelectedCategories, newSelectedColors, selectedSort);
-    window.scroll({ top: 0, behavior: "smooth" });
+    if (window.scrollY > 400) {
+      window.scroll({ top: 400, behavior: "smooth" });
+    }
+
+  };
+
+  const handleResetFilters = () => {
+    setSelectedCategories([]);
+    setSelectedColors([]);
+
+    filterProducts([], [], selectedSort);
   };
 
   // Update handleSortChange to apply sorting to filtered products
@@ -239,6 +249,9 @@ const Bracelets = () => {
       <div className={styles.infoBar}>
         <div className={styles.filterHeaderContainer}>
           <div className={styles.filterHeader}>Filters</div>
+          {(selectedCategories.length > 0 || selectedColors.length > 0) && (
+            <div onClick={handleResetFilters} className={styles.clearFilterButton}>Clear Filters ({selectedCategories.length + selectedColors.length})</div>
+          )}
         </div>
         <div className={styles.productsHeader}>
           <p>
@@ -278,6 +291,9 @@ const Bracelets = () => {
       </div>
       <div className={styles.productContainer}>
         <div className={styles.filterContainer}>
+          {(selectedCategories.length > 0 || selectedColors.length > 0) && (
+            <div onClick={handleResetFilters} className={styles.clearFilterButtonMobile}>Clear Filters ({selectedCategories.length + selectedColors.length})</div>
+          )}
           <Filter
             className={styles.filterTrigger}
             mobile
@@ -287,6 +303,7 @@ const Bracelets = () => {
             onApplyFilters={handleApplyFilters} // Pass the handler to Filter component
             selectedCategories={selectedCategories} // Pass selected categories
             selectedColors={selectedColors} // Pass selected colors
+            onClearFilters={handleResetFilters}
           />
         </div>
 
