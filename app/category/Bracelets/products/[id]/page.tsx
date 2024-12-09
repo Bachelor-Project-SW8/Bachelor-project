@@ -12,6 +12,7 @@ import styles from "../products.module.scss";
 import { ProductCarousel } from "@/app/components/productCarousel/productCarousel";
 import Link from "next/link";
 import { ProductTile } from "@/app/components/productTile/productTile";
+import { ChevronLeft } from "lucide-react";
 
 const ProductPage = () => {
   const { id } = useParams(); // Get the dynamic product ID from URL
@@ -101,6 +102,10 @@ const ProductPage = () => {
 
   return (
     <div className={styles.productPage}>
+      <Link href={"/category/bracelets"} className={styles.goBackButton}>
+        <ChevronLeft />
+        <span>Go Back</span>
+      </Link>
       <div className={styles.productinfocontainer}>
         <div className={styles.imageContainer}>
           <img src={product.ProductPicture} alt={product.ProductName} />

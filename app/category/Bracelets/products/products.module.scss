@@ -7,6 +7,21 @@
   font-family: Arial, sans-serif;
   flex-direction: column;
 
+  .goBackButton {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    width: fit-content;
+    font-size: 18px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .productinfocontainer {
     display: flex;
     justify-content: space-around;
@@ -84,6 +99,11 @@
       cursor: pointer; // Skift cursoren til en hånd, når man hover
       transition: background-color 0.3s ease; // Smooth overgang ved hover
       width: 300px;
+
+      @media (max-width: 550px) {
+        width: 100%;
+        border-radius: 6px;
+      }
 
       &:hover {
         background-color: #007bff;
