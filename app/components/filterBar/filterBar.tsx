@@ -1,6 +1,3 @@
-import clsx from "clsx";
-import styles from "./filterBar.module.scss";
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ReactNode } from "react";

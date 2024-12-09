@@ -10,11 +10,11 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "esnext", // Uses esnext modules
+    "moduleResolution": "bundler", // Next.js uses bundler-based resolution
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "preserve", // Set to "react-jsx" for React 17+ (or Next.js)
     "incremental": true,
     "plugins": [
       {
@@ -26,7 +26,7 @@
         "./*"
       ]
     },
-    "target": "ES2017"
+    "target": "ES2017" // Using ES2017 for compatibility
   },
   "include": [
     "next-env.d.ts",

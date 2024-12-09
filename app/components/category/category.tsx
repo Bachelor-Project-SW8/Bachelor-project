@@ -8,13 +8,11 @@ import { Sidepanel } from "../sidepanel/sidepanel";
 interface CategoryBarProps {
   mobile?: boolean;
   desktop?: boolean;
-  className?: string;
 }
 
 export const CategoryBar = ({
   mobile,
   desktop,
-  className,
 }: CategoryBarProps) => {
   const categories = [
     //Remeber lowercasing
