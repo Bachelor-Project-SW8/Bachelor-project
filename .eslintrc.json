@@ -1,3 +1,46 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@next/next/no-img-element": "off",  // Disabling Next.js warning for <img> elements
+    "no-unused-vars": "warn",  // Regular JavaScript rule for unused vars
+    "@typescript-eslint/no-unused-vars": [
+      "warn",  // Use "warn" level for unused vars in TypeScript files
+      {
+        "args": "none",  // Ignore unused function arguments
+        "ignoreRestSiblings": true,  // Ignore unused variables in object destructuring
+        "varsIgnorePattern": "^_",  // Ignore variables starting with an underscore (common for unused params)
+        "caughtErrors": "none" // Don't warn about unused `catch` variables
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
+    {
+      "files": ["**/*.tsx"],  // Target only TSX files
+      "rules": {
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "args": "none",  // Don't warn about unused arguments
+            "ignoreRestSiblings": true,
+            "varsIgnorePattern": "selectedCategories|selectedColors",  // Ignore these specific variables
+            "caughtErrors": "none"
+          }
+        ]
+      }
+    }
+  ]
 }
