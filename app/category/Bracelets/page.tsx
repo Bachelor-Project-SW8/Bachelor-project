@@ -174,7 +174,6 @@ const Bracelets = () => {
     if (window.scrollY > 400) {
       window.scroll({ top: 400, behavior: "smooth" });
     }
-
   };
 
   const handleResetFilters = () => {
@@ -182,6 +181,9 @@ const Bracelets = () => {
     setSelectedColors([]);
 
     filterProducts([], [], selectedSort);
+    if (window.scrollY > 400) {
+      window.scroll({ top: 400, behavior: "smooth" });
+    }
   };
 
   // Update handleSortChange to apply sorting to filtered products
@@ -250,7 +252,13 @@ const Bracelets = () => {
         <div className={styles.filterHeaderContainer}>
           <div className={styles.filterHeader}>Filters</div>
           {(selectedCategories.length > 0 || selectedColors.length > 0) && (
-            <div onClick={handleResetFilters} className={styles.clearFilterButton}>Clear Filters ({selectedCategories.length + selectedColors.length})</div>
+            <div
+              onClick={handleResetFilters}
+              className={styles.clearFilterButton}
+            >
+              Clear Filters ({selectedCategories.length + selectedColors.length}
+              )
+            </div>
           )}
         </div>
         <div className={styles.productsHeader}>
@@ -292,7 +300,13 @@ const Bracelets = () => {
       <div className={styles.productContainer}>
         <div className={styles.filterContainer}>
           {(selectedCategories.length > 0 || selectedColors.length > 0) && (
-            <div onClick={handleResetFilters} className={styles.clearFilterButtonMobile}>Clear Filters ({selectedCategories.length + selectedColors.length})</div>
+            <div
+              onClick={handleResetFilters}
+              className={styles.clearFilterButtonMobile}
+            >
+              Clear Filters ({selectedCategories.length + selectedColors.length}
+              )
+            </div>
           )}
           <Filter
             className={styles.filterTrigger}
