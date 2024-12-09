@@ -38,7 +38,7 @@
       transition: background-color scale 100ms ease-in-out;
 
       &:hover {
-        background-color: var(--hoverwhite);
+        background-color: var(--ultraWhite);
         animation: squish 500ms ease-in-out;
       }
     }
@@ -70,7 +70,7 @@
 
       > * {
         stroke: var(--black);
-        fill: var(--hoverwhite);
+        fill: var(--ultraWhite);
         height: 100%;
         width: 100%;
       }

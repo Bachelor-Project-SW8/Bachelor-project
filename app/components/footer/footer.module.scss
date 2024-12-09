@@ -1,6 +1,6 @@
 .footer {
   margin-top: 10px;
-  background-color: rgb(54, 54, 54);
+  background-color: #363636;
 
   .footerPadding {
     padding: 4rem 4rem;
@@ -44,10 +44,10 @@
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
-        color: white;
+        color: var(--ultraWhite);
 
         a {
-          color: lightgray;
+          color: var(--lightGray);
           text-decoration: none;
 
           &:hover {
@@ -71,7 +71,7 @@
     }
 
     hr {
-      color: white;
+      color: var(--ultraWhite);
       width: 100%;
     }
 
@@ -84,7 +84,7 @@
       .footerCopyright p {
         font-size: 13px;
         line-height: 15px;
-        color: white;
+        color: var(--ultraWhite);
         font-weight: 600;
       }
 
@@ -96,7 +96,7 @@
           font-size: 13px;
           line-height: 15px;
           margin-left: 2rem;
-          color: white;
+          color: var(--ultraWhite);
           font-weight: 600;
         }
       }

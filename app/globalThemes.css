@@ -1,9 +1,11 @@
 :root {
-  --blue: #084568;
+  --blue: #264a87;
+  --hoverBlue: #007bff;
   --white: #faf6f0;
-  --hoverwhite: #ffffff;
+  --ultraWhite: #ffffff;
   --black: #000000;
   --orange: #ffa500;
-  --darkGray: #444444;
+  --lightGray: #d3d3d3;
+  --darkGray: #4d4d4d;
   --transparentGray: rgba(210, 208, 208, 0.85);
 }

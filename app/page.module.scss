@@ -1,9 +1,8 @@
-/* Add this at the top of your CSS or SCSS */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 
 .fontOnly {
-  font-family: "Open Sans", sans-serif; /* Applying Open Sans */
-  font-weight: 300; /* Light weight */
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
 }
 
 .homeContainer {
@@ -33,6 +32,7 @@
   background-color: var(--white);
   margin: 30px 0px 30px 30px;
   gap: 10px;
+
   .filterBarContent {
     display: flex;
     flex-direction: column;
@@ -61,7 +61,6 @@
   background-color: var(--white);
 }
 
-/* Styling for widget picture */
 .widgetPicture > img {
   width: 185px;
   height: 325px;
@@ -74,24 +73,23 @@
   grid-template-columns: repeat(
     auto-fit,
     minmax(160px, 1fr)
-  ); /* Default grid with auto-fit and minmax */
-  gap: 10px; /* Default gap */
+  );
+
+  gap: 10px;
   height: fit-content;
   padding: 0 10px;
   box-sizing: border-box;
   grid-auto-flow: dense;
-
-  /* Ensure no overflow */
   overflow: hidden;
 
   .productTile {
-    width: 100%; /* The tile fully spans its grid cell */
+    width: 100%;
     height: auto;
     aspect-ratio: 9 / 16; /* Maintains the tile's aspect ratio */
     padding: 10px;
     display: flex;
-    flex-direction: column; /* Stack content vertically */
-    justify-content: space-between; /* Center-align content */
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
   }
@@ -107,60 +105,55 @@
     }
   }
 
-  /* Adjust layout for medium screens (mobile to tablet range) */
   @media (min-width: 530px) {
     grid-template-columns: repeat(
       auto-fit,
       minmax(180px, 1fr)
-    ); /* Tiles grow to fit 180px */
+    );
   }
 
   @media (min-width: 760px) {
     grid-template-columns: repeat(
       auto-fit,
       minmax(200px, 1fr)
-    ); /* Increase tiles to fit 200px */
+    );
   }
 
-  /* For larger screens (tablet and low desktop range) */
   @media (min-width: 1024px) {
     grid-template-columns: repeat(
       auto-fit,
       minmax(250px, 1fr)
-    ); /* Bigger tiles for 1024px and above */
+    );
     padding: 0 20px; /* Increase padding on the sides to prevent overflow */
   }
 
-  /* For large screens (desktop) */
   @media (min-width: 1200px) {
     grid-template-columns: repeat(
       auto-fit,
       minmax(300px, 1fr)
-    ); /* Even bigger tiles for large desktops */
+    );
   }
 
-  /* For extra large screens (large desktop / wide monitors) */
   @media (min-width: 1600px) {
     grid-template-columns: repeat(
       3,
       minmax(320px, 1fr)
-    ); /* More spacious tiles on bigger screens */
+    );
   }
 
-  /* For super wide screens (2000px and beyond) */
   @media (min-width: 2000px) {
     grid-template-columns: repeat(
       5,
       minmax(320px, 1fr)
-    ); /* Force 5 products across the row */
-    gap: 20px; /* Increase gap on large screens for visual balance */
+    );
+    gap: 20px;
   }
 }
 
 .productCarouselContainer {
   padding: 10px;
   max-width: 430px;
-  background-color: lightgray;
+  background-color: var(--lightGray);
 
   @media (min-width: 1024px) {
     max-width: 645px;
@@ -200,9 +193,9 @@
       @media (max-width: 1024px) {
         padding: 12px;
         display: block;
-        background-color: #4d4d4d;
+        background-color: var(--darkGray);
         border-radius: 6px;
-        color: white;
+        color: var(--ultraWhite);
         cursor: pointer;
         white-space: nowrap;
         text-overflow: ellipsis; /* Optional: adds "..." when the text overflows */
@@ -213,7 +206,7 @@
 
 .productTileLink {
   text-decoration: none;
-  color: black;
+  color: var(--black);
 }
 
 .infoBar {
@@ -239,7 +232,7 @@
     justify-content: space-between;
     align-items: center;
     margin-right: 25px;
-    border-top: 1px solid lightgray;
+    border-top: 1px solid var(--lightGray);
     box-sizing: border-box;
 
     .filterHeader {
@@ -249,10 +242,10 @@
     }
 
     .clearFilterButton {
-      background-color: #4d4d4d;
+      background-color: var(--darkGray);
       padding: 10px;
       border-radius: 6px;
-      color: white;
+      color: var(--ultraWhite);
       cursor: pointer;
 
       &:hover {
@@ -265,7 +258,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid lightgray;
+    border-top: 1px solid var(--lightGray);
     height: inherit;
     box-sizing: border-box;
     margin-left: 12px;

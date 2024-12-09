@@ -8,13 +8,12 @@
     > li {
       overflow: hidden;
 
-      // Combine shared styles for both `img` and `a > img`
       > img,
       > a > img {
         box-sizing: border-box;
         transition: opacity 0.3s ease-in-out;
-        object-fit: cover; // Ensures images scale well
-        width: 160px; // Default size for small screens
+        object-fit: cover;
+        width: 160px;
         height: 250px;
 
         @media (min-width: 768px) {
