@@ -14,7 +14,7 @@
     margin: 0 10px 10px 10px;
     height: calc(100vh - 80px);
     overflow-y: auto;
-    border-top: 1px solid lightgray;
+    border-top: 1px solid var(--lightGray);
 
     @media (max-width: 1024px) {
       display: none;
@@ -28,13 +28,13 @@
       justify-items: end;
 
       .filterTrigger {
-        background-color: rgb(77, 77, 77);
+        background-color: var(--darkGray);
         display: flex;
         justify-self: flex-end;
         align-items: center;
         padding: 8px;
         border-radius: 6px;
-        border: 1px solid black;
+        border: 1px solid var(--black);
         color: white;
 
         .mobileFilterText {
@@ -50,8 +50,8 @@
 }
 
 .SidepanelFilterContainer {
-  display: flex; /* Use flexbox for the layout */
-  flex-direction: column; /* Stack elements vertically */
+  display: flex;
+  flex-direction: column;
   height: 94%;
 
   .filterProductsContainer {
@@ -62,10 +62,10 @@
 
     .clearFilterButton {
       padding: 10px;
-      background-color: #4d4d4d;
+      background-color: var(--darkGray);
       cursor: pointer;
       border-radius: 6px;
-      color: white;
+      color: var(--ultraWhite);
     }
   }
 }
@@ -74,7 +74,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--lightGray);
 
   .filterLabel {
     display: flex;
@@ -98,7 +98,7 @@
       height: 18px;
 
       &:checked {
-        border: 1px solid black;
+        border: 1px solid var(--black);
 
         + .filterText {
           font-weight: bold;
@@ -107,7 +107,7 @@
       }
 
       &:hover {
-        border: 1px solid black;
+        border: 1px solid var(--black);
       }
     }
     .filterText {
@@ -117,12 +117,12 @@
 }
 
 .showResultsButton {
-  background-color: #4d4d4d; /* Dark grey background */
-  color: white; /* White text color */
-  width: 100%; /* Full width */
-  padding: 1rem; /* Add padding for better spacing */
-  text-align: center; /* Center the text */
-  cursor: pointer; /* Pointer on hover */
+  background-color: var(--darkGray);
+  color: var(--ultraWhite);
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
   box-sizing: border-box;
   margin-top: auto;
 }

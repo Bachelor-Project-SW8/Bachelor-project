@@ -3,7 +3,7 @@
   margin-top: 10px;
   justify-content: center;
   padding: 20px;
-  background-color: var(--white); // Lys beige baggrund
+  background-color: var(--white);
   font-family: Arial, sans-serif;
   flex-direction: column;
 
@@ -12,7 +12,7 @@
     align-items: center;
     margin-bottom: 30px;
     text-decoration: none;
-    color: black;
+    color: var(--black);
     padding: 10px;
     width: fit-content;
     font-size: 18px;
@@ -49,8 +49,8 @@
       }
 
       img {
-        width: 100%; // Make the image responsive
-        height: auto; // Maintain aspect ratio
+        width: 100%;
+        height: auto;
         max-width: 750px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
@@ -90,14 +90,14 @@
     margin-top: 20px;
 
     button {
-      background-color: #264a87; // Juster baggrundsfarven til dit tema
-      color: #fff; // Farven på teksten
-      border: none; // Fjerner standard kant
-      border-radius: 12px; // Gør hjørnerne runde
-      padding: 12px 24px; // Juster størrelse for at gøre knappen længere
-      font-size: 16px; // Juster skriftstørrelsen efter behov
-      cursor: pointer; // Skift cursoren til en hånd, når man hover
-      transition: background-color 0.3s ease; // Smooth overgang ved hover
+      background-color: var(--blue);
+      color: var(--ultraWhite);
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       width: 300px;
 
       @media (max-width: 550px) {
@@ -106,7 +106,7 @@
       }
 
       &:hover {
-        background-color: #007bff;
+        background-color: var(--hoverBlue);
       }
     }
   }
@@ -115,7 +115,7 @@
 
 .productCarouselContainer {
   padding: 10px;
-  background-color: lightgray;
+  background-color: var(--lightGray);
   margin-top: 40px;
 
   .productCarouselHeader {
@@ -125,7 +125,7 @@
 
   .productTileLink {
     text-decoration: none;
-    color: black;
+    color: var(--black);
   }
   
   .carouselProductTiles {

@@ -14,8 +14,9 @@
 
     .submenuItem {
       text-decoration: none;
-      color: black;
-      font-size: large;
+      color: var(--black);
+      font-size: 20px;
+      font-weight: 500;
       cursor: pointer;
       padding: 10px 15px;
       border-bottom: 2px solid transparent;
@@ -46,7 +47,7 @@
     a {
       align-content: center;
       text-decoration: none;
-      color: black;
+      color: var(--black);
 
       .categoryLink {
         display: flex;
@@ -60,7 +61,7 @@
 
   .categoryItems {
     box-sizing: border-box;
-    background-color: white;
+    background-color: var(--ultraWhite);
     width: 100%;
     border: 1px solid var(--darkGray);
     position: absolute;

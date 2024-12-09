@@ -8,7 +8,7 @@ export const Header = () => (
     <div className={styles.header}>
       <div className={styles.titlebox}>
         <Link className={styles.title} href="/">
-          <h1>Webshop</h1>
+          <h1>Trendhim Prototype</h1>
         </Link>
         <p>SW8</p>
       </div>

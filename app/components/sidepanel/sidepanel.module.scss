@@ -21,7 +21,7 @@
 
     &:checked ~ .content {
       max-height: 1250px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #cccccc;
       padding: 10px 10px 20px 10px;
       background-color: var(--white);
       position: fixed;
@@ -42,7 +42,7 @@
       }
 
       .closeButtonContainer {
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--black);
         padding: 15px;
 
         .close {

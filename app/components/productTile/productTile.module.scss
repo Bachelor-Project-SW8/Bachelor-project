@@ -10,8 +10,8 @@
 
   .productTileContainer {
     position: relative;
-    background-color: white;
-    border: 1px solid black;
+    background-color: var(--ultraWhite);
+    border: 1px solid var(--black);
 
     .heartIconContainer {
       display: flex;
@@ -41,10 +41,10 @@
 
     .productTileName {
       font-weight: bold;
-      white-space: nowrap; /* Prevent text from wrapping to the next line */
-      overflow: hidden; /* Hide any overflowing text */
+      white-space: nowrap;
+      overflow: hidden;
       text-overflow: ellipsis; /* Display '...' for truncated text */
-      width: 100%; /* Ensure it respects the parent's width */
+      width: 100%;
       display: block;
     }
 
@@ -57,7 +57,7 @@
 
     .brandContainer {
       width: 100%;
-      border-top: 1px solid black;
+      border-top: 1px solid var(--black);
       margin-top: 25px;
       padding-bottom: 5px;
       .brandTag {
