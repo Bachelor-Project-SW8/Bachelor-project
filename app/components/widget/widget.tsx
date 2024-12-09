@@ -14,7 +14,7 @@ export function Widget({ picture, text, seeAll, className, onClick }: WidgetProp
     <div className={clsx(styles.widgetContainer, className)} onClick={onClick}>
       <p className={clsx(text ? styles.productText : "")}>{text}</p>
       <p className={seeAll && styles.seeAll}>{seeAll}</p>
-      <img className={styles.widgetPicture} src={picture} />
+      <img className={styles.widgetPicture} src={picture} alt={`${text} widget image`} />
     </div>
   );
 }

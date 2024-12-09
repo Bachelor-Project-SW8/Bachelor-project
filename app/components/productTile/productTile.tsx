@@ -24,7 +24,7 @@ export function ProductTile({ className, product }: ProductTileProps) {
                 <div className={styles.heartIconContainer}>
                     <HeartIcon onClick={toggleLikeProduct} className={clsx(styles.heartIcon, likedProduct && styles.likedProduct)} />
                 </div>
-                <img className={styles.productTilePicture} src={product.ProductPicture} />
+                <img className={styles.productTilePicture} src={product.ProductPicture} alt={product.ProductName} />
                 <div className={styles.productTileName}>{product.ProductName}</div>
                 <div className={styles.priceContainer}>{`$${product.Price}`}</div>
                 <div className={styles.brandContainer}>

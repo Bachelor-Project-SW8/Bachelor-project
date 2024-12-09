@@ -202,7 +202,7 @@ const Bracelets = () => {
   return (
     <div className={styles.screengrid}>
       <Filterbar className={styles.topFilterBar}>
-        {braceletTypes.map((bracelet, index) => (
+        {braceletTypes.map((bracelet) => (
           <div
             onClick={() => {
               // Normalize the bracelet name using the nameMapping
@@ -237,7 +237,7 @@ const Bracelets = () => {
               }
             }}
             className={styles.filterBarContent}
-            key={index}
+            key={bracelet.name}
           >
             <Image
               className={styles.topFilterPictures}
@@ -324,9 +324,9 @@ const Bracelets = () => {
         <div className={styles.productTileGrid}>
           {(filteredProducts.length > 0 ? filteredProducts : products).map(
             (product, index) => (
-              <>
+              <React.Fragment key={`fragment-${product.ProductID}`}>
                 {/* Product Tile */}
-                <div key={product.ProductID}>
+                <div key={`product-${product.ProductID}`}>
                   <Link
                     className={styles.productTileLink}
                     href={`/category/bracelets/products/${product.ProductID}`}
@@ -341,16 +341,16 @@ const Bracelets = () => {
                 {/* Widget at every 20th index */}
                 {index % 19 === 18 && (
                   <div
-                    key={`widget-${index}`}
+                    key={`widget-container-${index}`}
                     className={styles.widgetContainer}
                   >
                     <Widget
                       className={styles.regularWidget}
-                      key={categories[index % categories.length].CategoryID}
+                      key={`widget-item-${index}-${categories[index % categories.length]?.CategoryID}`}
                       picture={
-                        categories[index % categories.length].CategoryPicture
+                        categories[index % categories.length]?.CategoryPicture
                       }
-                      text={categories[index % categories.length].CategoryName}
+                      text={categories[index % categories.length]?.CategoryName}
                       seeAll="See All"
                       onClick={() => {
                         // Find the category by name and filter products
@@ -363,11 +363,16 @@ const Bracelets = () => {
                     />
                   </div>
                 )}
+
+                {/* Widget Carousel at every 40th index */}
                 {index % 40 === 39 && (
-                  <WidgetCarousel className={styles.widgetCarouselContainer}>
+                  <WidgetCarousel
+                    key={`widget-carousel-${index}`}
+                    className={styles.widgetCarouselContainer}
+                  >
                     {categories.map((category) => (
                       <Widget
-                        key={category.CategoryID}
+                        key={`carousel-widget-${category.CategoryID}`}
                         picture={category.CategoryPicture}
                         text={category.CategoryName}
                         seeAll="See All"
@@ -378,7 +383,7 @@ const Bracelets = () => {
                     ))}
                   </WidgetCarousel>
                 )}
-              </>
+              </React.Fragment>
             )
           )}
         </div>
