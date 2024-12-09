@@ -10,7 +10,6 @@ import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "../products.module.scss";
 import { ProductCarousel } from "@/app/components/productCarousel/productCarousel";
-import { Widget } from "@/app/components/widget/widget";
 import Link from "next/link";
 import { ProductTile } from "@/app/components/productTile/productTile";
 
@@ -100,7 +99,6 @@ const ProductPage = () => {
     return matchesCategory && matchesColor;
   });
 
-
   return (
     <div className={styles.productPage}>
       <div className={styles.productinfocontainer}>
@@ -108,43 +106,45 @@ const ProductPage = () => {
           <img src={product.ProductPicture} alt={product.ProductName} />
         </div>
 
-        <div className={styles.details}>
-          <p className={styles.brand}>{product.Brand}</p>
-          <div className={styles.productnamecontainer}>
-            <h1>{product.ProductName}</h1>
-            <p className={styles.price}>${product.Price}</p>
-          </div>
-          <div className={styles.categories}>
-            <h3>Categories:</h3>
-            <ul>
-              {relatedCategories.map((category) => (
-                <li key={category?.CategoryID}>{category?.CategoryName}</li>
-              ))}
-            </ul>
-          </div>
+        <div className={styles.detailsContainer}>
+          <div className={styles.details}>
+            <p className={styles.brand}>{product.Brand}</p>
+            <div className={styles.productNameContainer}>
+              <h1>{product.ProductName}</h1>
+              <p className={styles.price}>${product.Price}</p>
+            </div>
+            <div className={styles.categories}>
+              <h3>Categories:</h3>
+              <ul>
+                {relatedCategories.map((category) => (
+                  <li key={category?.CategoryID}>{category?.CategoryName}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div className={styles.colors}>
-            <h3>Colors:</h3>
-            <ul>
-              {relatedColors.map((color) => (
-                <li key={color?.ColorID}>{color?.ColorName}</li>
-              ))}
-            </ul>
-          </div>
+            <div className={styles.colors}>
+              <h3>Colors:</h3>
+              <ul>
+                {relatedColors.map((color) => (
+                  <li key={color?.ColorID}>{color?.ColorName}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div className={styles.addToCart}>
-            <button>Add to Cart</button>
-          </div>
-          <div className={styles.productInfo}>
-            <ul className={styles.infoList}>
-              <li>Free shipping on orders above $50</li>
-              <li>30 days of returns</li>
-              <li>1-2 days shipping</li>
-            </ul>
+            <div className={styles.addToCart}>
+              <button>Add to Cart</button>
+            </div>
+            <div className={styles.productInfo}>
+              <ul className={styles.infoList}>
+                <li>Free shipping on orders above $50</li>
+                <li>30 days of returns</li>
+                <li>1-2 days shipping</li>
+              </ul>
 
-            <div className={styles.description}>
-              <h2>Description</h2>
-              <p>{product.Description}</p>
+              <div className={styles.description}>
+                <h2>Description</h2>
+                <p>{product.Description}</p>
+              </div>
             </div>
           </div>
         </div>

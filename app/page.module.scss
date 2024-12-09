@@ -79,6 +79,7 @@
   height: fit-content;
   padding: 0 10px;
   box-sizing: border-box;
+  grid-auto-flow: dense;
 
   /* Ensure no overflow */
   overflow: hidden;
