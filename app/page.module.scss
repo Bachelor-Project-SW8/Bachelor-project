@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap";
 
 .fontOnly {
   font-family: "Open Sans", sans-serif;
@@ -70,10 +70,7 @@
 .productTileGrid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(160px, 1fr)
-  );
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 
   gap: 10px;
   height: fit-content;
@@ -106,46 +103,28 @@
   }
 
   @media (min-width: 530px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(180px, 1fr)
-    );
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 
   @media (min-width: 760px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(200px, 1fr)
-    );
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(250px, 1fr)
-    );
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 0 20px; /* Increase padding on the sides to prevent overflow */
   }
 
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(300px, 1fr)
-    );
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
   @media (min-width: 1600px) {
-    grid-template-columns: repeat(
-      3,
-      minmax(320px, 1fr)
-    );
+    grid-template-columns: repeat(3, minmax(320px, 1fr));
   }
 
   @media (min-width: 2000px) {
-    grid-template-columns: repeat(
-      5,
-      minmax(320px, 1fr)
-    );
+    grid-template-columns: repeat(5, minmax(320px, 1fr));
     gap: 20px;
   }
 }
