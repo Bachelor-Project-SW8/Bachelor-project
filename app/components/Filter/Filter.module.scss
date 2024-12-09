@@ -24,7 +24,7 @@
   .mobileFilter {
     .filterSidepanel {
       display: grid;
-      justify-content: end;
+      justify-content: flex-end;
       justify-items: end;
 
       .filterTrigger {

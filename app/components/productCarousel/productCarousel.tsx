@@ -8,14 +8,10 @@ import styles from "./productCarousel.module.scss";
 
 type ProductCarouselProps = {
   children: ReactNode;
-  id?: string;
-  className?: string;
 };
 
 export function ProductCarousel({
   children,
-  id,
-  className,
 }: ProductCarouselProps) {
   const responsive = {
     superLargeDesktop: {

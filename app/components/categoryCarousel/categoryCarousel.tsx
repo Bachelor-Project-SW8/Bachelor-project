@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 
 // npm install react-multi-carousel --save
 import Carousel from "react-multi-carousel";

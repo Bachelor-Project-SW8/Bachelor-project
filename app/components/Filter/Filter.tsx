@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./Filter.module.scss";
 import { Sidepanel } from "../sidepanel/sidepanel";
 import { FilterIcon, X } from "lucide-react";
